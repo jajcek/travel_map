@@ -22,12 +22,13 @@ class VisitedMap extends React.Component<any, any> {
     this.highlightFeature = this.highlightFeature.bind(this);
     this.resetHighlight = this.resetHighlight.bind(this);
     this.isSelected = this.isSelected.bind(this);
+    this.defaultCountryStyles = this.defaultCountryStyles.bind(this);
   }
 
   countryClickHandler(e: L.LeafletMouseEvent) {
     const layer = e.layer;
-    if (this.props.selected !== null) {
-      this.geoJsonRef.current.resetStyle(this.props.selected);
+    if (this.state.selected !== null) {
+      this.geoJsonRef.current.resetStyle(this.state.selected);
     }
     layer.setStyle({
       weight: 4,
@@ -38,11 +39,10 @@ class VisitedMap extends React.Component<any, any> {
     const props = layer.feature.properties;
     this.setState({selected: layer});
 
-    this.props.onCountryClick(layer);
+    this.props.onCountryClick({'name': props.ADMIN, 'iso_a3_name': props.ISO_A3});
   }
 
   defaultCountryStyles(e: geojson.Feature<geojson.Geometry, any> | undefined): L.PathOptions {
-    console.log('sadasda');
     return {
       fillColor: 'silver',
       weight: 1,
@@ -68,12 +68,10 @@ class VisitedMap extends React.Component<any, any> {
 
   resetHighlight(e: L.LeafletMouseEvent) {
     const layer = e.layer;
-    if (this.props.selected !== null) {
-      this.props.selected.bringToFront();
+    if (this.state.selected !== null) {
+      this.state.selected.bringToFront();
     }
 
-    console.log('this.props.selected', this.props.selected);
-    console.log('layer', layer);
     if (this.isSelected(layer)) {
       return;
     } else {
@@ -82,18 +80,14 @@ class VisitedMap extends React.Component<any, any> {
   }
 
   isSelected(layer: any) {
-    return this.props.selected !== null && this.props.selected.feature.properties.ISO_A3 === layer.feature.properties.ISO_A3;
-  }
-
-  componentWillUpdate() {
-    if (this.props.selected === null && this.state.selected != null) {
-      console.log('zzzz', this.geoJsonRef.current);
-      this.geoJsonRef.current.resetStyle(this.state.selected);
-      this.setState({selected: null});
-    }
+    return this.state.selected !== null && this.state.selected.feature.properties.ISO_A3 === layer.feature.properties.ISO_A3;
   }
 
   render() {
+    if (this.state.selected != null) {
+      this.state.selected.bringToFront();
+    }
+
     return <GeoJSON ref={this.geoJsonRef} style={this.defaultCountryStyles} data={require('./countries.json')}
       eventHandlers={{click: this.countryClickHandler, mouseover: this.highlightFeature, mouseout: this.resetHighlight}}></GeoJSON>
   }

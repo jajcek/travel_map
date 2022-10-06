@@ -17,31 +17,21 @@ class Map extends React.Component<Props, any> {
   constructor(props:any){
     super(props);
 
-    this.state = {selected: null};
+    this.state = {r: null};
 
     this.countryClickHandler = this.countryClickHandler.bind(this);
     this.f = this.f.bind(this);
   }
 
   countryClickHandler(layer: any) {
-    // if (this.state.selected !== null) {
-    //   this.geoJsonRef.current.resetStyle(this.state.selected);
-    // }
-    // layer.setStyle({
-    //   weight: 4,
-    //   color: '#666',
-    //   fillOpacity: 1
-    // });
-
-    const props = layer.feature.properties;
-    this.setState({selected: layer});
-console.log('selecting', layer);
-    this.props.onCountryClick({'name': props.ADMIN, 'iso_a3_name': props.ISO_A3});
+    this.setState({r: layer});
+    this.props.onCountryClick(layer);
   }
 
-  f() {
-    console.log('selected na null');
-    this.setState({selected: null});
+  f(e) {
+    if (e.name === 'Visited') {
+      this.props.onCountryClick(this.state.r);
+    }
   }
 
   render() {
@@ -60,8 +50,8 @@ console.log('selecting', layer);
       }}
       >
       <LayersControl position="topright" collapsed={false} change={this.f}>
-        <LayersControl.BaseLayer checked name="Visited" eventHandlers={{overlayadd: this.f}}>
-          <VisitedMap selected={this.state.selected} onCountryClick={this.countryClickHandler}></VisitedMap>
+        <LayersControl.BaseLayer checked name="Visited">
+          <VisitedMap onCountryClick={this.countryClickHandler}></VisitedMap>
         </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Gallery">
           <TileLayer
