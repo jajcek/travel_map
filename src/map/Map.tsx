@@ -17,20 +17,20 @@ class Map extends React.Component<Props, any> {
   constructor(props:any){
     super(props);
 
-    this.state = {r: null};
+    this.state = {selectedCountry: null};
 
     this.countryClickHandler = this.countryClickHandler.bind(this);
-    this.f = this.f.bind(this);
+    this.changeLayer = this.changeLayer.bind(this);
   }
 
   countryClickHandler(layer: any) {
-    this.setState({r: layer});
+    this.setState({selectedCountry: layer});
     this.props.onCountryClick(layer);
   }
 
-  f(e) {
+  changeLayer(e) {
     if (e.name === 'Visited') {
-      this.props.onCountryClick(this.state.r);
+      this.props.onCountryClick(this.state.selectedCountry);
     }
   }
 
@@ -44,12 +44,11 @@ class Map extends React.Component<Props, any> {
         zoomDelta={0.1}
         zoomSnap={0}
         wheelPxPerZoomLevel={100}
-        whenReady={event => {
-          const { target } = event;
-          target.on('baselayerchange', this.f);
-      }}
+        whenReady={e => {
+            e.target.on('baselayerchange', this.changeLayer);
+        }}
       >
-      <LayersControl position="topright" collapsed={false} change={this.f}>
+      <LayersControl position="topright" collapsed={false}>
         <LayersControl.BaseLayer checked name="Visited">
           <VisitedMap onCountryClick={this.countryClickHandler}></VisitedMap>
         </LayersControl.BaseLayer>
