@@ -72,7 +72,7 @@ class App extends React.Component<{}, State> {
       <AppContainer className="travel-app">
         <MainAndPropertyContainer>
           <MapDiv>
-            <MapL countryClickHandler={this.countryClickHandler}></MapL>
+            <Map countryClickHandler={this.countryClickHandler}></Map>
           </MapDiv>
           <PropertyBoxDiv>
             <div id="tescik">
