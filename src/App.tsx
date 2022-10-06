@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import logo from './logo.svg';
-import Map from './map/Map'
-import MapL from './map/MapL'
 import './App.css';
 import styled from 'styled-components'
+
+import Map from './map/Map'
 import PropertyBox from './PropertyBox';
 
 import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGroup, Circle, GeoJSON } from 'react-leaflet'
@@ -64,7 +64,6 @@ class App extends React.Component<{}, State> {
   render() {
 
     let propertyBoxToDisplay = null;
-    //console.log(this.state.propertyType);
     if (this.state.propertyType === PropertyType.Country) {
       propertyBoxToDisplay = <div>kupsztylec</div>
     }
@@ -86,37 +85,6 @@ class App extends React.Component<{}, State> {
         </Footer>
       </AppContainer>
     );
-
-    // return (
-    //   <AppContainer className="travel-app">
-    //     <MainAndPropertyContainer>
-    //       <MapDiv>
-    //         <ExternalMap></ExternalMap>
-    //       </MapDiv>
-    //     </MainAndPropertyContainer>
-    //     <Footer>
-    //       Copyright &copy; by JT
-    //     </Footer>
-    //   </AppContainer>
-    // );
-
-    // return (
-    //   <AppContainer className="travel-app">
-    //     <MainAndPropertyContainer>
-    //       <MapDiv>
-    //         <Map key="123" countryClickHandler={this.countryClickHandler}></Map>
-    //       </MapDiv>
-    //       <PropertyBoxDiv>
-    //         <PropertyBox>
-    //           {propertyBoxToDisplay}
-    //         </PropertyBox>
-    //       </PropertyBoxDiv>
-    //     </MainAndPropertyContainer>
-    //     <Footer>
-    //       Copyright &copy; by JT
-    //     </Footer>
-    //   </AppContainer>
-    // );
   }
 }
 
