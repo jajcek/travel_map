@@ -29,7 +29,13 @@ class VisitedMap extends React.Component<any, any> {
     const layer = e.layer;
     if (this.state.selected !== null) {
       this.geoJsonRef.current.resetStyle(this.state.selected);
+      if (this.state.selected === layer) {
+        this.setState({selected: null});
+        this.props.onCountryClick(null);
+        return;
+      }
     }
+
     layer.setStyle({
       weight: 4,
       color: '#666',
@@ -38,7 +44,6 @@ class VisitedMap extends React.Component<any, any> {
 
     const props = layer.feature.properties;
     this.setState({selected: layer});
-
     this.props.onCountryClick({'name': props.ADMIN, 'iso_a3_name': props.ISO_A3});
   }
 

@@ -28,7 +28,7 @@ class Map extends React.Component<Props, any> {
     this.props.onCountryClick(layer);
   }
 
-  changeLayer(e) {
+  changeLayer(e: L.LayersControlEvent) {
     if (e.name === 'Visited') {
       this.props.onCountryClick(this.state.selectedCountry);
     }
@@ -44,7 +44,8 @@ class Map extends React.Component<Props, any> {
         zoomDelta={0.1}
         zoomSnap={0}
         wheelPxPerZoomLevel={100}
-        whenReady={e => {
+        // @ts-ignore: invalid type in react-leaflet library
+        whenReady={(e: any) => {
             e.target.on('baselayerchange', this.changeLayer);
         }}
       >
