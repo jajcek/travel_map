@@ -6,7 +6,7 @@ interface ChildrenProps {
 
 class PropertyBox extends React.Component<ChildrenProps, any> {
   render() {
-    return <div>property boxik{this.props.children}</div>;
+    return <React.Fragment>property boxik{this.props.children}</React.Fragment>;
   }
 }
 
