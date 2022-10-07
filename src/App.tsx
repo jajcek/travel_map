@@ -11,13 +11,8 @@ import 'leaflet/dist/leaflet.css';
 
 import type {CountryInfo} from './map/types';
 
-enum PropertyType {
-  None = 'NONE',
-  Country = 'COUNTRY'
-}
-
 type State = {
-  propertyType: PropertyType
+  selectedCountry: CountryInfo
 }
 
 const AppContainer = styled.div`
@@ -52,22 +47,16 @@ class App extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
 
-    this.state = {propertyType: PropertyType.None}
+    this.state = {selectedCountry: null}
     this.countryClickHandler = this.countryClickHandler.bind(this);
   }
 
-  countryClickHandler(countryData: CountryInfo) {
-    console.log(countryData);
-    this.setState({propertyType: PropertyType.Country});
+  countryClickHandler(countryInfo: CountryInfo) {
+    console.log(countryInfo);
+    this.setState({selectedCountry: countryInfo});
   }
 
   render() {
-
-    let propertyBoxToDisplay = null;
-    if (this.state.propertyType === PropertyType.Country) {
-      propertyBoxToDisplay = <div>kupsztylec</div>
-    }
-
     return (
       <AppContainer className="travel-app">
         <MainAndPropertyContainer>
@@ -75,9 +64,12 @@ class App extends React.Component<{}, State> {
             <Map onCountryClick={this.countryClickHandler}></Map>
           </MapDiv>
           <PropertyBoxDiv>
-            <PropertyBox>
-              {propertyBoxToDisplay}
-            </PropertyBox>
+            {
+                this.state.selectedCountry !== null &&
+                    <PropertyBox name={this.state.selectedCountry}>
+                        <div>test</div>
+                    </PropertyBox>
+            }
           </PropertyBoxDiv>
         </MainAndPropertyContainer>
         <Footer>
