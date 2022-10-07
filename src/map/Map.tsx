@@ -6,7 +6,7 @@ import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGro
 
 import VisitedMap from './VisitedMap';
 
-import type {CountryClickHandler} from './types';
+import type {CountryClickHandler, CountryInfo} from './types';
 
 type Props = {
   onCountryClick: CountryClickHandler
@@ -14,7 +14,7 @@ type Props = {
 
 class Map extends React.Component<Props, any> {
 
-  constructor(props:any){
+  constructor(props:any) {
     super(props);
 
     this.state = {selectedCountry: null};
@@ -23,7 +23,7 @@ class Map extends React.Component<Props, any> {
     this.changeLayer = this.changeLayer.bind(this);
   }
 
-  countryClickHandler(layer: any) {
+  countryClickHandler(layer: CountryInfo) {
     this.setState({selectedCountry: layer});
     this.props.onCountryClick(layer);
   }
@@ -51,7 +51,7 @@ class Map extends React.Component<Props, any> {
       >
       <LayersControl position="topright" collapsed={false}>
         <LayersControl.BaseLayer checked name="Visited">
-          <VisitedMap onCountryClick={this.countryClickHandler}></VisitedMap>
+          <VisitedMap selectedCountry={this.state.selectedCountry} onCountryClick={this.countryClickHandler}></VisitedMap>
         </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Gallery">
           <TileLayer

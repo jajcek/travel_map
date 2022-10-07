@@ -44,7 +44,7 @@ class VisitedMap extends React.Component<any, any> {
 
     const props = layer.feature.properties;
     this.setState({selected: layer});
-    this.props.onCountryClick({'name': props.ADMIN, 'iso_a3_name': props.ISO_A3});
+    this.props.onCountryClick(props.ADMIN);
   }
 
   defaultCountryStyles(e: geojson.Feature<geojson.Geometry, any> | undefined): L.PathOptions {
@@ -85,13 +85,22 @@ class VisitedMap extends React.Component<any, any> {
   }
 
   isSelected(layer: any) {
-    return this.state.selected !== null && this.state.selected.feature.properties.ISO_A3 === layer.feature.properties.ISO_A3;
+    return this.state.selected !== null && this.state.selected.feature.properties.ADMIN === layer.feature.properties.ADMIN;
+  }
+
+  componentDidUpdate(prevProp: any) {
+    this.geoJsonRef.current.eachLayer((layer: L.FeatureGroup) => {
+            const featureProperties = (layer.feature as geojson.Feature).properties!;
+            if (featureProperties.ADMIN === this.props.selectedCountry) {
+                layer.bringToFront();
+            }
+        });
   }
 
   render() {
-    if (this.state.selected != null) {
-      this.state.selected.bringToFront();
-    }
+//     if (this.state.selected != null) {
+//       this.state.selected.bringToFront();
+//     }
 
     return <GeoJSON ref={this.geoJsonRef} style={this.defaultCountryStyles} data={require('./countries.json')}
       eventHandlers={{click: this.countryClickHandler, mouseover: this.highlightFeature, mouseout: this.resetHighlight}}></GeoJSON>
