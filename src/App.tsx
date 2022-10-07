@@ -4,7 +4,7 @@ import './App.css';
 import styled from 'styled-components'
 
 import Map from './map/Map'
-import PropertyBox from './PropertyBox';
+import CountryPropertyBox from './CountryPropertyBox';
 
 import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGroup, Circle, GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
@@ -65,10 +65,7 @@ class App extends React.Component<{}, State> {
           </MapDiv>
           <PropertyBoxDiv>
             {
-                this.state.selectedCountry !== null &&
-                    <PropertyBox name={this.state.selectedCountry}>
-                        <div>test</div>
-                    </PropertyBox>
+                this.state.selectedCountry !== null && <CountryPropertyBox name={this.state.selectedCountry}></CountryPropertyBox>
             }
           </PropertyBoxDiv>
         </MainAndPropertyContainer>
