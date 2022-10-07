@@ -12,7 +12,11 @@ type Props = {
   onCountryClick: CountryClickHandler
 }
 
-class Map extends React.Component<Props, any> {
+type State = {
+  selectedCountry: CountryInfo
+}
+
+class Map extends React.Component<Props, State> {
 
   constructor(props:any) {
     super(props);
@@ -23,13 +27,13 @@ class Map extends React.Component<Props, any> {
     this.changeLayer = this.changeLayer.bind(this);
   }
 
-  countryClickHandler(layer: CountryInfo) {
-    this.setState({selectedCountry: layer});
-    this.props.onCountryClick(layer);
+  countryClickHandler(countryInfo: CountryInfo) {
+    this.setState({selectedCountry: countryInfo});
+    this.props.onCountryClick(countryInfo);
   }
 
-  changeLayer(e: L.LayersControlEvent) {
-    if (e.name === 'Visited') {
+  changeLayer(layer: L.LayersControlEvent) {
+    if (layer.name === 'Visited') {
       this.props.onCountryClick(this.state.selectedCountry);
     }
   }

@@ -2,18 +2,19 @@ import React, {RefObject} from 'react';
 
 import { GeoJSON } from 'react-leaflet'
 
-import type {CountryClickHandler} from './types';
+import type {CountryClickHandler, CountryInfo} from './types';
 import type * as geojson from 'geojson';
 
 type Props = {
+  selectedCountry: CountryInfo | null,
   onCountryClick: CountryClickHandler
 }
 
-class VisitedMap extends React.Component<any, any> {
+class VisitedMap extends React.Component<Props, any> {
 
   geoJsonRef: any = React.createRef<L.GeoJSON>(); // TODO remove any
 
-  constructor(props:any){
+  constructor(props: Props) {
     super(props);
 
     this.state = {selected: null};
@@ -98,10 +99,6 @@ class VisitedMap extends React.Component<any, any> {
   }
 
   render() {
-//     if (this.state.selected != null) {
-//       this.state.selected.bringToFront();
-//     }
-
     return <GeoJSON ref={this.geoJsonRef} style={this.defaultCountryStyles} data={require('./countries.json')}
       eventHandlers={{click: this.countryClickHandler, mouseover: this.highlightFeature, mouseout: this.resetHighlight}}></GeoJSON>
   }
