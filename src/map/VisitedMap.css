@@ -1,0 +1,12 @@
+svg {
+    outline: none;
+}
+
+path {
+    fill: silver;
+    stroke: white;
+}
+
+path:hover {
+    fill: white;
+}

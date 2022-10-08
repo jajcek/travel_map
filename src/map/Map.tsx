@@ -1,6 +1,8 @@
 import React, {RefObject} from 'react';
+import SVG from 'react-inlinesvg';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
+import '../App.css';
 
 import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGroup, Circle, GeoJSON } from 'react-leaflet'
 
@@ -13,7 +15,8 @@ type Props = {
 }
 
 type State = {
-  selectedCountry: CountryInfo
+  selectedCountry: CountryInfo,
+  zoom: number
 }
 
 class Map extends React.Component<Props, State> {
@@ -21,10 +24,11 @@ class Map extends React.Component<Props, State> {
   constructor(props:any) {
     super(props);
 
-    this.state = {selectedCountry: null};
+    this.state = {selectedCountry: null, zoom: 2.4};
 
     this.countryClickHandler = this.countryClickHandler.bind(this);
     this.changeLayer = this.changeLayer.bind(this);
+    this.changeZoom = this.changeZoom.bind(this);
   }
 
   countryClickHandler(countryInfo: CountryInfo) {
@@ -38,12 +42,17 @@ class Map extends React.Component<Props, State> {
     }
   }
 
+  changeZoom(event: L.LayersControlEvent) {
+    this.setState({'zoom': event.target.getZoom()});
+  }
+
   render() {
     return <MapContainer style={{height: '100%', backgroundColor: 'gray'}}
         center={[30, 0]}
-        zoom={2.4}
+        zoom={this.state.zoom}
+        minZoom={this.state.zoom}
         scrollWheelZoom={true}
-        maxBounds={[[-60, -180], [84, 180]]}
+        maxBounds={[[-60, -180], [84, 190]]}
         maxBoundsViscosity={1}
         zoomDelta={0.1}
         zoomSnap={0}
@@ -51,11 +60,12 @@ class Map extends React.Component<Props, State> {
         // @ts-ignore: invalid type in react-leaflet library
         whenReady={(e: any) => {
             e.target.on('baselayerchange', this.changeLayer);
+            e.target.on('zoom', this.changeZoom);
         }}
       >
       <LayersControl position="topright" collapsed={false}>
         <LayersControl.BaseLayer checked name="Visited">
-          <VisitedMap selectedCountry={this.state.selectedCountry} onCountryClick={this.countryClickHandler}></VisitedMap>
+          <VisitedMap zoom={this.state.zoom} selectedCountry={this.state.selectedCountry} onCountryClick={this.countryClickHandler}></VisitedMap>
         </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Gallery">
           <TileLayer
