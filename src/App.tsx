@@ -1,18 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components'
 
 import Map from './map/Map'
 import CountryPropertyBox from './CountryPropertyBox';
+import LoadVisitedStats from './LoadVisitedStats';
 
-import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGroup, Circle, GeoJSON } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css';
-
-import type {CountryInfo} from './map/types';
+import type {CountryInfo, VisitedCountryInfo} from './map/types';
 
 type State = {
-  selectedCountry: CountryInfo
+  selectedCountry: CountryInfo,
+  visitedCountriesData: Array<VisitedCountryInfo>
 }
 
 const AppContainer = styled.div`
@@ -47,7 +45,7 @@ class App extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
 
-    this.state = {selectedCountry: null}
+    this.state = {selectedCountry: null, visitedCountriesData: []}
     this.countryClickHandler = this.countryClickHandler.bind(this);
   }
 
@@ -56,12 +54,19 @@ class App extends React.Component<{}, State> {
     this.setState({selectedCountry: countryInfo});
   }
 
+  componentDidMount() {
+    LoadVisitedStats()
+        .then((data) => {
+             this.setState({'visitedCountriesData': data});
+        });
+  }
+
   render() {
     return (
       <AppContainer className="travel-app">
         <MainAndPropertyContainer>
           <MapDiv>
-            <Map onCountryClick={this.countryClickHandler}></Map>
+            <Map visitedCountriesData={this.state.visitedCountriesData} onCountryClick={this.countryClickHandler}></Map>
           </MapDiv>
           <PropertyBoxDiv>
             {

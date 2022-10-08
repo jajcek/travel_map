@@ -7,7 +7,7 @@ Exceptions:
     - JU - Juan De Nova Island
     - XK - Kosovo, unofficial and temporary code assigned under UN Security Council resolution 1244/99
     - UM-DQ - Jarvis Island
-    - UM-DQ - Baker Island
+    - UM-FQ - Baker Island
     - UM-HQ - Howland Island
     - UM-JQ - Johnston Atoll
     - UM-MQ - Midway Islands

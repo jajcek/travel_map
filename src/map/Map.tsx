@@ -6,10 +6,11 @@ import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 
 import VisitedMap from './VisitedMap';
 
-import type {CountryClickHandler, CountryInfo} from './types';
+import type {CountryClickHandler, CountryInfo, VisitedCountryInfo} from './types';
 
 type Props = {
-  onCountryClick: CountryClickHandler
+  onCountryClick: CountryClickHandler,
+  visitedCountriesData: Array<VisitedCountryInfo>
 }
 
 type State = {
@@ -63,7 +64,7 @@ class Map extends React.Component<Props, State> {
       >
       <LayersControl position="topright" collapsed={false}>
         <LayersControl.BaseLayer checked name="Visited">
-          <VisitedMap zoom={this.state.zoom} selectedCountry={this.state.selectedCountry} onCountryClick={this.countryClickHandler}></VisitedMap>
+          <VisitedMap zoom={this.state.zoom} visitedCountriesData={this.props.visitedCountriesData} onCountryClick={this.countryClickHandler}></VisitedMap>
         </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Gallery">
           <TileLayer

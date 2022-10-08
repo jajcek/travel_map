@@ -1,12 +1,13 @@
 import React from 'react';
 import { SVGOverlay } from 'react-leaflet';
 import './VisitedMap.css';
+import countriesIso from './countries_iso.json';
 
-import type {CountryClickHandler, CountryInfo} from './types';
+import type {CountryClickHandler, VisitedCountryInfo} from './types';
 
 type Props = {
   zoom: number,
-  selectedCountry: CountryInfo | null,
+  visitedCountriesData: Array<VisitedCountryInfo>
   onCountryClick: CountryClickHandler
 }
 
@@ -25,6 +26,7 @@ class VisitedMap extends React.Component<Props, any> {
 
   countryClickHandler(e: any) {
     // abandoned
+    console.log(e.originalEvent.target.id);
   }
 
   highlightFeature(e: any) {
@@ -40,6 +42,13 @@ class VisitedMap extends React.Component<Props, any> {
   }
 
   componentDidUpdate(prevProp: any) {
+    this.props.visitedCountriesData.forEach((country) => {
+        Array.from(this.svgRef.current!.getElement()!.children).forEach((child: any) => {
+            if (country.name === child.id) {
+                child.style.fill = 'orange';
+            }
+        });
+    });
     this.svgRef.current!.getElement()!.style.strokeWidth = this.getStrokeWidth().toString();
   }
 
