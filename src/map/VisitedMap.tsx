@@ -31,10 +31,10 @@ class VisitedMap extends React.Component<Props, any> {
 
   highlightFeature(e: any) {
     // remove and add at the end (simulating 'bringToFront' as order in svg depends on the order in DOM)
-    const target = e.target;
-    const parent = target.parentElement;
-    target.remove();
-    parent.appendChild(target);
+//     const target = e.target;
+//     const parent = target.parentElement;
+//     target.remove();
+//     parent.appendChild(target);
   }
 
   resetHighlight(e: any) {
@@ -48,6 +48,10 @@ class VisitedMap extends React.Component<Props, any> {
                 child.style.fill = 'orange';
             }
         });
+    });
+
+    Array.from(this.svgRef.current!.getElement()!.children).forEach((child: any) => {
+        child.style.filter = `drop-shadow(0px ${this.getStrokeWidth(2)}px ${this.getStrokeWidth(3.4)}px rgb(0 0 0 / 0.4))`
     });
     this.svgRef.current!.getElement()!.style.strokeWidth = this.getStrokeWidth().toString();
   }
