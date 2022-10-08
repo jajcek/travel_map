@@ -17,12 +17,6 @@ const AppContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-`;
-
-const MainAndPropertyContainer = styled.div`
-  display: flex;
-  flex: 1;
 `;
 
 const MapDiv = styled.div`
@@ -32,12 +26,6 @@ const PropertyBoxDiv = styled.div`
   flex: 1;
   background-color: #353535;
   color: white;
-`;
-
-const Footer = styled.div`
-  background-color: #353535;
-  color: white;
-  text-align: center;
 `;
 
 class App extends React.Component<{}, State> {
@@ -50,7 +38,6 @@ class App extends React.Component<{}, State> {
   }
 
   countryClickHandler(countryInfo: CountryInfo) {
-    console.log(countryInfo);
     this.setState({selectedCountry: countryInfo});
   }
 
@@ -64,7 +51,6 @@ class App extends React.Component<{}, State> {
   render() {
     return (
       <AppContainer className="travel-app">
-        <MainAndPropertyContainer>
           <MapDiv>
             <Map visitedCountriesData={this.state.visitedCountriesData} onCountryClick={this.countryClickHandler}></Map>
           </MapDiv>
@@ -73,10 +59,6 @@ class App extends React.Component<{}, State> {
                 this.state.selectedCountry !== null && <CountryPropertyBox name={this.state.selectedCountry}></CountryPropertyBox>
             }
           </PropertyBoxDiv>
-        </MainAndPropertyContainer>
-        <Footer>
-          Copyright &copy; by JT
-        </Footer>
       </AppContainer>
     );
   }
