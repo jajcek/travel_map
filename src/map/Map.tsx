@@ -1,10 +1,8 @@
-import React, {RefObject} from 'react';
-import SVG from 'react-inlinesvg';
+import React from 'react';
 import 'leaflet/dist/leaflet.css';
-import styled from 'styled-components';
 import '../App.css';
 
-import { MapContainer, TileLayer, useMap, LayersControl, Marker, Popup, LayerGroup, Circle, GeoJSON } from 'react-leaflet'
+import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 
 import VisitedMap from './VisitedMap';
 

@@ -9,4 +9,5 @@ path {
 
 path:hover {
     fill: white;
+    stroke: black;
 }
