@@ -10,6 +10,7 @@ import type {CountryClickHandler, CountryInfo, VisitedCountryInfo} from './types
 
 type Props = {
   onCountryClick: CountryClickHandler,
+  onCountryHover: CountryClickHandler,
   visitedCountriesData: Array<VisitedCountryInfo>
 }
 
@@ -25,12 +26,12 @@ class Map extends React.Component<Props, State> {
 
     this.state = {selectedCountry: null, zoom: 2.4};
 
-    this.countryClickHandler = this.countryClickHandler.bind(this);
+    this.onCountryClick = this.onCountryClick.bind(this);
     this.changeLayer = this.changeLayer.bind(this);
     this.changeZoom = this.changeZoom.bind(this);
   }
 
-  countryClickHandler(countryInfo: CountryInfo) {
+  onCountryClick(countryInfo: CountryInfo) {
     this.setState({selectedCountry: countryInfo});
     this.props.onCountryClick(countryInfo);
   }
@@ -64,7 +65,7 @@ class Map extends React.Component<Props, State> {
       >
       <LayersControl position="topright" collapsed={false}>
         <LayersControl.BaseLayer checked name="Visited">
-          <VisitedMap zoom={this.state.zoom} visitedCountriesData={this.props.visitedCountriesData} onCountryClick={this.countryClickHandler}></VisitedMap>
+          <VisitedMap zoom={this.state.zoom} visitedCountriesData={this.props.visitedCountriesData} onCountryClick={this.onCountryClick} onCountryHover={this.props.onCountryHover}></VisitedMap>
         </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Gallery">
           <TileLayer

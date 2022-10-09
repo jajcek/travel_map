@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import styled from 'styled-components'
+import ReactTooltip from "react-tooltip";
 
 import Map from './map/Map'
 import CountryPropertyBox from './CountryPropertyBox';
@@ -10,6 +11,7 @@ import type {CountryInfo, VisitedCountryInfo} from './map/types';
 
 type State = {
   selectedCountry: CountryInfo,
+  hoveredCountry: CountryInfo,
   visitedCountriesData: Array<VisitedCountryInfo>
 }
 
@@ -33,12 +35,17 @@ class App extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
 
-    this.state = {selectedCountry: null, visitedCountriesData: []}
-    this.countryClickHandler = this.countryClickHandler.bind(this);
+    this.state = {selectedCountry: null, hoveredCountry: null, visitedCountriesData: []}
+    this.onCountryClick = this.onCountryClick.bind(this);
+    this.onCountryHover = this.onCountryHover.bind(this);
   }
 
-  countryClickHandler(countryInfo: CountryInfo) {
+  onCountryClick(countryInfo: CountryInfo) {
     this.setState({selectedCountry: countryInfo});
+  }
+
+  onCountryHover(countryInfo: CountryInfo) {
+    this.setState({hoveredCountry: countryInfo});
   }
 
   componentDidMount() {
@@ -51,14 +58,17 @@ class App extends React.Component<{}, State> {
   render() {
     return (
       <AppContainer className="travel-app">
-          <MapDiv>
-            <Map visitedCountriesData={this.state.visitedCountriesData} onCountryClick={this.countryClickHandler}></Map>
+          <MapDiv data-tip data-for="countryTooltip">
+            <Map visitedCountriesData={this.state.visitedCountriesData} onCountryClick={this.onCountryClick} onCountryHover={this.onCountryHover}></Map>
           </MapDiv>
           <PropertyBoxDiv>
             {
                 this.state.selectedCountry !== null && <CountryPropertyBox name={this.state.selectedCountry}></CountryPropertyBox>
             }
           </PropertyBoxDiv>
+          {
+            this.state.hoveredCountry != null && <ReactTooltip id="countryTooltip">{this.state.hoveredCountry}</ReactTooltip>
+          }
       </AppContainer>
     );
   }

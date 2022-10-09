@@ -7,8 +7,9 @@ import type {CountryClickHandler, VisitedCountryInfo} from './types';
 
 type Props = {
   zoom: number,
-  visitedCountriesData: Array<VisitedCountryInfo>
-  onCountryClick: CountryClickHandler
+  visitedCountriesData: Array<VisitedCountryInfo>,
+  onCountryClick: CountryClickHandler,
+  onCountryHover: CountryClickHandler
 }
 
 class VisitedMap extends React.Component<Props, any> {
@@ -30,15 +31,12 @@ class VisitedMap extends React.Component<Props, any> {
   }
 
   highlightFeature(e: any) {
-    // remove and add at the end (simulating 'bringToFront' as order in svg depends on the order in DOM)
-//     const target = e.target;
-//     const parent = target.parentElement;
-//     target.remove();
-//     parent.appendChild(target);
+    const countries = countriesIso as { [key: string]: string };
+    this.props.onCountryHover(countries[e.target.id]);
   }
 
   resetHighlight(e: any) {
-    //e.target.style.strokeWidth = null;
+    this.props.onCountryHover(null);
   }
 
   componentDidUpdate(prevProp: any) {
@@ -51,14 +49,19 @@ class VisitedMap extends React.Component<Props, any> {
     });
 
     Array.from(this.svgRef.current!.getElement()!.children).forEach((child: any) => {
-        child.style.filter = `drop-shadow(0px ${this.getStrokeWidth(2)}px ${this.getStrokeWidth(3.4)}px rgb(0 0 0 / 0.4))`
+        child.style.filter = `drop-shadow(0px ${this.getShadowSize(2)}px ${this.getShadowSize(3)}px rgb(0 0 0 / 0.4))`
     });
     this.svgRef.current!.getElement()!.style.strokeWidth = this.getStrokeWidth().toString();
   }
 
+  getShadowSize(multiplier = 1) {
+    const zoom = this.props.zoom;
+    return 4 * multiplier / (zoom * zoom);
+  }
+
   getStrokeWidth(multiplier = 1) {
     const zoom = this.props.zoom;
-    return 8 * multiplier / (zoom * zoom * zoom);
+    return 3 * multiplier / (zoom * zoom);
   }
 
   render() {

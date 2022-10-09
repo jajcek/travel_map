@@ -12,3 +12,11 @@ Exceptions:
     - UM-JQ - Johnston Atoll
     - UM-MQ - Midway Islands
     - UM-WQ - Wake Island
+
+Licenses
+1. SVG world map comes from https://mapsvg.com/maps/world
+   - CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
+2. react-leaflet library
+   - Hippocratic License 2.1 - https://github.com/PaulLeCam/react-leaflet/blob/master/LICENSE.md
+3. react-tooltip
+   - MIT - https://github.com/ReactTooltip/react-tooltip/blob/master/LICENSE
