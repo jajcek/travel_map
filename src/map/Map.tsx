@@ -1,12 +1,14 @@
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import '../App.css';
+import styled from 'styled-components'
+import countriesIso from './countries_iso.json';
 
 import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 
 import VisitedMap from './VisitedMap';
 
-import type {CountryClickHandler, CountryInfo, VisitedCountryInfo} from './types';
+import type {CountryClickHandler, CountryInfo, VisitedCountryInfo, Layer} from './types';
 
 type Props = {
   onCountryClick: CountryClickHandler,
@@ -16,19 +18,51 @@ type Props = {
 
 type State = {
   selectedCountry: CountryInfo,
+  layer: Layer,
   zoom: number
 }
+
+const statsBackgroundColor = '#444';
+
+const Stats = styled.div`
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  top: 20px;
+  padding: 0 10px;
+  text-align: center;
+  z-index: 9999;
+  text-rendering: optimizeLegibility;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+
+  color: orange;
+
+  background: ${statsBackgroundColor};
+  box-shadow:
+    0px 0px 15px ${statsBackgroundColor},
+    0px 0px 15px ${statsBackgroundColor},
+    0px 0px 15px ${statsBackgroundColor},
+    0px 0px 15px ${statsBackgroundColor},
+    0px 0px 15px ${statsBackgroundColor},
+    0px 0px 15px ${statsBackgroundColor};
+`;
+
+const Percent = styled.span`
+  font-size: 20px;
+`;
 
 class Map extends React.Component<Props, State> {
 
   constructor(props:any) {
     super(props);
 
-    this.state = {selectedCountry: null, zoom: 2.4};
+    this.state = {selectedCountry: null, layer: 'Visited', zoom: 2.4};
 
     this.onCountryClick = this.onCountryClick.bind(this);
     this.changeLayer = this.changeLayer.bind(this);
     this.changeZoom = this.changeZoom.bind(this);
+    this.calculatePercentOfVisitedCountries = this.calculatePercentOfVisitedCountries.bind(this);
   }
 
   onCountryClick(countryInfo: CountryInfo) {
@@ -40,10 +74,17 @@ class Map extends React.Component<Props, State> {
     if (layer.name === 'Visited') {
       this.props.onCountryClick(this.state.selectedCountry);
     }
+    this.setState({'layer': layer.name as Layer});
   }
 
   changeZoom(event: L.LayersControlEvent) {
     this.setState({'zoom': event.target.getZoom()});
+  }
+
+  calculatePercentOfVisitedCountries() {
+  console.log(this.props.visitedCountriesData.length);
+  console.log(Object.keys(countriesIso).length);
+    return (this.props.visitedCountriesData.length * 100 / Object.keys(countriesIso).length).toFixed(2);
   }
 
   render() {
@@ -65,7 +106,11 @@ class Map extends React.Component<Props, State> {
       >
       <LayersControl position="topright" collapsed={false}>
         <LayersControl.BaseLayer checked name="Visited">
-          <VisitedMap zoom={this.state.zoom} visitedCountriesData={this.props.visitedCountriesData} onCountryClick={this.onCountryClick} onCountryHover={this.props.onCountryHover}></VisitedMap>
+          {this.state.layer === 'Visited' && <Stats>DISCOVERED <Percent>{this.calculatePercentOfVisitedCountries()}%</Percent> OF THE WORLD</Stats>}
+          <VisitedMap zoom={this.state.zoom}
+            visitedCountriesData={this.props.visitedCountriesData}
+            onCountryClick={this.onCountryClick}
+            onCountryHover={this.props.onCountryHover} />
         </LayersControl.BaseLayer>
         <LayersControl.BaseLayer name="Gallery">
           <TileLayer

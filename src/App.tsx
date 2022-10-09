@@ -62,13 +62,9 @@ class App extends React.Component<{}, State> {
             <Map visitedCountriesData={this.state.visitedCountriesData} onCountryClick={this.onCountryClick} onCountryHover={this.onCountryHover}></Map>
           </MapDiv>
           <PropertyBoxDiv>
-            {
-                this.state.selectedCountry !== null && <CountryPropertyBox name={this.state.selectedCountry}></CountryPropertyBox>
-            }
+            {this.state.selectedCountry !== null && <CountryPropertyBox name={this.state.selectedCountry}></CountryPropertyBox>}
           </PropertyBoxDiv>
-          {
-            this.state.hoveredCountry != null && <ReactTooltip id="countryTooltip">{this.state.hoveredCountry}</ReactTooltip>
-          }
+          {this.state.hoveredCountry != null && <ReactTooltip id="countryTooltip">{this.state.hoveredCountry}</ReactTooltip>}
       </AppContainer>
     );
   }
