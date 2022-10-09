@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
 import styled from 'styled-components'
-import ReactTooltip from "react-tooltip";
 
 import Map from './map/Map'
 import LoadVisitedStats from './LoadVisitedStats';
 
-import type {CountryInfo, VisitedCountryInfo} from './map/types';
+import type {VisitedCountryInfo} from './map/types';
 
 type State = {
   visitedCountriesData: Array<VisitedCountryInfo>

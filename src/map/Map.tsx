@@ -1,6 +1,6 @@
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
-import '../App.css';
+import './Map.css';
 import styled from 'styled-components'
 import ReactTooltip from "react-tooltip";
 import countriesIso from './countries_iso.json';
@@ -66,7 +66,7 @@ const Percent = styled.span`
 
 class Map extends React.Component<Props, State> {
 
-  constructor(props:any) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {selectedCountry: null, layer: 'Visited', hoveredCountry: null, showStatsTooltip: false, zoom: 2.4};
@@ -78,6 +78,7 @@ class Map extends React.Component<Props, State> {
     this.onStatsOver = this.onStatsOver.bind(this);
     this.onStatsOut = this.onStatsOut.bind(this);
     this.onCountryHover = this.onCountryHover.bind(this);
+    this.showStatsContent = this.showStatsContent.bind(this);
   }
 
   onCountryClick(countryInfo: CountryInfo) {
@@ -93,7 +94,19 @@ class Map extends React.Component<Props, State> {
   }
 
   percentOfVisitedCountries() {
-    return (this.props.visitedCountriesData.length * 100 / Object.keys(countriesIso).length).toFixed(2);
+    const filteredCountries = Object.assign({}, countriesIso) as Partial<any>;
+    delete filteredCountries['AQ'];
+    delete filteredCountries['GO'];
+    delete filteredCountries['JU'];
+    delete filteredCountries['UM-DQ'];
+    delete filteredCountries['UM-FQ'];
+    delete filteredCountries['UM-HQ'];
+    delete filteredCountries['UM-JQ'];
+    delete filteredCountries['UM-MQ'];
+    delete filteredCountries['UM-WQ'];
+
+    const numOfCountries = Object.keys(filteredCountries).length;
+    return (this.props.visitedCountriesData.length * 100 / numOfCountries).toFixed(2);
   }
 
   onStatsOver() {
@@ -106,6 +119,14 @@ class Map extends React.Component<Props, State> {
 
   onCountryHover(countryInfo: CountryInfo) {
     this.setState({hoveredCountry: countryInfo});
+  }
+
+  showStatsContent() {
+    const countries = countriesIso as { [key: string]: string };
+    const fullNamesOfCountries = this.props.visitedCountriesData.map((c: VisitedCountryInfo) => countries[c.name]);
+    return fullNamesOfCountries.map((c) => {
+        return <div key={c}>{c}</div>
+      })
   }
 
   render() {
@@ -134,7 +155,11 @@ class Map extends React.Component<Props, State> {
                   DISCOVERED <Percent>{this.percentOfVisitedCountries()}%</Percent> OF THE WORLD
                 </Stats>
             }
-            <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? 1 : null}></ReactTooltip>
+            <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? '' : null}>
+              {
+                this.state.showStatsTooltip ? this.showStatsContent() : ''
+              }
+            </ReactTooltip>
             <ReactTooltip id="countryTooltip" getContent={() => this.state.hoveredCountry}></ReactTooltip>
             <VisitedMap zoom={this.state.zoom}
               visitedCountriesData={this.props.visitedCountriesData}
