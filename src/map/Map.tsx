@@ -12,8 +12,8 @@ import VisitedMap from './VisitedMap';
 import type {CountryClickHandler, CountryInfo, VisitedCountryInfo, Layer} from './types';
 
 type Props = {
-  onCountryClick: CountryClickHandler,
-  onCountryHover: CountryClickHandler,
+  onCountryClick?: CountryClickHandler,
+  onCountryHover?: CountryClickHandler,
   onStatsHover?: (show: Boolean) => void,
   visitedCountriesData: Array<VisitedCountryInfo>
 }
@@ -21,9 +21,15 @@ type Props = {
 type State = {
   selectedCountry: CountryInfo,
   layer: Layer,
+  hoveredCountry: CountryInfo,
   showStatsTooltip: Boolean,
   zoom: number
 }
+
+const MapDiv = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 const statsBackgroundColor = '#444';
 
@@ -63,7 +69,7 @@ class Map extends React.Component<Props, State> {
   constructor(props:any) {
     super(props);
 
-    this.state = {selectedCountry: null, layer: 'Visited', showStatsTooltip: false, zoom: 2.4};
+    this.state = {selectedCountry: null, layer: 'Visited', hoveredCountry: null, showStatsTooltip: false, zoom: 2.4};
 
     this.onCountryClick = this.onCountryClick.bind(this);
     this.changeLayer = this.changeLayer.bind(this);
@@ -71,17 +77,14 @@ class Map extends React.Component<Props, State> {
     this.percentOfVisitedCountries = this.percentOfVisitedCountries.bind(this);
     this.onStatsOver = this.onStatsOver.bind(this);
     this.onStatsOut = this.onStatsOut.bind(this);
+    this.onCountryHover = this.onCountryHover.bind(this);
   }
 
   onCountryClick(countryInfo: CountryInfo) {
     this.setState({selectedCountry: countryInfo});
-    this.props.onCountryClick(countryInfo);
   }
 
   changeLayer(layer: L.LayersControlEvent) {
-    if (layer.name === 'Visited') {
-      this.props.onCountryClick(this.state.selectedCountry);
-    }
     this.setState({'layer': layer.name as Layer});
   }
 
@@ -101,45 +104,52 @@ class Map extends React.Component<Props, State> {
     this.setState({showStatsTooltip: false});
   }
 
+  onCountryHover(countryInfo: CountryInfo) {
+    this.setState({hoveredCountry: countryInfo});
+  }
+
   render() {
-    return <MapContainer style={{height: '100%', backgroundColor: 'gray'}}
-        center={[30, 0]}
-        zoom={this.state.zoom}
-        minZoom={this.state.zoom}
-        scrollWheelZoom={true}
-        maxBounds={[[-60, -180], [84, 190]]}
-        maxBoundsViscosity={1}
-        zoomDelta={0.1}
-        zoomSnap={0}
-        wheelPxPerZoomLevel={100}
-        // @ts-ignore: invalid type in react-leaflet library
-        whenReady={(e: any) => {
-            e.target.on('baselayerchange', this.changeLayer);
-            e.target.on('zoom', this.changeZoom);
-        }}
-      >
-      <LayersControl position="topright" collapsed={false}>
-        <LayersControl.BaseLayer checked name="Visited">
-          {
-            this.state.layer === 'Visited' &&
-              <Stats data-tip data-for="statsTooltip" onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
-                DISCOVERED <Percent>{this.percentOfVisitedCountries()}%</Percent> OF THE WORLD
-              </Stats>
-          }
-          <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? 1 : null}></ReactTooltip>
-          <VisitedMap zoom={this.state.zoom}
-            visitedCountriesData={this.props.visitedCountriesData}
-            onCountryClick={this.onCountryClick}
-            onCountryHover={this.props.onCountryHover} />
-        </LayersControl.BaseLayer>
-        <LayersControl.BaseLayer name="Gallery">
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-        </LayersControl.BaseLayer>
-      </LayersControl>
-    </MapContainer>;
+    return <MapDiv data-tip data-for="countryTooltip">
+      <MapContainer style={{height: '100%', backgroundColor: 'gray'}}
+          center={[30, 0]}
+          zoom={this.state.zoom}
+          minZoom={this.state.zoom}
+          scrollWheelZoom={true}
+          maxBounds={[[-60, -180], [84, 190]]}
+          maxBoundsViscosity={1}
+          zoomDelta={0.1}
+          zoomSnap={0}
+          wheelPxPerZoomLevel={100}
+          // @ts-ignore: invalid type in react-leaflet library
+          whenReady={(e: any) => {
+              e.target.on('baselayerchange', this.changeLayer);
+              e.target.on('zoom', this.changeZoom);
+          }}
+        >
+        <LayersControl position="topright" collapsed={false}>
+          <LayersControl.BaseLayer checked name="Visited">
+            {
+              this.state.layer === 'Visited' &&
+                <Stats data-tip data-for="statsTooltip" onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
+                  DISCOVERED <Percent>{this.percentOfVisitedCountries()}%</Percent> OF THE WORLD
+                </Stats>
+            }
+            <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? 1 : null}></ReactTooltip>
+            <ReactTooltip id="countryTooltip" getContent={() => this.state.hoveredCountry}></ReactTooltip>
+            <VisitedMap zoom={this.state.zoom}
+              visitedCountriesData={this.props.visitedCountriesData}
+              onCountryClick={this.onCountryClick}
+              onCountryHover={this.onCountryHover} />
+          </LayersControl.BaseLayer>
+          <LayersControl.BaseLayer name="Gallery">
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </LayersControl.BaseLayer>
+        </LayersControl>
+      </MapContainer>
+    </MapDiv>;
   }
 }
 
