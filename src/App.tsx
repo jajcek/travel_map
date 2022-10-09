@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import ReactTooltip from "react-tooltip";
 
 import Map from './map/Map'
-import CountryPropertyBox from './CountryPropertyBox';
 import LoadVisitedStats from './LoadVisitedStats';
 
 import type {CountryInfo, VisitedCountryInfo} from './map/types';
@@ -59,12 +58,11 @@ class App extends React.Component<{}, State> {
     return (
       <AppContainer className="travel-app">
           <MapDiv data-tip data-for="countryTooltip">
-            <Map visitedCountriesData={this.state.visitedCountriesData} onCountryClick={this.onCountryClick} onCountryHover={this.onCountryHover}></Map>
+            <Map visitedCountriesData={this.state.visitedCountriesData}
+              onCountryClick={this.onCountryClick}
+              onCountryHover={this.onCountryHover} />
           </MapDiv>
-          <PropertyBoxDiv>
-            {this.state.selectedCountry !== null && <CountryPropertyBox name={this.state.selectedCountry}></CountryPropertyBox>}
-          </PropertyBoxDiv>
-          {this.state.hoveredCountry != null && <ReactTooltip id="countryTooltip">{this.state.hoveredCountry}</ReactTooltip>}
+          <ReactTooltip id="countryTooltip" getContent={() => this.state.hoveredCountry}></ReactTooltip>
       </AppContainer>
     );
   }

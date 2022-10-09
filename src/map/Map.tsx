@@ -2,6 +2,7 @@ import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import '../App.css';
 import styled from 'styled-components'
+import ReactTooltip from "react-tooltip";
 import countriesIso from './countries_iso.json';
 
 import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
@@ -13,12 +14,14 @@ import type {CountryClickHandler, CountryInfo, VisitedCountryInfo, Layer} from '
 type Props = {
   onCountryClick: CountryClickHandler,
   onCountryHover: CountryClickHandler,
+  onStatsHover?: (show: Boolean) => void,
   visitedCountriesData: Array<VisitedCountryInfo>
 }
 
 type State = {
   selectedCountry: CountryInfo,
   layer: Layer,
+  showStatsTooltip: Boolean,
   zoom: number
 }
 
@@ -33,18 +36,21 @@ const Stats = styled.div`
   text-align: center;
   z-index: 9999;
   text-rendering: optimizeLegibility;
-  font-family: 'Lato', sans-serif;
   font-weight: bold;
 
   color: orange;
 
   background: ${statsBackgroundColor};
   box-shadow:
-    0px 0px 15px ${statsBackgroundColor},
-    0px 0px 15px ${statsBackgroundColor},
-    0px 0px 15px ${statsBackgroundColor},
-    0px 0px 15px ${statsBackgroundColor},
-    0px 0px 15px ${statsBackgroundColor},
+    0px 0px 6px ${statsBackgroundColor},
+    0px 0px 7px ${statsBackgroundColor},
+    0px 0px 8px ${statsBackgroundColor},
+    0px 0px 9px ${statsBackgroundColor},
+    0px 0px 10px ${statsBackgroundColor},
+    0px 0px 11px ${statsBackgroundColor},
+    0px 0px 12px ${statsBackgroundColor},
+    0px 0px 13px ${statsBackgroundColor},
+    0px 0px 14px ${statsBackgroundColor},
     0px 0px 15px ${statsBackgroundColor};
 `;
 
@@ -57,12 +63,14 @@ class Map extends React.Component<Props, State> {
   constructor(props:any) {
     super(props);
 
-    this.state = {selectedCountry: null, layer: 'Visited', zoom: 2.4};
+    this.state = {selectedCountry: null, layer: 'Visited', showStatsTooltip: false, zoom: 2.4};
 
     this.onCountryClick = this.onCountryClick.bind(this);
     this.changeLayer = this.changeLayer.bind(this);
     this.changeZoom = this.changeZoom.bind(this);
-    this.calculatePercentOfVisitedCountries = this.calculatePercentOfVisitedCountries.bind(this);
+    this.percentOfVisitedCountries = this.percentOfVisitedCountries.bind(this);
+    this.onStatsOver = this.onStatsOver.bind(this);
+    this.onStatsOut = this.onStatsOut.bind(this);
   }
 
   onCountryClick(countryInfo: CountryInfo) {
@@ -81,10 +89,16 @@ class Map extends React.Component<Props, State> {
     this.setState({'zoom': event.target.getZoom()});
   }
 
-  calculatePercentOfVisitedCountries() {
-  console.log(this.props.visitedCountriesData.length);
-  console.log(Object.keys(countriesIso).length);
+  percentOfVisitedCountries() {
     return (this.props.visitedCountriesData.length * 100 / Object.keys(countriesIso).length).toFixed(2);
+  }
+
+  onStatsOver() {
+    this.setState({showStatsTooltip: true});
+  }
+
+  onStatsOut() {
+    this.setState({showStatsTooltip: false});
   }
 
   render() {
@@ -106,7 +120,13 @@ class Map extends React.Component<Props, State> {
       >
       <LayersControl position="topright" collapsed={false}>
         <LayersControl.BaseLayer checked name="Visited">
-          {this.state.layer === 'Visited' && <Stats>DISCOVERED <Percent>{this.calculatePercentOfVisitedCountries()}%</Percent> OF THE WORLD</Stats>}
+          {
+            this.state.layer === 'Visited' &&
+              <Stats data-tip data-for="statsTooltip" onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
+                DISCOVERED <Percent>{this.percentOfVisitedCountries()}%</Percent> OF THE WORLD
+              </Stats>
+          }
+          <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? 1 : null}></ReactTooltip>
           <VisitedMap zoom={this.state.zoom}
             visitedCountriesData={this.props.visitedCountriesData}
             onCountryClick={this.onCountryClick}
