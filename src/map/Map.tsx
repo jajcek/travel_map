@@ -151,15 +151,17 @@ class Map extends React.Component<Props, State> {
           <LayersControl.BaseLayer checked name="Visited">
             {
               this.state.layer === 'Visited' &&
-                <Stats data-tip data-for="statsTooltip" onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
-                  DISCOVERED <Percent>{this.percentOfVisitedCountries()}%</Percent> OF THE WORLD
-                </Stats>
+                <React.Fragment>
+                  <Stats data-tip data-for="statsTooltip" onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
+                    DISCOVERED <Percent>{this.percentOfVisitedCountries()}%</Percent> OF THE WORLD
+                  </Stats>
+                  <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? '' : null}>
+                    {
+                      this.state.showStatsTooltip ? this.showStatsContent() : ''
+                    }
+                  </ReactTooltip>
+                </React.Fragment>
             }
-            <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? '' : null}>
-              {
-                this.state.showStatsTooltip ? this.showStatsContent() : ''
-              }
-            </ReactTooltip>
             <ReactTooltip id="countryTooltip" getContent={() => this.state.hoveredCountry}></ReactTooltip>
             <VisitedMap zoom={this.state.zoom}
               visitedCountriesData={this.props.visitedCountriesData}
