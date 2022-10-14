@@ -1,16 +1,10 @@
 import React from 'react';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import './App.css';
 import styled from 'styled-components'
 
 import Header from './Header';
-import Map from './map/Map';
-import LoadVisitedStats from './LoadVisitedStats';
-
-import type {VisitedCountryInfo} from './map/types';
-
-type State = {
-  visitedCountriesData: Array<VisitedCountryInfo>
-}
+import MapWithDataLoader from './MapWithDataLoader';
 
 const AppContainer = styled.div`
   display: flex;
@@ -19,26 +13,20 @@ const AppContainer = styled.div`
   height: 100%;
 `;
 
-class App extends React.Component<{}, State> {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MapWithDataLoader />,
+  },
+]);
 
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {visitedCountriesData: []};
-  }
-
-  componentDidMount() {
-    LoadVisitedStats()
-        .then((data) => {
-             this.setState({'visitedCountriesData': data});
-        });
-  }
+class App extends React.Component<{}, {}> {
 
   render() {
     return (
       <AppContainer className="travel-app">
         <Header />
-        <Map visitedCountriesData={this.state.visitedCountriesData} />
+        <RouterProvider router={router} />
       </AppContainer>
     );
   }
