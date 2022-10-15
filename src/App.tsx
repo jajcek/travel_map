@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import './App.css';
 import styled from 'styled-components'
 
@@ -13,21 +13,19 @@ const AppContainer = styled.div`
   height: 100%;
 `;
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MapWithDataLoader />,
-  },
-]);
-
 class App extends React.Component<{}, {}> {
 
   render() {
     return (
-      <AppContainer className="travel-app">
-        <Header />
-        <RouterProvider router={router} />
-      </AppContainer>
+        <AppContainer className="travel-app">
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<div>dupa</div>} />
+                    <Route path="/travel" element={<MapWithDataLoader />} />
+                </Routes>
+            </BrowserRouter>
+        </AppContainer>
     );
   }
 }

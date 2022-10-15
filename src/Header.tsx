@@ -1,38 +1,51 @@
 import React from 'react';
 import styled from 'styled-components'
+import {Link} from "react-router-dom";
+
+const fontColor = '#f4f4f4';
 
 const Container = styled.header`
-  display: flex;
-  background-color: #383838;
-  color: #f4f4f4;
-  border-bottom: 4px solid #ccc;
-  padding: 15px;
+    display: flex;
+    background-color: #383838;
+    color: #f4f4f4;
+    border-bottom: 4px solid #ccc;
+    padding: 15px;
 `;
 
-const Author = styled.div`
-  flex: 1 0 auto;
-  padding-left: 20%;
+const AuthorLink = styled(Link)`
+    flex: 1 0 auto;
+    padding-left: 20%;
+
+    &, &:visited {
+        color: ${fontColor};
+        text-decoration: none;
+    }
 `;
 
 const Nav = styled.nav`
-  display: flex;
-  background-color: #383838;
-  color: #f4f4f4;
-  padding-right: 20%;
+    display: flex;
+    background-color: #383838;
+    color: ${fontColor};
+    padding-right: 20%;
 `;
 
-const NavItem = styled.a`
-  padding-left: 25px;
+const AnimatedLink = styled(Link)`
+    padding-left: 25px;
+
+    &, &:visited {
+        color: ${fontColor};
+        text-decoration: none;
+    }
 `;
 
 class Header extends React.Component<{}, {}> {
   render() {
     return <Container>
-      <Author>Jacek Topolski</Author>
+      <AuthorLink to={'/'}>Jacek Topolski</AuthorLink>
       <Nav>
-        <NavItem>About</NavItem>
-        <NavItem>Work</NavItem>
-        <NavItem>Contact</NavItem>
+        <AnimatedLink to={'/travel'}>About</AnimatedLink>
+        <AnimatedLink to={'/work'}>Work</AnimatedLink>
+        <AnimatedLink to={'/contact'}>Contact</AnimatedLink>
       </Nav>
     </Container>;
   }
