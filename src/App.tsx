@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import Header from './Header';
 import Intro from './Intro';
+import Footer from './Footer';
 import MapWithDataLoader from './MapWithDataLoader';
 
 const AppContainer = styled.div`
@@ -25,6 +26,7 @@ class App extends React.Component<{}, {}> {
                     <Route path="/" element={<Intro />} />
                     <Route path="/travel" element={<MapWithDataLoader />} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </AppContainer>
     );
