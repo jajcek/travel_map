@@ -15,18 +15,22 @@ const Centered = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
+    font-family: Arial;
 `;
 
 const Name = styled.div`
     letter-spacing: 20px;
     font-size: 45px;
     font-weight: 700;
+    color: #383838;
 `;
 
-const Profesion = styled.div`
+const Profession = styled.div`
     letter-spacing: 8px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #383838;
 `;
 
 const fontColor = '#f4f4f4';
@@ -62,7 +66,7 @@ class Intro extends React.Component<{}, {}> {
         return <Container>
             <Centered>
                 <Name>JACEK TOPOLSKI</Name>
-                <Profesion>SOFTWARE DEVELOPER</Profesion>
+                <Profession>SOFTWARE DEVELOPER</Profession>
                 <Nav>
                     <ButtonLink to={'/travel'}>About</ButtonLink>
                     <ButtonLink to={'/work'}>Work</ButtonLink>
