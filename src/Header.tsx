@@ -13,6 +13,7 @@ const Container = styled.header`
 
 const AuthorLink = styled(Link)`
     flex: 1 0 auto;
+    padding: 17px;
     padding-left: 20%;
 
     &, &:visited {
