@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
 
+import NavigationFactory from '../../NavigationFactory';
+import type {LinkType} from '../../NavigationFactory';
+
 const Container = styled.div`
     background-color: #f4f4f4;
     height: 100%;
@@ -61,21 +64,27 @@ const ButtonLink = styled(Link)`
     }
 `;
 
-class Intro extends React.Component<{}, {}> {
+class IntroPage extends React.Component<{}, {}> {
+    showLinks() {
+        const links = NavigationFactory.getSectionLinks();
+        return links.map((link: LinkType) => {
+            return <ButtonLink key={link.href} to={link.href}>{link.text}</ButtonLink>;
+        });
+    }
+
     render() {
         return <Container>
             <Centered>
                 <Name>JACEK TOPOLSKI</Name>
                 <Profession>SOFTWARE DEVELOPER</Profession>
                 <Nav>
-                    <ButtonLink to={'/about'}>About</ButtonLink>
-                    <ButtonLink to={'/work'}>Work</ButtonLink>
-                    <ButtonLink to={'/travel'}>Travel</ButtonLink>
-                    <ButtonLink to={'/contact'}>Contact</ButtonLink>
+                    {
+                        this.showLinks()
+                    }
                 </Nav>
             </Centered>
         </Container>;
     }
 }
 
-export default Intro;
+export default IntroPage;

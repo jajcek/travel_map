@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
 
+import NavigationFactory from './NavigationFactory';
+import type {LinkType} from './NavigationFactory';
+
 const fontColor = '#f4f4f4';
 
 const Container = styled.header`
@@ -69,21 +72,27 @@ const AnimatedLink = styled(Link)`
 `;
 
 class Header extends React.Component<{}, {}> {
-  render() {
-    return (
-        <Container>
+    showLinks() {
+        const links = NavigationFactory.getSectionLinks();
+        return links.map((link: LinkType) => {
+            return <AnimatedLink key={link.href} to={link.href}>{link.text}</AnimatedLink>;
+        });
+    }
+
+    render() {
+        return (
+            <Container>
             <HomeNav>
                 <AuthorLink to={'/'}>Jacek Topolski</AuthorLink>
             </HomeNav>
             <SectionNav>
-                <AnimatedLink to={'/about'}>About</AnimatedLink>
-                <AnimatedLink to={'/work'}>Work</AnimatedLink>
-                <AnimatedLink to={'/travel'}>Travel</AnimatedLink>
-                <AnimatedLink to={'/contact'}>Contact</AnimatedLink>
+                {
+                    this.showLinks()
+                }
             </SectionNav>
-        </Container>
-     );
-  }
+            </Container>
+        );
+    }
 }
 
 export default Header;

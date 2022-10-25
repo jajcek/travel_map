@@ -27,7 +27,7 @@ class VisitedMap extends React.Component<Props, any> {
 
   countryClickHandler(e: any) {
     // abandoned
-    console.log(e.originalEvent.target.id);
+    //console.log(e.originalEvent.target.id);
   }
 
   highlightFeature(e: any) {

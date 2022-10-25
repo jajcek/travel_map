@@ -4,8 +4,9 @@ import './App.css';
 import styled from 'styled-components'
 
 import Header from './Header';
-import Intro from './pages/intro/Intro';
 import Footer from './Footer';
+import IntroPage from './pages/intro/IntroPage';
+import AboutPage from './pages/about/AboutPage';
 import MapWithDataLoader from './pages/travel/MapWithDataLoader';
 
 const AppContainer = styled.div`
@@ -23,7 +24,8 @@ class App extends React.Component<{}, {}> {
             <BrowserRouter>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<Intro />} />
+                    <Route path="/" element={<IntroPage />} />
+                    <Route path="/about" element={<AboutPage />} />
                     <Route path="/travel" element={<MapWithDataLoader />} />
                 </Routes>
                 <Footer />
