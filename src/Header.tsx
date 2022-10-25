@@ -11,10 +11,16 @@ const Container = styled.header`
     border-bottom: 4px solid #ccc;
 `;
 
-const AuthorLink = styled(Link)`
+const HomeNav = styled.nav`
+    display: flex;
     flex: 1 0 auto;
-    padding: 17px;
+    background-color: #383838;
+    color: ${fontColor};
     padding-left: 20%;
+`;
+
+const AuthorLink = styled(Link)`
+    padding: 17px;
 
     &, &:visited {
         color: ${fontColor};
@@ -22,7 +28,7 @@ const AuthorLink = styled(Link)`
     }
 `;
 
-const Nav = styled.nav`
+const SectionNav = styled.nav`
     display: flex;
     background-color: #383838;
     color: ${fontColor};
@@ -64,14 +70,18 @@ const AnimatedLink = styled(Link)`
 
 class Header extends React.Component<{}, {}> {
   render() {
-    return <Container>
-      <AuthorLink to={'/'}>Jacek Topolski</AuthorLink>
-      <Nav>
-        <AnimatedLink to={'/travel'}>About</AnimatedLink>
-        <AnimatedLink to={'/work'}>Work</AnimatedLink>
-        <AnimatedLink to={'/contact'}>Contact</AnimatedLink>
-      </Nav>
-    </Container>;
+    return (
+        <Container>
+            <HomeNav>
+                <AuthorLink to={'/'}>Jacek Topolski</AuthorLink>
+            </HomeNav>
+            <SectionNav>
+                <AnimatedLink to={'/travel'}>About</AnimatedLink>
+                <AnimatedLink to={'/work'}>Work</AnimatedLink>
+                <AnimatedLink to={'/contact'}>Contact</AnimatedLink>
+            </SectionNav>
+        </Container>
+     );
   }
 }
 
