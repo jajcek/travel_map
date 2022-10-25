@@ -1,16 +1,15 @@
 import React from 'react';
 import loadable from '@loadable/component'
-import Map from './map/Map';
-import LoadingPage from './LoadingPage';
+import LoadingPage from '../../LoadingPage';
 import LoadVisitedStats from './LoadVisitedStats';
 
-import type {VisitedCountryInfo} from './map/types';
+import type {VisitedCountryInfo} from '../../map/types';
 
 type State = {
   visitedCountriesData: Array<VisitedCountryInfo>
 }
 
-const MapWithLoader = loadable(() => import('./map/Map'), {
+const MapWithLoader = loadable(() => import('../../map/Map'), {
   fallback: <LoadingPage />,
 });
 

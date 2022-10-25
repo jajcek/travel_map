@@ -4,9 +4,9 @@ import './App.css';
 import styled from 'styled-components'
 
 import Header from './Header';
-import Intro from './Intro';
+import Intro from './pages/intro/Intro';
 import Footer from './Footer';
-import MapWithDataLoader from './MapWithDataLoader';
+import MapWithDataLoader from './pages/travel/MapWithDataLoader';
 
 const AppContainer = styled.div`
   display: flex;

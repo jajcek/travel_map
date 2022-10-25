@@ -76,8 +76,9 @@ class Header extends React.Component<{}, {}> {
                 <AuthorLink to={'/'}>Jacek Topolski</AuthorLink>
             </HomeNav>
             <SectionNav>
-                <AnimatedLink to={'/travel'}>About</AnimatedLink>
+                <AnimatedLink to={'/about'}>About</AnimatedLink>
                 <AnimatedLink to={'/work'}>Work</AnimatedLink>
+                <AnimatedLink to={'/travel'}>Travel</AnimatedLink>
                 <AnimatedLink to={'/contact'}>Contact</AnimatedLink>
             </SectionNav>
         </Container>

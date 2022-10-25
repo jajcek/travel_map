@@ -68,8 +68,9 @@ class Intro extends React.Component<{}, {}> {
                 <Name>JACEK TOPOLSKI</Name>
                 <Profession>SOFTWARE DEVELOPER</Profession>
                 <Nav>
-                    <ButtonLink to={'/travel'}>About</ButtonLink>
+                    <ButtonLink to={'/about'}>About</ButtonLink>
                     <ButtonLink to={'/work'}>Work</ButtonLink>
+                    <ButtonLink to={'/travel'}>Travel</ButtonLink>
                     <ButtonLink to={'/contact'}>Contact</ButtonLink>
                 </Nav>
             </Centered>
