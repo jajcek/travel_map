@@ -72,6 +72,11 @@ const AnimatedLink = styled(Link)`
 `;
 
 class Header extends React.Component<{}, {}> {
+    showHomeLink() {
+        const homeLink = NavigationFactory.getHomeLink();
+        return <AuthorLink to={homeLink.href}>{homeLink.text}</AuthorLink>;
+    }
+
     showLinks() {
         const links = NavigationFactory.getSectionLinks();
         return links.map((link: LinkType) => {
@@ -83,7 +88,9 @@ class Header extends React.Component<{}, {}> {
         return (
             <Container>
             <HomeNav>
-                <AuthorLink to={'/'}>Jacek Topolski</AuthorLink>
+                {
+                    this.showHomeLink()
+                }
             </HomeNav>
             <SectionNav>
                 {

@@ -4,6 +4,10 @@ export type LinkType = {
 };
 
 class NavigationFactory {
+    static getHomeLink(): LinkType {
+        return {href: '/', text: 'Jacek Topolski'};
+    }
+
     static getSectionLinks(): Array<LinkType> {
         return [
             {href: '/about', text: 'About'},
