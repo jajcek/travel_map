@@ -168,7 +168,7 @@ class Map extends React.Component<Props, State> {
               onCountryClick={this.onCountryClick}
               onCountryHover={this.onCountryHover} />
           </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="Gallery">
+          <LayersControl.BaseLayer name="Gallery (not implemented yet)">
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
