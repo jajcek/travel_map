@@ -6,6 +6,7 @@ import {COLORS} from './StyleConstants';
 import Header from './Header';
 import Footer from './Footer';
 import LoadingPage from './ux/LoadingPage';
+import ErrorBoundary from './ux/ErrorBoundary';
 
 const IntroPage = lazy(() => import('./pages/intro/IntroPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutPage'));
@@ -32,13 +33,15 @@ class App extends React.Component<{}, {}> {
                 <BrowserRouter>
                     <Header />
                     <ScrolledContainer>
-                        <Suspense fallback={<LoadingPage />}>
-                            <Routes>
-                                <Route path="/" element={<IntroPage />} />
-                                <Route path="/about" element={<AboutPage />} />
-                                <Route path="/travel" element={<MapWithDataLoader />} />
-                            </Routes>
-                        </Suspense>
+                        <ErrorBoundary>
+                            <Suspense fallback={<LoadingPage />}>
+                                <Routes>
+                                    <Route path="/" element={<IntroPage />} />
+                                    <Route path="/about" element={<AboutPage />} />
+                                    <Route path="/travel" element={<MapWithDataLoader />} />
+                                </Routes>
+                            </Suspense>
+                        </ErrorBoundary>
                     </ScrolledContainer>
                     <Footer />
                 </BrowserRouter>
