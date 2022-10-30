@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import OcadoExperienceDescription from './exp_pages/OcadoExperienceDescription';
+import NokiaExperienceDescription from './exp_pages/NokiaExperienceDescription';
+import PgsExperienceDescription from './exp_pages/PgsExperienceDescription';
+import SygnityExperienceDescription from './exp_pages/SygnityExperienceDescription';
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -56,38 +61,53 @@ const PGS = "pgs";
 const SYGNITY = "sygnity";
 
 type State = {
-    company: string
+    companyId: string
 }
 
 class ExperienceTable extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
-        this.state = {company: OCADO};
+        this.state = {companyId: OCADO};
 
         this.selectCompany = this.selectCompany.bind(this);
         this.isSelected = this.isSelected.bind(this);
     }
 
-    selectCompany(e: React.SyntheticEvent, company: string) {
-        this.setState({company});
+    selectCompany(e: React.SyntheticEvent, companyId: string) {
+        this.setState({companyId});
     };
 
-    isSelected(companyName: string) {
-        return this.state.company === companyName ? 'focused' : '';
+    getExpDesc() {
+        switch (this.state.companyId) {
+            case "ocado":
+                return <OcadoExperienceDescription />;
+            case "nokia":
+                return <NokiaExperienceDescription />;
+            case "pgs":
+                return <PgsExperienceDescription />;
+            case "sygnity":
+                return <SygnityExperienceDescription />;
+            default:
+                return <OcadoExperienceDescription />;
+        }
+    }
+
+    isSelected(companyId: string) {
+        return this.state.companyId === companyId ? 'focused' : '';
     }
 
     render() {
         return (
             <Container>
                 <Headers>
-                    <Header company={OCADO} className={this.isSelected(OCADO)} onClick={(e) => this.selectCompany(e, OCADO)}></Header>
-                    <Header company={NOKIA} className={this.isSelected(NOKIA)} onClick={(e) => this.selectCompany(e, NOKIA)}></Header>
-                    <Header company={PGS} className={this.isSelected(PGS)} onClick={(e) => this.selectCompany(e, PGS)}></Header>
-                    <Header company={SYGNITY} className={this.isSelected(SYGNITY)} onClick={(e) => this.selectCompany(e, SYGNITY)}></Header>
-                    <EmptyHeader></EmptyHeader>
+                    <Header company={OCADO} className={this.isSelected(OCADO)} onClick={(e) => this.selectCompany(e, OCADO)} />
+                    <Header company={NOKIA} className={this.isSelected(NOKIA)} onClick={(e) => this.selectCompany(e, NOKIA)} />
+                    <Header company={PGS} className={this.isSelected(PGS)} onClick={(e) => this.selectCompany(e, PGS)} />
+                    <Header company={SYGNITY} className={this.isSelected(SYGNITY)} onClick={(e) => this.selectCompany(e, SYGNITY)} />
+                    <EmptyHeader />
                 </Headers>
                 <Body>
-                    body
+                    {this.getExpDesc()}
                 </Body>
             </Container>
         );

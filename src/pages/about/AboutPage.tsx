@@ -70,7 +70,7 @@ class AboutPage extends React.Component<{}, {}> {
                 <Section>
                     I have been doing sport rock climbing for 5 years and from time to time I take it as seriously as software engineering.
                     I am also a certified scuba diver and have dived in several places like Egypt, Spain, Croatia, Thailand, Cyprus.
-                    Recently I've started travelling more and more and that's why I have create my own private project available in the Travel menu.
+                    Recently I've started travelling more and more and that was the reason for creating my own private project available in the Travel menu.
                 </Section>
                 <h3>Experience</h3>
                 <ExperienceTable />
