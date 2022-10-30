@@ -40,11 +40,11 @@ class WorkPage extends React.Component<{}, {}> {
                         <WorkItem image="work_assets/infinite_terrain/thumbnail.png" name="Infinite 3D terrain" tech="C++/DirectX 11/HLSL" />
                         <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
                         <WorkItem image="work_assets/txt_alignment/thumbnail.png" name="Text alignment" tech="C" />
-                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
+                        <WorkItem image="work_assets/image_processing/thumbnail.png" name="Image processing" tech="C++/WinAPI" />
+                        <WorkItem image="work_assets/traffic_sim/thumbnail.png" name="Traffic simulator" tech="C++/Qt" />
+                        <WorkItem image="work_assets/heartlight/thumbnail.png" name="Heartlight" tech="Java ME" />
+                        <WorkItem image="work_assets/profi_website/thumbnail.png" name="Profi's website" tech="Php/MySQL/JS" />
+                        <WorkItem image="work_assets/virtual_school/thumbnail.jpg" name="Virtual school" tech="C++" />
                     </ItemsContainer>
 
                     <h2>3D graphics</h2>
