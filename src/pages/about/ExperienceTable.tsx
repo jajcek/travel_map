@@ -49,9 +49,8 @@ const EmptyHeader = styled.div`
 `;
 
 const Body = styled.div`
-    border: 4px solid #ccc;
-    border-top: none;
-    background-color: #e6e6e6;
+    border: none;
+    background: linear-gradient(180deg, rgba(230,230,230,1) 0%, rgba(244,244,244,1) 100%);
     padding: 20px;
 `;
 
@@ -100,6 +99,7 @@ class ExperienceTable extends React.Component<{}, State> {
         return (
             <Container>
                 <Headers>
+                    <EmptyHeader />
                     <Header company={OCADO} className={this.isSelected(OCADO)} onClick={(e) => this.selectCompany(e, OCADO)} />
                     <Header company={NOKIA} className={this.isSelected(NOKIA)} onClick={(e) => this.selectCompany(e, NOKIA)} />
                     <Header company={PGS} className={this.isSelected(PGS)} onClick={(e) => this.selectCompany(e, PGS)} />

@@ -31,6 +31,7 @@ const FancyLine = styled.hr`
 
 const Body = styled.div`
     text-indent: 1em;
+    height: 120px;
 `;
 
 class ExperienceDescription extends React.Component<Props, {}> {
