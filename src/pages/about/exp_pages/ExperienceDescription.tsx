@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import {COLORS} from "../../../StyleConstants";
+
 type Props = {
     position: string,
     companyName: string,
@@ -10,16 +12,20 @@ type Props = {
 }
 
 const Position = styled.div`
+    line-height: 20px;
     font-weight: bold;
     font-size: 18px;
 `;
 
 const CompanyName = styled.div`
+    line-height: 20px;
     font-size: 16px;
 `;
 
 const Detail = styled.div`
-    font-size: 14px;
+    line-height: 15px;
+    font-size: 13px;
+    color: ${COLORS.EXP_DETAIL_TEXT};
 `;
 
 const FancyLine = styled.hr`
@@ -31,7 +37,7 @@ const FancyLine = styled.hr`
 
 const Body = styled.div`
     text-indent: 1em;
-    height: 120px;
+    height: 180px;
 `;
 
 class ExperienceDescription extends React.Component<Props, {}> {

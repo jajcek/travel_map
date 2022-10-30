@@ -13,7 +13,7 @@ class OcadoExperienceDescription extends React.Component<{}, {}> {
             >
                 <p>
                     Two-months trainee. Our team was developing a mobile application for a salesman.
-                    During this time I was fixing bugs in existing software and programming tests with Robotium framework.
+                    During this time I was fixing bugs in the existing software and programming tests with Robotium framework.
                 </p>
             </ExperienceDescription>
         );

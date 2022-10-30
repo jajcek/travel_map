@@ -16,7 +16,7 @@ class OcadoExperienceDescription extends React.Component<{}, {}> {
                     managing Chinese provinces and regions. My responsibility was to present and operate on data obtained from PostgreSQL.
                 </p>
                 <p>
-                    I also created a secondary project to visualize some information.
+                    I was also working under another project to visualize information in more artistic way.
                     It's been created as a website based on the parallax scrolling technique.
                 </p>
             </ExperienceDescription>
