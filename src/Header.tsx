@@ -54,7 +54,7 @@ const AnimatedLink = styled(Link)`
 
         &::before {
             height: 100%;
-            transition:height .4s
+            transition: height .4s
         }
     }
 
@@ -67,7 +67,7 @@ const AnimatedLink = styled(Link)`
         height: 0;
         background-color: #ccc;
         z-index: -1;
-        transition:height .4s
+        transition: height .4s
     }
 `;
 
