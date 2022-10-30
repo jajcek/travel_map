@@ -52,6 +52,7 @@ const Body = styled.div`
     border: none;
     background: linear-gradient(180deg, rgba(230,230,230,1) 0%, rgba(244,244,244,1) 100%);
     padding: 20px;
+    margin-bottom: 50px;
 `;
 
 const OCADO = "ocado";

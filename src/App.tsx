@@ -16,6 +16,13 @@ const AppContainer = styled.div`
   height: 100%;
 `;
 
+const ScrolledContainer = styled.div`
+    background-color: #f4f4f4;
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+`;
+
 class App extends React.Component<{}, {}> {
 
   render() {
@@ -23,11 +30,13 @@ class App extends React.Component<{}, {}> {
         <AppContainer className="travel-app">
             <BrowserRouter>
                 <Header />
-                <Routes>
-                    <Route path="/" element={<IntroPage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/travel" element={<MapWithDataLoader />} />
-                </Routes>
+                <ScrolledContainer>
+                    <Routes>
+                        <Route path="/" element={<IntroPage />} />
+                        <Route path="/about" element={<AboutPage />} />
+                        <Route path="/travel" element={<MapWithDataLoader />} />
+                    </Routes>
+                </ScrolledContainer>
                 <Footer />
             </BrowserRouter>
         </AppContainer>

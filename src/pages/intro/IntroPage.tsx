@@ -6,10 +6,9 @@ import NavigationFactory from '../../NavigationFactory';
 import type {LinkType} from '../../NavigationFactory';
 
 const Container = styled.div`
-    background-color: #f4f4f4;
     background: linear-gradient(145deg, rgba(210,210,210,1) 0%, rgba(244,244,244,1) 100%);
-    height: 100%;
     display: flex;
+    flex: 1;
 `;
 
 const Centered = styled.div`

@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const Container = styled.div`
-    background-color: #f4f4f4;
-    height: 100%;
-    display: flex;
-`;
-
 const Center = styled.div`
     background-color: #f4f4f4;
     text-align: center;
@@ -54,13 +48,11 @@ const Loader = styled.div`
 
 class LoadingPage extends React.Component<{}, {}> {
     render() {
-      return (
-        <Container>
+        return (
             <Center>
                 <Loader><div></div><div></div><div></div></Loader>
             </Center>
-        </Container>
-      );
+        );
     }
 }
 
