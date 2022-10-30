@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 
 import {COLORS} from './StyleConstants';
 
@@ -8,6 +8,17 @@ const Center = styled.div`
     text-align: center;
     margin: auto;
     height: 30%;
+`;
+
+const loaderAnimation = keyframes`
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
 `;
 
 const Loader = styled.div`
@@ -22,7 +33,7 @@ const Loader = styled.div`
         left: 8px;
         width: 16px;
         background: ${COLORS.HEADER_BACKGROUND};
-        animation: loader-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+        animation: ${loaderAnimation} 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
     }
     div:nth-child(1) {
         left: 8px;
@@ -35,16 +46,6 @@ const Loader = styled.div`
     div:nth-child(3) {
         left: 56px;
         animation-delay: 0;
-    }
-    @keyframes loader-animation {
-        0% {
-            top: 8px;
-            height: 64px;
-        }
-        50%, 100% {
-            top: 24px;
-            height: 32px;
-        }
     }
 `;
 
