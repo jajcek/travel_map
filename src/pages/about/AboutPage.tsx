@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import {COLORS} from '../../StyleConstants';
 import ExperienceTable from './ExperienceTable';
 
 const Container = styled.div`
-    background-color: #f4f4f4;
+    background-color: ${COLORS.MAIN_BACKGROUND};
     display: flex;
     flex: 1;
 `;
@@ -18,6 +19,7 @@ const Centered = styled.div`
 
 const Section = styled.div`
     text-indent: 2em;
+    color: ${COLORS.BASE_TEXT};
 `;
 
 const Countries = styled.div`
@@ -52,7 +54,7 @@ class AboutPage extends React.Component<{}, {}> {
                     "Automating and scheduling work in a system" which can be found <a href="https://drive.google.com/open?id=0B7x6g4c3-UJfQzZtTXU1M1NMRDg">here</a> (in polish).
                     In 2015 I have graduated MSc with the thesis: "Dynamic generation of an infinite area in virtual 3D space" which
                     is <a href="https://drive.google.com/open?id=0B7x6g4c3-UJfV2NwbkE0MVhPY1E">here</a> (in english).
-                    At the studies I won a compiler contest which required students to implement a compiler (using Flex & Bison)
+                    At the studies I have won a compiler contest which required students to implement a compiler (using Flex & Bison)
                     for a toy-language (given by the lecturer) that produces the "fastest" bytecode.
                 </Section>
                 <h3>Languages</h3>

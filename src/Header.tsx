@@ -2,23 +2,20 @@ import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
 
+import {COLORS} from './StyleConstants';
 import NavigationFactory from './NavigationFactory';
 import type {LinkType} from './NavigationFactory';
 
-const fontColor = '#f4f4f4';
-
 const Container = styled.header`
     display: flex;
-    background-color: #383838;
-    color: #f4f4f4;
-    border-bottom: 4px solid #ccc;
+    border-bottom: 4px solid ${COLORS.HEADER_BORDER};
 `;
 
 const HomeNav = styled.nav`
     display: flex;
     flex: 1 0 auto;
-    background-color: #383838;
-    color: ${fontColor};
+    background-color: ${COLORS.HEADER_BACKGROUND};
+    color: ${COLORS.HEADER_TEXT};
     padding-left: 20%;
 `;
 
@@ -26,15 +23,15 @@ const AuthorLink = styled(Link)`
     padding: 17px;
 
     &, &:visited {
-        color: ${fontColor};
+        color: ${COLORS.HEADER_TEXT};
         text-decoration: none;
     }
 `;
 
 const SectionNav = styled.nav`
     display: flex;
-    background-color: #383838;
-    color: ${fontColor};
+    background-color: ${COLORS.HEADER_BACKGROUND};
+    color: ${COLORS.HEADER_TEXT};
     padding-right: 20%;
 `;
 
@@ -44,13 +41,13 @@ const AnimatedLink = styled(Link)`
     position: relative;
 
     &, &:visited {
-        color: ${fontColor};
+        color: ${COLORS.HEADER_TEXT};
         text-decoration: none;
         transition: color .4s;
     }
 
     &:hover {
-        color: #383838;
+        color: ${COLORS.HEADER_HOVERED_TEXT};
 
         &::before {
             height: 100%;
@@ -65,7 +62,7 @@ const AnimatedLink = styled(Link)`
         left: 0;
         width: 100%;
         height: 0;
-        background-color: #ccc;
+        background-color: ${COLORS.HEADER_HOVERED_BACKGROUND};
         z-index: -1;
         transition: height .4s
     }

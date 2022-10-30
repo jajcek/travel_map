@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
 
+import {COLORS} from '../../StyleConstants';
 import NavigationFactory from '../../NavigationFactory';
 import type {LinkType} from '../../NavigationFactory';
 
@@ -25,7 +26,7 @@ const Name = styled.div`
     letter-spacing: 20px;
     font-size: 45px;
     font-weight: 700;
-    color: #383838;
+    color: ${COLORS.BASE_TEXT};
 `;
 
 const Profession = styled.div`
@@ -33,10 +34,8 @@ const Profession = styled.div`
     font-size: 13px;
     font-weight: bold;
     margin-top: 15px;
-    color: #383838;
+    color: ${COLORS.BASE_TEXT};
 `;
-
-const fontColor = '#f4f4f4';
 
 const Nav = styled.nav`
     display: flex;
@@ -45,8 +44,8 @@ const Nav = styled.nav`
 `;
 
 const ButtonLink = styled(Link)`
-    background-color: #383838;
-    border: 4px solid #ccc;
+    background-color: ${COLORS.HEADER_BACKGROUND};
+    border: 4px solid ${COLORS.HEADER_BORDER};
     transition: background-color .5s ease-in-out;
     width: 100px;
     text-align: center;
@@ -54,12 +53,12 @@ const ButtonLink = styled(Link)`
     font-size: 14px;
 
     &, &:visited {
-        color: ${fontColor};
+        color: ${COLORS.HEADER_TEXT};
         text-decoration: none;
     }
 
     &:hover {
-        background-color: #686868;
+        background-color: ${COLORS.INTRO_MENU_HOVERED};
         transition: background-color 0s ease-in-out;
     }
 `;

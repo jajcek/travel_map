@@ -9,7 +9,7 @@ class OcadoExperienceDescription extends React.Component<{}, {}> {
                 position="Senior Software Developer"
                 companyName="Ocado Technology"
                 period="March 2017 - now"
-                technologies="Java, Spring, JS (React), AWS, BigQuery, PostgreSQL, Netflix Hollow"
+                technologies="Java, Spring, JS (ReactJS), AWS, BigQuery, PostgreSQL, Netflix Hollow"
             >
                 <p>
                     During this time I have worked for 3 projects - communication systems

@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import {COLORS} from './StyleConstants';
+
 const Container = styled.div`
-    background-color: #383838;
-    border-top: 2px solid #ccc;
-    color: #f4f4f4;
+    background-color: ${COLORS.HEADER_BACKGROUND};
+    border-top: 2px solid ${COLORS.HEADER_BORDER};
+    color: ${COLORS.MAIN_BACKGROUND};
     font-size: 10px;
     text-align: center;
 `;

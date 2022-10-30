@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import {COLORS} from '../../StyleConstants';
 import OcadoExperienceDescription from './exp_pages/OcadoExperienceDescription';
 import NokiaExperienceDescription from './exp_pages/NokiaExperienceDescription';
 import PgsExperienceDescription from './exp_pages/PgsExperienceDescription';
@@ -22,7 +23,7 @@ const Header = styled.div<{ company: string }>`
     height: 70px;
     width: 120px;
     cursor: pointer;
-    border-bottom: 4px solid #ccc;
+    border-bottom: 4px solid ${COLORS.HEADER_BORDER};
     box-sizing: border-box;
     filter: grayscale(1);
     transition: background-size .2s, filter 0.6s;
@@ -30,9 +31,9 @@ const Header = styled.div<{ company: string }>`
 
     &.focused {
         padding: 10px;
-        border: 4px solid #ccc;
+        border: 4px solid ${COLORS.HEADER_BORDER};
         border-bottom: none;
-        background-color: #e6e6e6;
+        background-color: ${COLORS.EXP_BACKGROUND_COLOR1};
         background-size: 80%;
         filter: grayscale(0);
     }
@@ -44,15 +45,16 @@ const Header = styled.div<{ company: string }>`
 `;
 
 const EmptyHeader = styled.div`
-    border-bottom: 4px solid #ccc;
+    border-bottom: 4px solid ${COLORS.HEADER_BORDER};
     flex: 1;
 `;
 
 const Body = styled.div`
     border: none;
-    background: linear-gradient(180deg, rgba(230,230,230,1) 0%, rgba(244,244,244,1) 100%);
+    background: linear-gradient(180deg, ${COLORS.EXP_BACKGROUND_COLOR1} 0%, ${COLORS.EXP_BACKGROUND_COLOR2} 100%);
     padding: 20px;
     margin-bottom: 50px;
+    color: ${COLORS.BASE_TEXT};
 `;
 
 const OCADO = "ocado";

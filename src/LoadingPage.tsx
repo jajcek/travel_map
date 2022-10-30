@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import {COLORS} from './StyleConstants';
+
 const Center = styled.div`
-    background-color: #f4f4f4;
+    background-color: ${COLORS.MAIN_BACKGROUND};
     text-align: center;
     margin: auto;
     height: 30%;
@@ -19,7 +21,7 @@ const Loader = styled.div`
         position: absolute;
         left: 8px;
         width: 16px;
-        background: #383838;
+        background: ${COLORS.HEADER_BACKGROUND};
         animation: loader-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
     }
     div:nth-child(1) {
