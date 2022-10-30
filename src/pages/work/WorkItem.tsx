@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-    background-image: url(pthumbs/1.jpg);
+const Container = styled.div<{image: string}>`
+    background-image: url(${props => props.image});
     background-size: 150px 150px;
     background-position: center;
     display: flex;
@@ -45,14 +45,20 @@ const Text = styled.div<{size: string}>`
     font-size: ${props => props.size}px;
 `;
 
-class WorkItem extends React.Component<{}, {}> {
+type Props = {
+    image: string,
+    name: string,
+    tech: string
+}
+
+class WorkItem extends React.Component<Props, {}> {
     render() {
         return (
-            <Container>
+            <Container image={this.props.image}>
                 <ViewDetails><div>View details</div></ViewDetails>
                 <Description>
-                    <Text size="12">Infinite 3D terrain</Text>
-                    <Text size="9">C++/DirectX 11/HLSL</Text>
+                    <Text size="12">{this.props.name}</Text>
+                    <Text size="9">{this.props.tech}</Text>
                 </Description>
             </Container>
         );

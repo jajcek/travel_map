@@ -26,7 +26,8 @@ class WorkPage extends React.Component<{}, {}> {
                 <Centered>
                     <h2>Software development</h2>
                     <p>Below you can find some programs I have created. Smaller and bigger.</p>
-                    <WorkItem />
+                    <WorkItem image="work/infinite_terrain/thumbnail.png" name="Infinite 3D terrain" tech="C++/DirectX 11/HLSL" />
+
                     <h2>3D graphics</h2>
                     <p>Some years ago I was also playing around with 3D graphics. Below you can find some of my projects.</p>
                 </Centered>
