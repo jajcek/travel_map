@@ -1,17 +1,12 @@
 import React from 'react';
-import loadable from '@loadable/component'
-import LoadingPage from '../../LoadingPage';
 import LoadVisitedStats from './LoadVisitedStats';
 
 import type {VisitedCountryInfo} from '../../map/types';
+import Map from '../../map/Map';
 
 type State = {
   visitedCountriesData: Array<VisitedCountryInfo>
 }
-
-const MapWithLoader = loadable(() => import('../../map/Map'), {
-  fallback: <LoadingPage />,
-});
 
 class MapWithDataLoader extends React.Component<{}, State> {
   constructor(props: {}) {
@@ -28,7 +23,7 @@ class MapWithDataLoader extends React.Component<{}, State> {
   }
 
     render() {
-       return <MapWithLoader visitedCountriesData={this.state.visitedCountriesData} />;
+       return <Map visitedCountriesData={this.state.visitedCountriesData} />;
     }
 }
 

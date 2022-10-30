@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import styled from 'styled-components'
 
 import {COLORS} from './StyleConstants';
 import Header from './Header';
 import Footer from './Footer';
-import IntroPage from './pages/intro/IntroPage';
-import AboutPage from './pages/about/AboutPage';
-import MapWithDataLoader from './pages/travel/MapWithDataLoader';
+import LoadingPage from './LoadingPage';
+
+const IntroPage = lazy(() => import('./pages/intro/IntroPage'));
+const AboutPage = lazy(() => import('./pages/about/AboutPage'));
+const MapWithDataLoader = lazy(() => import('./pages/travel/MapWithDataLoader'));
 
 const AppContainer = styled.div`
     display: flex;
@@ -30,11 +32,13 @@ class App extends React.Component<{}, {}> {
                 <BrowserRouter>
                     <Header />
                     <ScrolledContainer>
-                        <Routes>
-                            <Route path="/" element={<IntroPage />} />
-                            <Route path="/about" element={<AboutPage />} />
-                            <Route path="/travel" element={<MapWithDataLoader />} />
-                        </Routes>
+                        <Suspense fallback={<LoadingPage />}>
+                            <Routes>
+                                <Route path="/" element={<IntroPage />} />
+                                <Route path="/about" element={<AboutPage />} />
+                                <Route path="/travel" element={<MapWithDataLoader />} />
+                            </Routes>
+                        </Suspense>
                     </ScrolledContainer>
                     <Footer />
                 </BrowserRouter>
