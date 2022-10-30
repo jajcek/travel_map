@@ -37,14 +37,14 @@ class WorkPage extends React.Component<{}, {}> {
                     <h2>Software development</h2>
                     <p>Below you can find some programs I have created. Smaller and bigger.</p>
                     <ItemsContainer>
-                        <WorkItem image="work/infinite_terrain/thumbnail.png" name="Infinite 3D terrain" tech="C++/DirectX 11/HLSL" />
-                        <WorkItem image="work/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
-                        <WorkItem image="work/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
+                        <WorkItem image="work_assets/infinite_terrain/thumbnail.png" name="Infinite 3D terrain" tech="C++/DirectX 11/HLSL" />
+                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
+                        <WorkItem image="work_assets/txt_alignment/thumbnail.png" name="Text alignment" tech="C" />
+                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
+                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
+                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
+                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
+                        <WorkItem image="work_assets/do_for_me/thumbnail.png" name="DoForMe!" tech="C++/Qt/Lua" />
                     </ItemsContainer>
 
                     <h2>3D graphics</h2>
