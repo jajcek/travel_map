@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import {Link} from "react-router-dom";
 
 import {COLORS} from '../../StyleConstants';
-import NavigationFactory from '../../NavigationFactory';
-import type {LinkType} from '../../NavigationFactory';
+import NavigationFactory from '../../ux/NavigationFactory';
+import type {LinkType} from '../../ux/NavigationFactory';
 
 const Container = styled.div`
     background: linear-gradient(145deg, rgba(210,210,210,1) 0%, rgba(244,244,244,1) 100%);

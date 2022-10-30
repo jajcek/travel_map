@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import {COLORS} from './StyleConstants';
 import Header from './Header';
 import Footer from './Footer';
-import LoadingPage from './LoadingPage';
+import LoadingPage from './ux/LoadingPage';
 
 const IntroPage = lazy(() => import('./pages/intro/IntroPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutPage'));

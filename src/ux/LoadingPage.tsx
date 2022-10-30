@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components'
 
-import {COLORS} from './StyleConstants';
+import {COLORS} from '../StyleConstants';
 
 const Center = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
