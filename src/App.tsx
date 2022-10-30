@@ -10,6 +10,7 @@ import ErrorBoundary from './ux/ErrorBoundary';
 
 const IntroPage = lazy(() => import('./pages/intro/IntroPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutPage'));
+const WorkPage = lazy(() => import('./pages/work/WorkPage'));
 const MapWithDataLoader = lazy(() => import('./pages/travel/MapWithDataLoader'));
 
 const AppContainer = styled.div`
@@ -38,6 +39,7 @@ class App extends React.Component<{}, {}> {
                                 <Routes>
                                     <Route path="/" element={<IntroPage />} />
                                     <Route path="/about" element={<AboutPage />} />
+                                    <Route path="/work" element={<WorkPage />} />
                                     <Route path="/travel" element={<MapWithDataLoader />} />
                                 </Routes>
                             </Suspense>
