@@ -17,7 +17,7 @@ const Headers = styled.div`
 `;
 
 const Header = styled.div<{ company: string }>`
-    background: url('${props => props.company}_logo.png') center center no-repeat;
+    background: url('companyLogos/${props => props.company}_logo.png') center center no-repeat;
     background-size: 60%;
     background-origin: border-box;
     height: 70px;

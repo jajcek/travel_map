@@ -73,11 +73,11 @@ class AboutPage extends React.Component<{}, {}> {
                 <SectionTitle>Languages</SectionTitle>
                 <Countries>
                     <Country>
-                        <img alt="Polish" src="pl.png" />
+                        <img alt="Polish" src="languages/pl.png" />
                         <LanguageLevel>Native</LanguageLevel>
                     </Country>
                     <Country>
-                        <img alt="English" src="en.png" />
+                        <img alt="English" src="languages/en.png" />
                         <LanguageLevel>Professional proficiency</LanguageLevel>
                     </Country>
                 </Countries>
