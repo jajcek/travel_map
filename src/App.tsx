@@ -27,7 +27,7 @@ const ScrolledContainer = styled.div`
 `;
 
 const WorkItemPageLoader = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     const Item = lazy(() => import(`./pages/work/${id}/WorkItemPage`));
 
     return (

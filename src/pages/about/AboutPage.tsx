@@ -7,9 +7,6 @@ import ExperienceTable from './ExperienceTable';
 const Container = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
     line-height: 30px;
-`;
-
-const Centered = styled.div`
     margin: 50px auto;
     width: 800px;
     align-items: center;
@@ -48,8 +45,7 @@ const TextLink = styled.a`
 class AboutPage extends React.Component<{}, {}> {
     render() {
         return (
-        <Container>
-            <Centered>
+            <Container>
                 <Section>
                     I have developed software professionally for 10 years by using various technologies
                     in areas like frontend, backend or pure desktop applications. However, I got into these topics when I was 15 and
@@ -87,8 +83,8 @@ class AboutPage extends React.Component<{}, {}> {
                 </Section>
                 <SectionTitle>Experience</SectionTitle>
                 <ExperienceTable />
-            </Centered>
-            </Container>);
+            </Container>
+        );
     }
 }
 
