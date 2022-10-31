@@ -53,7 +53,7 @@ const Text = styled.div<{size: string}>`
 `;
 
 type Props = {
-    id: string,
+    workRef: string,
     image: string,
     name: string,
     tech: string
@@ -63,7 +63,7 @@ class WorkItem extends React.Component<Props, {}> {
     render() {
         return (
             <Container image={this.props.image}>
-                <ViewDetails to={`/work/${this.props.id}`}><div>View details</div></ViewDetails>
+                <ViewDetails to={this.props.workRef}><div>View details</div></ViewDetails>
                 <Description>
                     <Text size="12">{this.props.name}</Text>
                     <Text size="9">{this.props.tech}</Text>
