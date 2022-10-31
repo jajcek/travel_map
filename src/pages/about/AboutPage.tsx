@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import {COLORS} from '../../StyleConstants';
 import ExperienceTable from './ExperienceTable';
 
+import PolishLanguage from './language_images/pl.png';
+import EnglishLanguage from './language_images/en.png';
+
 const Container = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
     line-height: 30px;
@@ -67,11 +70,11 @@ class AboutPage extends React.Component<{}, {}> {
                 <SectionTitle>Languages</SectionTitle>
                 <Countries>
                     <Country>
-                        <img alt="Polish" src="languages/pl.png" />
+                        <img alt="Polish" src={PolishLanguage} />
                         <LanguageLevel>Native</LanguageLevel>
                     </Country>
                     <Country>
-                        <img alt="English" src="languages/en.png" />
+                        <img alt="English" src={EnglishLanguage} />
                         <LanguageLevel>Professional proficiency</LanguageLevel>
                     </Country>
                 </Countries>

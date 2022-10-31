@@ -7,6 +7,11 @@ import NokiaExperienceDescription from './exp_pages/NokiaExperienceDescription';
 import PgsExperienceDescription from './exp_pages/PgsExperienceDescription';
 import SygnityExperienceDescription from './exp_pages/SygnityExperienceDescription';
 
+import OcadoLogo from './company_logos/ocado_logo.png';
+import NokiaLogo from './company_logos/nokia_logo.png';
+import PgsLogo from './company_logos/pgs_logo.png';
+import SygnityLogo from './company_logos/sygnity_logo.png';
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -16,8 +21,8 @@ const Headers = styled.div`
     display: flex;
 `;
 
-const Header = styled.div<{ company: string }>`
-    background: url('companyLogos/${props => props.company}_logo.png') center center no-repeat;
+const Header = styled.div<{ img: string }>`
+    background: url(${props => props.img}) center center no-repeat;
     background-size: 60%;
     background-origin: border-box;
     height: 70px;
@@ -103,10 +108,10 @@ class ExperienceTable extends React.Component<{}, State> {
             <Container>
                 <Headers>
                     <EmptyHeader />
-                    <Header company={OCADO} className={this.isSelected(OCADO)} onClick={(e) => this.selectCompany(e, OCADO)} />
-                    <Header company={NOKIA} className={this.isSelected(NOKIA)} onClick={(e) => this.selectCompany(e, NOKIA)} />
-                    <Header company={PGS} className={this.isSelected(PGS)} onClick={(e) => this.selectCompany(e, PGS)} />
-                    <Header company={SYGNITY} className={this.isSelected(SYGNITY)} onClick={(e) => this.selectCompany(e, SYGNITY)} />
+                    <Header img={OcadoLogo} className={this.isSelected(OCADO)} onClick={(e) => this.selectCompany(e, OCADO)} />
+                    <Header img={NokiaLogo} className={this.isSelected(NOKIA)} onClick={(e) => this.selectCompany(e, NOKIA)} />
+                    <Header img={PgsLogo} className={this.isSelected(PGS)} onClick={(e) => this.selectCompany(e, PGS)} />
+                    <Header img={SygnityLogo} className={this.isSelected(SYGNITY)} onClick={(e) => this.selectCompany(e, SYGNITY)} />
                     <EmptyHeader />
                 </Headers>
                 <Body>
