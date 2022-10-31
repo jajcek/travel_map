@@ -3,6 +3,11 @@ import styled, {keyframes} from 'styled-components'
 
 import {COLORS} from '../StyleConstants';
 
+const Container = styled.div`
+    display: flex;
+    height: 100%;
+`;
+
 const Center = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
     text-align: center;
@@ -52,9 +57,11 @@ const Loader = styled.div`
 class LoadingPage extends React.Component<{}, {}> {
     render() {
         return (
-            <Center>
-                <Loader><div></div><div></div><div></div></Loader>
-            </Center>
+            <Container>
+                <Center>
+                    <Loader><div></div><div></div><div></div></Loader>
+                </Center>
+            </Container>
         );
     }
 }
