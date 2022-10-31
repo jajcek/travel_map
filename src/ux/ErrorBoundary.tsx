@@ -11,6 +11,11 @@ type State = {
     hasError: boolean
 };
 
+const Container = styled.div`
+    display: flex;
+    height: 100%;
+`;
+
 const Centered = styled.div`
     margin: auto;
     width: 100%;
@@ -45,11 +50,13 @@ class ErrorBoundary extends React.Component<Props, State> {
     render() {
         if (this.state.hasError) {
             return (
-                <Centered>
-                    <SadFace>:(</SadFace>
-                    <h1>Something went wrong. Please, check your connection.</h1>
-                    <h2>If the problem persists, please contact me.</h2>
-                </Centered>
+                <Container>
+                    <Centered>
+                        <SadFace>:(</SadFace>
+                        <h1>Something went wrong. Please, check your connection.</h1>
+                        <h2>If the problem persists, please contact me.</h2>
+                    </Centered>
+                </Container>
             );
         }
 
