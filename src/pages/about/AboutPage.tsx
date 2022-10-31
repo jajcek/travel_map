@@ -6,8 +6,6 @@ import ExperienceTable from './ExperienceTable';
 
 const Container = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
-    display: flex;
-    flex: 1;
     line-height: 30px;
 `;
 

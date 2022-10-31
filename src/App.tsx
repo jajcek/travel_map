@@ -22,9 +22,8 @@ const AppContainer = styled.div`
 
 const ScrolledContainer = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
-    display: flex;
-    flex: 1;
     overflow-y: auto;
+    height: 100%;
 `;
 
 const WorkItemPageLoader = () => {
