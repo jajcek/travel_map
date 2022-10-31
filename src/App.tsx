@@ -1,5 +1,5 @@
 import React, {Suspense, lazy} from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, useParams} from "react-router-dom";
 import styled from 'styled-components'
 
 import {COLORS} from './StyleConstants';
@@ -27,6 +27,17 @@ const ScrolledContainer = styled.div`
     overflow-y: auto;
 `;
 
+const WorkItemPageLoader = () => {
+    const { id } = useParams();
+    const Item = lazy(() => import(`./pages/work/${id}/WorkItemPage`));
+
+    return (
+        <Suspense fallback={<LoadingPage />}>
+            <Item />
+        </Suspense>
+    );
+};
+
 class App extends React.Component<{}, {}> {
     render() {
         return (
@@ -40,6 +51,7 @@ class App extends React.Component<{}, {}> {
                                     <Route path="/" element={<IntroPage />} />
                                     <Route path="/about" element={<AboutPage />} />
                                     <Route path="/work" element={<WorkPage />} />
+                                    <Route path="/work/:id" element={<WorkItemPageLoader />} />
                                     <Route path="/travel" element={<MapWithDataLoader />} />
                                 </Routes>
                             </Suspense>

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from "react-router-dom";
+import {COLORS} from '../../StyleConstants';
 
 const Container = styled.div<{image: string}>`
     background-image: url(${props => props.image});
@@ -16,16 +18,21 @@ const Container = styled.div<{image: string}>`
     }
 `;
 
-const ViewDetails = styled.div`
+const ViewDetails = styled(Link)`
     flex: 1;
     display: flex;
     cursor: pointer;
-    background-color: #ccc;
+    background-color: ${COLORS.WORK_ITEM_BACKGROUND};
     opacity: 0;
     transition: opacity .3s;
 
     &:hover {
         opacity: .9;
+    }
+
+    &, &:visited {
+        color: ${COLORS.BASE_TEXT};
+        text-decoration: none;
     }
 
     div {
@@ -34,7 +41,7 @@ const ViewDetails = styled.div`
 `;
 
 const Description = styled.div`
-    background-color: #ccc;
+    background-color: ${COLORS.WORK_ITEM_BACKGROUND};
     opacity: .9;
     font-size: 9px;
     line-height: 16px;
@@ -55,7 +62,7 @@ class WorkItem extends React.Component<Props, {}> {
     render() {
         return (
             <Container image={this.props.image}>
-                <ViewDetails><div>View details</div></ViewDetails>
+                <ViewDetails to="/work/infinite_terrain"><div>View details</div></ViewDetails>
                 <Description>
                     <Text size="12">{this.props.name}</Text>
                     <Text size="9">{this.props.tech}</Text>
