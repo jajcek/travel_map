@@ -9,10 +9,6 @@ export const Container = styled.div`
     align-items: center;
     text-align: justify;
 
-    p {
-        text-indent: 1em;
-    }
-
     h2 {
         text-align: center;
     }
@@ -25,4 +21,8 @@ export const Image = styled.img<{src: string}>`
 export const Link = styled.a.attrs(props => ({
     target: "_blank",
     rel: "noreferrer"
-}))``;
+}))`
+    &, &:visited {
+        color: ${COLORS.BASE_TEXT};
+    }
+`;

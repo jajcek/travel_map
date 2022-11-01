@@ -13,8 +13,8 @@ class WorkItemPage extends React.Component<{}, {}> {
             <Container>
                 <h2>Infinite 3D terrain</h2>
                 <p>
-                    This is a 3D terrain engine written for the MSc thesis. The engine renders infinite terrain
-                    (when moving around it generates necessary terrain parts) and exposes very easy api to create many
+                    This is a 3D terrain engine written for the <Link href="https://drive.google.com/open?id=0B7x6g4c3-UJfV2NwbkE0MVhPY1E">MSc thesis</Link>.
+                    The engine renders infinite terrain (when moving around it generates necessary terrain parts) and exposes very easy api to create many
                     biomes on the terrain. The biomes may change according to latitude value or may be spread
                     randomly ignoring the latitude. Each of them has its own function to generate shape of the landscape.
                     Also other parts of the system are highly parametrizable - all parameters have been described in

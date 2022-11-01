@@ -22,7 +22,6 @@ const SectionTitle = styled.h2`
 `;
 
 const Section = styled.div`
-    text-indent: 2em;
     color: ${COLORS.BASE_TEXT};
 `;
 

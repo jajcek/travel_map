@@ -36,7 +36,6 @@ const FancyLine = styled.hr`
 `;
 
 const Body = styled.div`
-    text-indent: 1em;
     height: 180px;
 `;
 
