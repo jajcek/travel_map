@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Image, Link} from '../../WorkItemPageComponents';
 
 import Pic from './assets/1.png';
+import WorkArchive from './assets/heartlight.rar';
 
 class WorkItemPage extends React.Component<{}, {}> {
     render() {
@@ -27,7 +28,7 @@ class WorkItemPage extends React.Component<{}, {}> {
                     </ul>
                 </p>
                 <p>
-                    Download link (NetBeans project): <Link href="/work_archives/heartlight/heartlight.rar">heartlight.rar</Link>.
+                    Download link (NetBeans project): <Link href={WorkArchive}>heartlight.rar</Link>.
                 </p>
             </Container>
         );

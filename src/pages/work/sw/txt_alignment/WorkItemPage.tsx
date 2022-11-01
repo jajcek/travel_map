@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Image, Link} from '../../WorkItemPageComponents';
 
 import Pic from './assets/1.png';
+import WorkArchive from './assets/alignment.rar';
 
 class WorkItemPage extends React.Component<{}, {}> {
     render() {
@@ -30,7 +31,7 @@ class WorkItemPage extends React.Component<{}, {}> {
                     You can also write it to another "<b>f</b>" file: <b>alignment.exe a b c d &lt; e &gt; f</b>
                 </p>
                 <p>
-                    Download link: <Link href="/work_archives/txt_alignment/alignment.rar">alignment.rar</Link>.
+                    Download link: <Link href={WorkArchive}>alignment.rar</Link>.
                 </p>
             </Container>
         );

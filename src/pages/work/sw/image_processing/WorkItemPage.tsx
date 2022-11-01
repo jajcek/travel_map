@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Image, Link} from '../../WorkItemPageComponents';
 
 import Pic from './assets/1.png';
+import WorkArchive from './assets/ppm.rar';
 
 class WorkItemPage extends React.Component<{}, {}> {
     render() {
@@ -64,7 +65,7 @@ class WorkItemPage extends React.Component<{}, {}> {
                     The halftone approximation and floyd-steinberg algorithms takes as an input value from 0 to 255.
                 </p>
                 <p>
-                    Download link: <Link href="/work_archives/image_processing/ppm.rar">ppm.rar</Link>.
+                    Download link: <Link href={WorkArchive}>ppm.rar</Link>.
                 </p>
             </Container>
         );

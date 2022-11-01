@@ -3,6 +3,7 @@ import {Container, Image, Link} from '../../WorkItemPageComponents';
 
 import Pic1 from './assets/1.png';
 import Pic2 from './assets/2.png';
+import WorkArchive from './assets/ts_editor.rar';
 
 class WorkItemPage extends React.Component<{}, {}> {
     render() {
@@ -38,7 +39,7 @@ class WorkItemPage extends React.Component<{}, {}> {
                     I was responsible for creating editor, therefore because of it I'm gonna upload only editor.
                 </p>
                 <p>
-                    Download link (editor only): <Link href="/work_archives/traffic_sim/ts_editor.rar">ts_editor.rar</Link>
+                    Download link (editor only): <Link href={WorkArchive}>ts_editor.rar</Link>
                 </p>
                 <h3>Screenshots:</h3>
 

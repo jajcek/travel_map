@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Image, Link} from '../../WorkItemPageComponents';
 
 import Pic from './assets/1.png';
+import WorkArchive from './assets/doforme.rar';
 
 class WorkItemPage extends React.Component<{}, {}> {
     render() {
@@ -36,7 +37,7 @@ class WorkItemPage extends React.Component<{}, {}> {
                     The application needs admin privileges if it's copied to the system partition.
                 </p>
                 <p>
-                    Download link: <Link href="/work_archives/do_for_me/doforme.rar">doforme.rar</Link>.
+                    Download link: <Link href={WorkArchive}>doforme.rar</Link>.
                 </p>
             </Container>
         );
