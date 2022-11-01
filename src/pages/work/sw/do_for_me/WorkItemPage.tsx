@@ -37,7 +37,7 @@ class WorkItemPage extends React.Component<{}, {}> {
                     The application needs admin privileges if it's copied to the system partition.
                 </p>
                 <p>
-                    Download link: <Link href="/work_archives/do_for_me/doforme.rar">doforme_.rar</Link>.
+                    Download link: <Link href="/work_archives/do_for_me/doforme.rar">doforme.rar</Link>.
                 </p>
             </Container>
         );
