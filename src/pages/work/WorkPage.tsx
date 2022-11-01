@@ -56,7 +56,7 @@ class WorkPage extends React.Component<{}, {}> {
             <Container>
                 <Centered>
                     <h2>Software development</h2>
-                    <p>Below you can find some programs I have created. Smaller and bigger.</p>
+                    <p>Below you can find some programs I have created. Smaller, bigger, prototypes.</p>
                     <ItemsContainer>
                         <WorkItem workRef="sw/infinite_terrain" image={InfiniteTerrainThumbnail} name="Infinite 3D terrain" tech="C++/DirectX 11/HLSL" />
                         <WorkItem workRef="sw/do_for_me" image={DoForMeThumbnail} name="DoForMe!" tech="C++/Qt/Lua" />
