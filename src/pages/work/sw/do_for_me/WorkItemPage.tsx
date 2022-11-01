@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import {Container, Image, Link} from '../../WorkItemPageComponents';
 
 import Pic from './assets/1.png';

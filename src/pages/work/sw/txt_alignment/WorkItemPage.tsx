@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import {Container, Image, Link} from '../../WorkItemPageComponents';
 
 import Pic from './assets/1.png';
@@ -19,7 +18,7 @@ class WorkItemPage extends React.Component<{}, {}> {
                     It doesn't handle polish symbols. Column has to be wider than the longest word in the input text.
                 </p>
                 <p>
-                    Usage:<br/>
+                    Usage:
                     <pre>alignment.exe a b c d &lt; e</pre>
                     <b>a</b> - width of the left margin<br/>
                     <b>b</b> - width of the first column<br/>
