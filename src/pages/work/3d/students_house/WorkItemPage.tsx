@@ -12,10 +12,10 @@ class WorkItemPage extends React.Component<{}, {}> {
     render() {
         return (
             <Container>
-                <h2>My room</h2>
+                <h2>Student's house</h2>
                 <p>
-                    Project of my room at home. The scene took me few days to model objects and an extra day for
-                    adjusting render settings and rendering images. The scene was rendered in 3Ds Max 2009 using VRay render engine.
+                    The place where I lived at the first year of my studies.
+                    Renders are done in 3Ds Max 2009 using VRay render engine.
                 </p>
 
                 <Link href={Pic1}><Image src={Pic1}/></Link>
