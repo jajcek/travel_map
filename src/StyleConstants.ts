@@ -1,3 +1,5 @@
+import styled from 'styled-components'
+
 export const COLORS = {
     BASE_TEXT: "#383838",
     MAIN_BACKGROUND: "#f4f4f4",
@@ -12,3 +14,12 @@ export const COLORS = {
     EXP_DETAIL_TEXT: "#686868",
     WORK_ITEM_BACKGROUND: "#ccc"
 };
+
+export const Link = styled.a.attrs(props => ({
+    target: "_blank",
+    rel: "noreferrer"
+}))`
+    &, &:visited {
+        color: ${COLORS.BASE_TEXT};
+    }
+`;

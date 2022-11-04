@@ -49,7 +49,7 @@ class AboutPage extends React.Component<{}, {}> {
         return (
             <Container>
                 <Section>
-                    I have developed software professionally for 10 years by using various technologies
+                    I have been developing software professionally for 10 years by using various technologies
                     in areas like frontend, backend or pure desktop applications. However, I got into these topics when I was 15 and
                     since then I have been experimenting with other areas like mobile technologies (Android), game development (DirectX), compilers (Flex&Bison).
                     Today my main technology stack stays around Java and JavaScript letting me become a full stack developer.
@@ -80,7 +80,7 @@ class AboutPage extends React.Component<{}, {}> {
                 <SectionTitle>Hobbies</SectionTitle>
                 <Section>
                     I have been doing sport rock climbing for 5 years and from time to time I take it as seriously as software engineering.
-                    I am also a certified scuba diver and have dived in several places like Egypt, Spain, Croatia, Thailand, Cyprus.
+                    I am also a certified scuba diver and have dived in several places.
                     Recently I've started travelling more and more and that was the reason for creating my own private project available in the Travel menu.
                 </Section>
                 <SectionTitle>Experience</SectionTitle>

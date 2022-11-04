@@ -7,7 +7,7 @@ import NavigationFactory from '../../ux/NavigationFactory';
 import type {LinkType} from '../../ux/NavigationFactory';
 
 const Container = styled.div`
-    background: linear-gradient(145deg, rgba(210,210,210,1) 0%, rgba(244,244,244,1) 100%);
+    background: linear-gradient(145deg, rgba(220,220,220,1) 0%, rgba(244,244,244,1) 100%);
     display: flex;
     height: 100%;
 `;

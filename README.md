@@ -14,9 +14,15 @@ Exceptions:
     - UM-WQ - Wake Island (belongs to US)
 
 Licenses
-1. SVG world map comes from https://mapsvg.com/maps/world
+- SVG world map comes from https://mapsvg.com/maps/world
    - CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
-2. react-leaflet library
+- react-leaflet library
    - Hippocratic License 2.1 - https://github.com/PaulLeCam/react-leaflet/blob/master/LICENSE.md
-3. react-tooltip
+- react-tooltip
    - MIT - https://github.com/ReactTooltip/react-tooltip/blob/master/LICENSE
+- email icon in contact page (https://www.iconpacks.net/free-icon/mail-symbol-3003.html)
+  - Free - https://www.iconpacks.net/terms/
+- facebook icon in contact page (https://www.iconpacks.net/free-icon/facebook-logo-2163.html)
+  - Free - https://www.iconpacks.net/terms/
+- linkedin icon in contact page (https://www.iconpacks.net/free-icon/linkedin-2166.html)
+  - Free - https://www.iconpacks.net/terms/
