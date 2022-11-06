@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from 'styled-components';
 
-import {COLORS} from '../../StyleConstants';
+import {COLORS} from '../../CommonStyles';
 
 const Form = styled.form`
     margin-top: 10px;
@@ -54,11 +54,6 @@ const ContactForm = () => {
 
     function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const data = {
-            name,
-            email,
-            msg
-        };
 
         fetch("/api/send_mail.php", {
           method: "POST",

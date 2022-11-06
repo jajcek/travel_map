@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import {COLORS} from './StyleConstants';
+import {COLORS} from './CommonStyles';
 
 const Container = styled.div`
     background-color: ${COLORS.HEADER_BACKGROUND};

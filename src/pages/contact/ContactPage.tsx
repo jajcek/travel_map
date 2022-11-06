@@ -2,26 +2,13 @@ import React from 'react';
 import styled from 'styled-components'
 import ContactForm from './ContactForm';
 
-import {COLORS, Link} from '../../StyleConstants';
+import {Container, Link, Text} from '../../CommonStyles';
 
 import MailIcon from './assets/mail.png';
 import FbIcon from './assets/fb.png';
 import LinkedInIcon from './assets/linkedin.png';
 
 const IMAGE_SIZE = 40;
-
-const Container = styled.div`
-    background-color: ${COLORS.MAIN_BACKGROUND};
-    line-height: 30px;
-    margin: 50px auto;
-    width: 800px;
-    align-items: center;
-    text-align: justify;
-
-    h2 {
-        text-align: center;
-    }
-`;
 
 const Icons = styled.div`
     display: flex;
@@ -58,10 +45,6 @@ const CenterDiv = styled.div`
     }
 `;
 
-const Note = styled.div`
-    font-size: 14px;
-`;
-
 class AboutPage extends React.Component<{}, {}> {
     render() {
         return (
@@ -70,10 +53,10 @@ class AboutPage extends React.Component<{}, {}> {
 
                 <CenterDiv>
                     <div>
-                        <Note>
+                        <Text size="14">
                             If you'd like to get in touch let me know through one of the following channels.
                             I will happily hear about your offers, also in foreign countries or full remote work.
-                        </Note>
+                        </Text>
                         <Icons>
                             <IconItem>
                                 <Link href="mailto:jajcek.30@gmail.com"><img alt="Mail: jajcek.30@gmail.com" width={IMAGE_SIZE} height={IMAGE_SIZE} src={MailIcon}/></Link>

@@ -2,7 +2,7 @@ import React, {Suspense, lazy} from 'react';
 import {BrowserRouter, Routes, Route, useParams} from "react-router-dom";
 import styled from 'styled-components'
 
-import {COLORS} from './StyleConstants';
+import {COLORS} from './CommonStyles';
 import Header from './Header';
 import Footer from './Footer';
 import LoadingPage from './ux/LoadingPage';

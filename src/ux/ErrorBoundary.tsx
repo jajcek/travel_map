@@ -1,7 +1,7 @@
 import React, {ErrorInfo, ReactNode} from 'react';
 import styled from 'styled-components';
 
-import {COLORS} from '../StyleConstants';
+import {COLORS} from '../CommonStyles';
 
 type Props = {
     children: ReactNode

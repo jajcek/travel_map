@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import {COLORS} from '../../StyleConstants';
+import {COLORS} from '../../CommonStyles';
 import OcadoExperienceDescription from './exp_pages/OcadoExperienceDescription';
 import NokiaExperienceDescription from './exp_pages/NokiaExperienceDescription';
 import PgsExperienceDescription from './exp_pages/PgsExperienceDescription';

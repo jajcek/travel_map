@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
-import {COLORS} from '../../StyleConstants';
+import {COLORS, Text} from '../../CommonStyles';
 
 const Container = styled.div<{image: string}>`
     background-image: url(${props => props.image});
@@ -46,10 +46,7 @@ const Description = styled.div`
     font-size: 9px;
     line-height: 16px;
     padding: 4px 0;
-`;
-
-const Text = styled.div<{size: string}>`
-    font-size: ${props => props.size}px;
+    text-align: center;
 `;
 
 type Props = {

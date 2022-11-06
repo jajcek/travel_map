@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Image, Link} from '../../WorkItemPageComponents';
+import {Container, Image, Link} from '../../../../CommonStyles';
 
 import Pic from './assets/1.png';
 import WorkArchive from './assets/ppm.rar';
