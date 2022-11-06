@@ -1,7 +1,9 @@
 import React from 'react';
 import {Container, Image, Link} from '../../WorkItemPageComponents';
 
-import Pic from './assets/1.jpg';
+import Pic1 from './assets/1.jpg';
+import Pic2 from './assets/2.png';
+import Pic3 from './assets/3.png';
 
 class WorkItemPage extends React.Component<{}, {}> {
     render() {
@@ -16,9 +18,20 @@ class WorkItemPage extends React.Component<{}, {}> {
                 </p>
                 <p>
                     The software has been prepared as a desktop application and took me a whole year to create.
+                    The size in MB of the project is quite big (300MB) because of the videos of the transitions.
                 </p>
 
-                <Link href={Pic}><Image src={Pic}/></Link>
+                <Link href={Pic1}><Image src={Pic1}/></Link>
+
+                <p>
+                    Entry menu of the application
+                </p>
+                <Link href={Pic2}><Image src={Pic2}/></Link>
+
+                <p>
+                    When moving around the hall
+                </p>
+                <Link href={Pic3}><Image src={Pic3}/></Link>
             </Container>
         );
     }
