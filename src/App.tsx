@@ -29,11 +29,11 @@ const ScrolledContainer = styled.div`
 
 const ProjectPageLoader = () => {
     const {type, id} = useParams();
-    const Item = lazy(() => import(`./pages/projects/${type}/${id}/ProjectPage`));
+    const Project = lazy(() => import(`./pages/projects/${type}/${id}/ProjectPage`));
 
     return (
         <Suspense fallback={<LoadingPage />}>
-            <Item />
+            <Project />
         </Suspense>
     );
 };
@@ -50,7 +50,6 @@ class App extends React.Component<{}, {}> {
                                 <Routes>
                                     <Route path="/" element={<IntroPage />} />
                                     <Route path="/about" element={<AboutPage />} />
-                                    <Route path="/projects" element={<ProjectsPage />} />
                                     <Route path="/projects" element={<ProjectsPage />} />
                                     <Route path="/projects/:type/:id" element={<ProjectPageLoader />} />
                                     <Route path="/travel" element={<MapWithDataLoader />} />
