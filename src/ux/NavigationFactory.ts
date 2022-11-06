@@ -11,7 +11,7 @@ class NavigationFactory {
     static getSectionLinks(): Array<LinkType> {
         return [
             {href: '/about', text: 'About'},
-            {href: '/work', text: 'Work'},
+            {href: '/projects', text: 'Projects'},
             {href: '/travel', text: 'Travel'},
             {href: '/contact', text: 'Contact'}
         ];

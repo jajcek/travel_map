@@ -10,7 +10,7 @@ import ErrorBoundary from './ux/ErrorBoundary';
 
 const IntroPage = lazy(() => import('./pages/intro/IntroPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutPage'));
-const WorkPage = lazy(() => import('./pages/work/WorkPage'));
+const ProjectsPage = lazy(() => import('./pages/projects/ProjectsPage'));
 const MapWithDataLoader = lazy(() => import('./pages/travel/MapWithDataLoader'));
 const ContactPage = lazy(() => import('./pages/contact/ContactPage'));
 
@@ -27,9 +27,9 @@ const ScrolledContainer = styled.div`
     height: 100%;
 `;
 
-const WorkItemPageLoader = () => {
+const ProjectPageLoader = () => {
     const {type, id} = useParams();
-    const Item = lazy(() => import(`./pages/work/${type}/${id}/WorkItemPage`));
+    const Item = lazy(() => import(`./pages/projects/${type}/${id}/ProjectPage`));
 
     return (
         <Suspense fallback={<LoadingPage />}>
@@ -50,8 +50,9 @@ class App extends React.Component<{}, {}> {
                                 <Routes>
                                     <Route path="/" element={<IntroPage />} />
                                     <Route path="/about" element={<AboutPage />} />
-                                    <Route path="/work" element={<WorkPage />} />
-                                    <Route path="/work/:type/:id" element={<WorkItemPageLoader />} />
+                                    <Route path="/projects" element={<ProjectsPage />} />
+                                    <Route path="/projects" element={<ProjectsPage />} />
+                                    <Route path="/projects/:type/:id" element={<ProjectPageLoader />} />
                                     <Route path="/travel" element={<MapWithDataLoader />} />
                                     <Route path="/contact" element={<ContactPage />} />
                                 </Routes>

@@ -12,7 +12,7 @@ export const COLORS = {
     EXP_BACKGROUND_COLOR1: "#e6e6e6",
     EXP_BACKGROUND_COLOR2: "#f4f4f4",
     EXP_DETAIL_TEXT: "#686868",
-    WORK_ITEM_BACKGROUND: "#ccc"
+    PROJECT_ITEM_BACKGROUND: "#ccc"
 };
 
 export const Link = styled.a.attrs(props => ({
