@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import ContactForm from './ContactForm';
 
 import {COLORS, Link} from '../../StyleConstants';
 
@@ -61,31 +62,6 @@ const Note = styled.div`
     font-size: 14px;
 `;
 
-const Form = styled.form`
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-
-    input, textarea {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-    input[type=submit] {
-        border: 4px solid ${COLORS.HEADER_BORDER};
-        background-color: ${COLORS.HEADER_BACKGROUND};
-        transition: background-color .5s ease-in-out;
-        color: ${COLORS.HEADER_TEXT};
-        cursor: pointer;
-
-        &:hover {
-            background-color: ${COLORS.INTRO_MENU_HOVERED};
-            transition: background-color 0s ease-in-out;
-        }
-    }
-`;
-
 class AboutPage extends React.Component<{}, {}> {
     render() {
         return (
@@ -114,12 +90,7 @@ class AboutPage extends React.Component<{}, {}> {
                         </Icons>
                     </div>
                     <div>
-                        <Form>
-                            <input name="name" type="text" placeholder="Name" required />
-                            <input name="email" type="email" placeholder="Email" required />
-                            <textarea name="msg" rows={5} placeholder="Write a message..." required></textarea>
-                            <input type="submit" value="Send" />
-                        </Form>
+                        <ContactForm />
                     </div>
                 </CenterDiv>
             </Container>
