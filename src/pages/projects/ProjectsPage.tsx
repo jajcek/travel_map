@@ -42,30 +42,30 @@ class ProjectsPage extends React.Component<{}, {}> {
                 <h2>Software development</h2>
                 <p>Below you can find some programs I have created. Smaller, bigger, prototypes.</p>
                 <ItemsContainer>
-                    <ProjectItem workRef="sw/infinite_terrain" image={InfiniteTerrainThumbnail} name="Infinite 3D terrain" tech="C++/DirectX 11/HLSL" />
-                    <ProjectItem workRef="sw/do_for_me" image={DoForMeThumbnail} name="DoForMe!" tech="C++/Qt/Lua" />
-                    <ProjectItem workRef="sw/txt_alignment" image={TxtAlignmentThumbnail} name="Text alignment" tech="C" />
-                    <ProjectItem workRef="sw/image_processing" image={ImageProcessingThumbnail} name="Image processing" tech="C++/WinAPI" />
-                    <ProjectItem workRef="sw/traffic_sim" image={TrafficSimThumbnail} name="Traffic simulator" tech="C++/Qt" />
-                    <ProjectItem workRef="sw/heartlight" image={HeartlightThumbnail} name="Heartlight" tech="Java ME" />
-                    <ProjectItem workRef="sw/profi_website" image={ProfiWebsiteThumbnail} name="Profi's website" tech="Php/MySQL/JS" />
-                    <ProjectItem workRef="sw/virtual_school" image={VirtualSchoolThumbnail} name="Virtual school" tech="C++" />
-                    <ProjectItem workRef="sw/map_editor" image={MapEditorThumbnail} name="3D map editor" tech="C++/DirectX 11/HLSL" />
-                    <ProjectItem workRef="sw/random_select" image={RandomSelectThumbnail} name="Random select algorithm" tech="Java SE" />
-                    <ProjectItem workRef="sw/select" image={SelectThumbnail} name="Select algorithm" tech="Java SE" />
-                    <ProjectItem workRef="sw/diet_selector" image={DietSelectorThumbnail} name="Diet selector - AHP" tech="Python 2.7" />
-                    <ProjectItem workRef="sw/communicator" image={CommunicatorThumbnail} name="Internet communicator" tech="Java SE" />
-                    <ProjectItem workRef="sw/paint_multiplayer" image={PaintMultiplayerThumbnail} name="Paint multiplayer" tech="Java SE/GWT" />
-                    <ProjectItem workRef="sw/leapmotion_paint" image={LeapMotionThumbnail} name="LeapMotion paint" tech="Java/Leap Motion SDK" />
+                    <ProjectItem projectRef="sw/infinite_terrain" image={InfiniteTerrainThumbnail} name="Infinite 3D terrain" tech="C++/DirectX 11/HLSL" />
+                    <ProjectItem projectRef="sw/do_for_me" image={DoForMeThumbnail} name="DoForMe!" tech="C++/Qt/Lua" />
+                    <ProjectItem projectRef="sw/txt_alignment" image={TxtAlignmentThumbnail} name="Text alignment" tech="C" />
+                    <ProjectItem projectRef="sw/image_processing" image={ImageProcessingThumbnail} name="Image processing" tech="C++/WinAPI" />
+                    <ProjectItem projectRef="sw/traffic_sim" image={TrafficSimThumbnail} name="Traffic simulator" tech="C++/Qt" />
+                    <ProjectItem projectRef="sw/heartlight" image={HeartlightThumbnail} name="Heartlight" tech="Java ME" />
+                    <ProjectItem projectRef="sw/profi_website" image={ProfiWebsiteThumbnail} name="Profi's website" tech="Php/MySQL/JS" />
+                    <ProjectItem projectRef="sw/virtual_school" image={VirtualSchoolThumbnail} name="Virtual school" tech="C++" />
+                    <ProjectItem projectRef="sw/map_editor" image={MapEditorThumbnail} name="3D map editor" tech="C++/DirectX 11/HLSL" />
+                    <ProjectItem projectRef="sw/random_select" image={RandomSelectThumbnail} name="Random select algorithm" tech="Java SE" />
+                    <ProjectItem projectRef="sw/select" image={SelectThumbnail} name="Select algorithm" tech="Java SE" />
+                    <ProjectItem projectRef="sw/diet_selector" image={DietSelectorThumbnail} name="Diet selector - AHP" tech="Python 2.7" />
+                    <ProjectItem projectRef="sw/communicator" image={CommunicatorThumbnail} name="Internet communicator" tech="Java SE" />
+                    <ProjectItem projectRef="sw/paint_multiplayer" image={PaintMultiplayerThumbnail} name="Paint multiplayer" tech="Java SE/GWT" />
+                    <ProjectItem projectRef="sw/leapmotion_paint" image={LeapMotionThumbnail} name="LeapMotion paint" tech="Java/Leap Motion SDK" />
                 </ItemsContainer>
 
                 <h2>3D graphics</h2>
                 <p>Some years ago I was also playing around with 3D graphics. Below you can find some of my projects.</p>
                 <ItemsContainer>
-                    <ProjectItem workRef="3d/my_room" image={MyRoomThumbnail} name="My room in 3D" tech="3ds Max 2009/VRay" />
-                    <ProjectItem workRef="3d/students_house" image={StudentsHouseThumbnail} name="Student's house" tech="3ds Max 2009/VRay" />
-                    <ProjectItem workRef="3d/classroom" image={ClassroomThumbnail} name="Classroom" tech="3ds Max 2009/VRay" />
-                    <ProjectItem workRef="3d/knightly_room" image={KnightlyRoomThumbnail} name="'Knightly room'" tech="3ds Max 2011/VRay" />
+                    <ProjectItem projectRef="3d/my_room" image={MyRoomThumbnail} name="My room in 3D" tech="3ds Max 2009/VRay" />
+                    <ProjectItem projectRef="3d/students_house" image={StudentsHouseThumbnail} name="Student's house" tech="3ds Max 2009/VRay" />
+                    <ProjectItem projectRef="3d/classroom" image={ClassroomThumbnail} name="Classroom" tech="3ds Max 2009/VRay" />
+                    <ProjectItem projectRef="3d/knightly_room" image={KnightlyRoomThumbnail} name="'Knightly room'" tech="3ds Max 2011/VRay" />
                 </ItemsContainer>
             </Container>
         );

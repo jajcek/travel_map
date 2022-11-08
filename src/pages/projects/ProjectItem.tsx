@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
-import {COLORS, Text} from '../../CommonStyles';
 
-const Container = styled.div<{image: string}>`
-    background-image: url(${props => props.image});
+import {COLORS, Text} from '../../CommonStyles';
+import Loader from '../../ux/Loader';
+
+const Container = styled.div<{image: string | undefined}>`
+    background-image: ${props => props.image ? `url(${props.image})` : 'none'};
     background-size: 150px 150px;
     background-position: center;
     display: flex;
@@ -40,6 +42,16 @@ const ViewDetails = styled(Link)`
     }
 `;
 
+const ViewDetailsLoading = styled(Link)`
+    flex: 1;
+    display: flex;
+    cursor: pointer;
+
+    div {
+        margin: auto;
+    }
+`;
+
 const Description = styled.div`
     background-color: ${COLORS.PROJECT_ITEM_BACKGROUND};
     opacity: .9;
@@ -50,24 +62,41 @@ const Description = styled.div`
 `;
 
 type Props = {
-    workRef: string,
+    projectRef: string,
     image: string,
     name: string,
     tech: string
 }
 
-class ProjectItem extends React.Component<Props, {}> {
-    render() {
-        return (
-            <Container image={this.props.image}>
-                <ViewDetails to={this.props.workRef}><div>View details</div></ViewDetails>
-                <Description>
-                    <Text size="12">{this.props.name}</Text>
-                    <Text size="9">{this.props.tech}</Text>
-                </Description>
-            </Container>
-        );
+const ProjectItem = (props: Props) => {
+    const [image, setImage] = useState<string>();
+
+    useEffect(() => {
+        const {image} = props;
+        const imageLoader = new Image();
+        imageLoader.src = image;
+        imageLoader.onload = () => {
+            setImage(image);
+        };
+    });
+
+    function showDetails() {
+        if (image) {
+            return <ViewDetails to={props.projectRef}><div>View details</div></ViewDetails>;
+        } else {
+            return <ViewDetailsLoading to={props.projectRef}><Loader color={COLORS.PROJECT_ITEM_BACKGROUND}/></ViewDetailsLoading>;
+        }
     }
-}
+
+    return (
+        <Container image={image}>
+            {showDetails()}
+            <Description>
+                <Text size="12">{props.name}</Text>
+                <Text size="9">{props.tech}</Text>
+            </Description>
+        </Container>
+    );
+};
 
 export default ProjectItem;
