@@ -9,10 +9,11 @@ export const COLORS = {
     HEADER_HOVERED_TEXT: "#383838",
     HEADER_HOVERED_BACKGROUND: "#ccc",
     INTRO_MENU_HOVERED: "#686868",
+    INTRO_BACKGROUND: "linear-gradient(145deg, rgba(220,220,220,1) 0%, rgba(244,244,244,1) 100%)",
     EXP_BACKGROUND_COLOR1: "#e6e6e6",
     EXP_BACKGROUND_COLOR2: "#f4f4f4",
     EXP_DETAIL_TEXT: "#686868",
-    PROJECT_ITEM_BACKGROUND: "#ccc"
+    PROJECT_ITEM_BACKGROUND: "#ccc",
 };
 
 export const Container = styled.div`

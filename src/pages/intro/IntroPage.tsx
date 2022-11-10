@@ -5,27 +5,13 @@ import {Link} from "react-router-dom";
 import {COLORS} from '../../CommonStyles';
 import NavigationFactory from '../../ux/NavigationFactory';
 import type {LinkType} from '../../ux/NavigationFactory';
-
-const Container = styled.div`
-    background: linear-gradient(145deg, rgba(220,220,220,1) 0%, rgba(244,244,244,1) 100%);
-    display: flex;
-    height: 100%;
-`;
-
-const Centered = styled.div`
-    margin: auto;
-    width: 100%;
-    height: 40%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial;
-`;
+import CenteredContainer from '../../ux/CenteredContainer';
 
 const Name = styled.div`
     letter-spacing: 20px;
     font-size: 45px;
     font-weight: 700;
+    font-family: Arial;
     color: ${COLORS.BASE_TEXT};
 `;
 
@@ -34,6 +20,7 @@ const Profession = styled.div`
     font-size: 13px;
     font-weight: bold;
     margin-top: 15px;
+    font-family: Arial;
     color: ${COLORS.BASE_TEXT};
 `;
 
@@ -72,8 +59,8 @@ class IntroPage extends React.Component<{}, {}> {
     }
 
     render() {
-        return <Container>
-            <Centered>
+        return (
+            <CenteredContainer background={COLORS.INTRO_BACKGROUND}>
                 <Name>JACEK TOPOLSKI</Name>
                 <Profession>SOFTWARE DEVELOPER</Profession>
                 <Nav>
@@ -81,8 +68,8 @@ class IntroPage extends React.Component<{}, {}> {
                         this.showLinks()
                     }
                 </Nav>
-            </Centered>
-        </Container>;
+            </CenteredContainer>
+        );
     }
 }
 
