@@ -7,6 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import LoadingPage from './ux/LoadingPage';
 import ErrorBoundary from './ux/ErrorBoundary';
+import NotFoundPage from './ux/NotFoundPage';
 
 const IntroPage = lazy(() => import('./pages/intro/IntroPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutPage'));
@@ -54,6 +55,7 @@ class App extends React.Component<{}, {}> {
                                     <Route path="/projects/:type/:id" element={<ProjectPageLoader />} />
                                     <Route path="/travel" element={<MapWithDataLoader />} />
                                     <Route path="/contact" element={<ContactPage />} />
+                                    <Route path="*" element={<NotFoundPage />} />
                                 </Routes>
                             </Suspense>
                         </ErrorBoundary>
