@@ -13,7 +13,7 @@ const Container = styled.div`
 
 class Footer extends React.Component<{}, {}> {
     render() {
-      return <Container>{`Copyright © 2015-${new Date().getFullYear()} Jacek Topolski. All rights reserved. Powered by ReactJS.`}</Container>;
+      return <Container>{`Copyright © 2015-${new Date().getFullYear()} Jacek Topolski. All rights reserved.`}</Container>;
     }
 }
 

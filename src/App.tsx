@@ -1,6 +1,6 @@
 import React, {Suspense, lazy} from 'react';
-import {BrowserRouter, Routes, Route, useParams} from "react-router-dom";
-import styled from 'styled-components'
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import styled, {keyframes} from 'styled-components'
 
 import {COLORS} from './CommonStyles';
 import Header from './Header';
@@ -12,6 +12,7 @@ import NotFoundPage from './ux/NotFoundPage';
 const IntroPage = lazy(() => import('./pages/intro/IntroPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutPage'));
 const ProjectsPage = lazy(() => import('./pages/projects/ProjectsPage'));
+const ProjectPageLoader = lazy(() => import('./pages/projects/ProjectPageLoader'));
 const MapWithDataLoader = lazy(() => import('./pages/travel/MapWithDataLoader'));
 const ContactPage = lazy(() => import('./pages/contact/ContactPage'));
 
@@ -27,17 +28,6 @@ const ScrolledContainer = styled.div`
     overflow-y: auto;
     height: 100%;
 `;
-
-const ProjectPageLoader = () => {
-    const {type, id} = useParams();
-    const Project = lazy(() => import(`./pages/projects/${type}/${id}/ProjectPage`));
-
-    return (
-        <Suspense fallback={<LoadingPage />}>
-            <Project />
-        </Suspense>
-    );
-};
 
 class App extends React.Component<{}, {}> {
     render() {
