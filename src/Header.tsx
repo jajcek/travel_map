@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import {COLORS} from './CommonStyles';
 import NavigationFactory from './ux/NavigationFactory';
@@ -19,8 +19,9 @@ const HomeNav = styled.nav`
     padding-left: 20%;
 `;
 
-const AuthorLink = styled(Link)`
+const AuthorLink = styled.div`
     padding: 17px;
+    cursor: pointer;
 
     &, &:visited {
         color: ${COLORS.HEADER_TEXT};
@@ -35,10 +36,11 @@ const SectionNav = styled.nav`
     padding-right: 20%;
 `;
 
-const AnimatedLink = styled(Link)`
+const AnimatedLink = styled.div`
     padding: 17px;
     z-index: 0;
     position: relative;
+    cursor: pointer;
 
     &, &:visited {
         color: ${COLORS.HEADER_TEXT};
@@ -68,35 +70,43 @@ const AnimatedLink = styled(Link)`
     }
 `;
 
-class Header extends React.Component<{}, {}> {
-    showHomeLink() {
-        const homeLink = NavigationFactory.getHomeLink();
-        return <AuthorLink to={homeLink.href}>{homeLink.text}</AuthorLink>;
+type Props = {
+    clickHandler: (href: string) => void
+};
+
+const Header = (props: Props) => {
+    const navigate = useNavigate();
+
+    function navigateSmoothly(linkHref: string) {
+        props.clickHandler(linkHref);
     }
 
-    showLinks() {
+    function showHomeLink() {
+        const homeLink = NavigationFactory.getHomeLink();
+        return <AuthorLink onClick={() => navigateSmoothly(homeLink.href)}>{homeLink.text}</AuthorLink>;
+    }
+
+    function showLinks() {
         const links = NavigationFactory.getSectionLinks();
         return links.map((link: LinkType) => {
-            return <AnimatedLink key={link.href} to={link.href}>{link.text}</AnimatedLink>;
+            return <AnimatedLink key={link.href} onClick={() => navigateSmoothly(link.href)}>{link.text}</AnimatedLink>;
         });
     }
 
-    render() {
-        return (
-            <Container>
+    return (
+        <Container>
             <HomeNav>
                 {
-                    this.showHomeLink()
+                    showHomeLink()
                 }
             </HomeNav>
             <SectionNav>
                 {
-                    this.showLinks()
+                    showLinks()
                 }
             </SectionNav>
-            </Container>
-        );
-    }
-}
+        </Container>
+    );
+};
 
 export default Header;

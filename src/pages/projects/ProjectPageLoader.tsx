@@ -9,7 +9,7 @@ const ProjectPageLoader = () => {
     const Project = lazy(() => import(`./${type}/${id}/ProjectPage`));
 
     return (
-        <Suspense fallback={<LoadingPage />}>
+        <Suspense fallback={<LoadingPage onLoad={() => {}} />}>
             <Project />
         </Suspense>
     );

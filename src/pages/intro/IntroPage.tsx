@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
 
@@ -50,27 +51,33 @@ const ButtonLink = styled(Link)`
     }
 `;
 
-class IntroPage extends React.Component<{}, {}> {
-    showLinks() {
+type Props = {
+    onLoad: () => void
+};
+
+const IntroPage = (props: Props) => {
+    useEffect(() => {
+        props.onLoad();
+    }, [useLocation()]);
+
+    function showLinks() {
         const links = NavigationFactory.getSectionLinks();
         return links.map((link: LinkType) => {
             return <ButtonLink key={link.href} to={link.href}>{link.text}</ButtonLink>;
         });
     }
 
-    render() {
-        return (
-            <CenteredContainer background={COLORS.INTRO_BACKGROUND}>
-                <Name>JACEK TOPOLSKI</Name>
-                <Profession>SOFTWARE DEVELOPER</Profession>
-                <Nav>
-                    {
-                        this.showLinks()
-                    }
-                </Nav>
-            </CenteredContainer>
-        );
-    }
-}
+    return (
+        <CenteredContainer background={COLORS.INTRO_BACKGROUND}>
+            <Name>JACEK TOPOLSKI</Name>
+            <Profession>SOFTWARE DEVELOPER</Profession>
+            <Nav>
+                {
+                    showLinks()
+                }
+            </Nav>
+        </CenteredContainer>
+    );
+};
 
 export default IntroPage;
