@@ -18,25 +18,23 @@ const ProjectPage = (props: Props) => {
                 System for simulating traffic. The application is divided into editor, simulator and map converter.
                 The system has been created by using C++, Qt and Python.
             </p>
-            <p>
-                <h4>Editor allows users:</h4>
-                <ul>
-                    <li>importing real world maps from openstreetmap.org (after saving the map from openstreetmap.org
-                    to xml it is necessary to convert it to our system format by our converter)</li>
-                    <li>drawing new roads</li>
-                    <li>setting road direction and type (one-way, two-way)</li>
-                    <li>setting road layer (its "height" above the ground)</li>
-                    <li>smoothing them by using bezier curve with specified number of nodes</li>
-                </ul>
-            </p>
-            <p>
-                <h4>Simulator allows:</h4>
-                <ul>
+
+            <h4>Editor allows users:</h4>
+            <ul>
+                <li>importing real world maps from openstreetmap.org (after saving the map from openstreetmap.org
+                to xml it is necessary to convert it to our system format by our converter)</li>
+                <li>drawing new roads</li>
+                <li>setting road direction and type (one-way, two-way)</li>
+                <li>setting road layer (its "height" above the ground)</li>
+                <li>smoothing them by using bezier curve with specified number of nodes</li>
+            </ul>
+
+            <h4>Simulator allows:</h4>
+            <ul>
                 <li>setting speed of the simulation</li>
                 <li>specifying generators (points which generate traffic as a flow)</li>
                 <li>specifying attractors (points which attract flow)</li>
-                </ul>
-            </p>
+            </ul>
             <p>
                 The application has been created by me and two other guys. One of them was responsible for the
                 openstreetmap.org converter written in python. The other one was responsible for simulation algorithm and

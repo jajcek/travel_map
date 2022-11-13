@@ -23,28 +23,29 @@ const ProjectPage = (props: Props) => {
 
             <p>
                 Implemented things:
-                <ul>
-                    <li>simple shapes:</li>
-                    <ul>
-                        <li>point,</li>
-                        <li>line,</li>
-                        <li>rectangle,</li>
-                        <li>circle</li>
-                    </ul>
-                    <li>changing colour</li>
-                </ul>
             </p>
+            <ul>
+                <li>simple shapes:</li>
+                <ul>
+                    <li>point,</li>
+                    <li>line,</li>
+                    <li>rectangle,</li>
+                    <li>circle</li>
+                </ul>
+                <li>changing colour</li>
+            </ul>
+
             <p>
                 Source code: <Link href={WorkArchiveThreads}>multipaint_th.rar</Link>
-
-                <hr/>
-
+            </p>
+            <hr/>
+            <p>
                 The application has been also implemented by using reactor pattern instead of threads.
                 <br/>
                 Source code: <Link href={WorkArchiveReactor}>multipaint_r.rar</Link>
-
-                <hr/>
-
+            </p>
+            <hr/>
+            <p>
                 There is also available version implemented in GWT.
                 <br/>
                 Source code: <Link href={WorkArchiveGwt}>multipaint_gwt.rar</Link>

@@ -21,10 +21,11 @@ const ProjectPage = (props: Props) => {
 
             <p>
                 It doesn't handle polish symbols. Column has to be wider than the longest word in the input text.
-            </p>
-            <p>
+                <br/><br/>
                 Usage:
-                <pre>alignment.exe a b c d &lt; e</pre>
+            </p>
+            <pre>alignment.exe a b c d &lt; e</pre>
+            <p>
                 <b>a</b> - width of the left margin<br/>
                 <b>b</b> - width of the first column<br/>
                 <b>c</b> - distance between columns<br/>

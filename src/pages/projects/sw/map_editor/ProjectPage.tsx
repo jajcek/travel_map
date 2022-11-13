@@ -22,28 +22,29 @@ const ProjectPage = (props: Props) => {
             <Link href={Pic}><Image src={Pic}/></Link>
 
             <p>
-                Functionality that the program offers:<br/>
-                <ul>
-                  <li>loading models from a folder (OBJ files without textures),</li>
-                  <li>adding/deleting models to/from the scene by using mouse,</li>
-                  <li>mouse picking (selecting models by clicking on them),</li>
-                  <li>moving/rotating/scaling models,</li>
-                  <li>saving/loading maps,</li>
-                  <li>turning grid off/on,</li>
-                  <li>statistics:</li>
-                    <ul>
-                      <li>camera position and rotation,</li>
-                      <li>mouse coordinates in 3D space,</li>
-                      <li>number of models in the scene</li>
-                    </ul>
-                  <li>camera operating:</li>
-                    <ul>
-                      <li>rotating on a sphere</li>
-                      <li>moving in all directions orthogonally to the direction vector</li>
-                      <li>zooming</li>
-                    </ul>
-                </ul>
+                Functionality that the program offers:
             </p>
+            <ul>
+              <li>loading models from a folder (OBJ files without textures),</li>
+              <li>adding/deleting models to/from the scene by using mouse,</li>
+              <li>mouse picking (selecting models by clicking on them),</li>
+              <li>moving/rotating/scaling models,</li>
+              <li>saving/loading maps,</li>
+              <li>turning grid off/on,</li>
+              <li>statistics:</li>
+                <ul>
+                  <li>camera position and rotation,</li>
+                  <li>mouse coordinates in 3D space,</li>
+                  <li>number of models in the scene</li>
+                </ul>
+              <li>camera operating:</li>
+                <ul>
+                  <li>rotating on a sphere</li>
+                  <li>moving in all directions orthogonally to the direction vector</li>
+                  <li>zooming</li>
+                </ul>
+            </ul>
+
             <p>
                 User documentation which presents the functionalities: <Link href={UserDoc}>user_doc.pdf</Link>.
             </p>

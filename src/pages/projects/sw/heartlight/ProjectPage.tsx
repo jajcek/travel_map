@@ -20,17 +20,18 @@ const ProjectPage = (props: Props) => {
             <Link href={Pic}><Image src={Pic}/></Link>
 
             <p>
-                Implemented things:<br/>
-                <ul>
-                    <li>death of the dwarf when rock/heart hits the dwarf from the top as well as grenade explodes,</li>
-                    <li>pushing soft rocks,</li>
-                    <li>destroying soft rocks and soft walls with grenades,</li>
-                    <li>creating new levels in easy mode - by editing text file, which represents a level,</li>
-                    <li>possibility of going to the next level,</li>
-                    <li>animations,</li>
-                    <li>picking up hearts</li>
-                </ul>
+                Implemented things:
             </p>
+            <ul>
+                <li>death of the dwarf when rock/heart hits the dwarf from the top as well as grenade explodes,</li>
+                <li>pushing soft rocks,</li>
+                <li>destroying soft rocks and soft walls with grenades,</li>
+                <li>creating new levels in easy mode - by editing text file, which represents a level,</li>
+                <li>possibility of going to the next level,</li>
+                <li>animations,</li>
+                <li>picking up hearts</li>
+            </ul>
+
             <p>
                 Download link (NetBeans project): <Link href={WorkArchive}>heartlight.rar</Link>.
             </p>
