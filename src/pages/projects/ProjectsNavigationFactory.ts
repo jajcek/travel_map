@@ -29,7 +29,7 @@ export type ProjectMenuItemType = {
 class ProjectsNavigationFactory {
     static getSoftwareProjects(): Array<ProjectMenuItemType> {
         return [
-            {href: 'sw/infinite_terrain', image: InfiniteTerrainThumbnail, name: 'name', tech: 'tech'},
+            {href: 'sw/infinite_terrain', image: InfiniteTerrainThumbnail, name: 'Infinite 3D terrain', tech: 'C++/DirectX 11/HLSL'},
             {href: 'sw/do_for_me', image: DoForMeThumbnail, name: 'DoForMe!', tech: 'C++/Qt/Lua'},
             {href: 'sw/txt_alignment', image: TxtAlignmentThumbnail, name: 'Text alignment', tech: 'C'},
             {href: 'sw/image_processing', image: ImageProcessingThumbnail, name: 'Image processing', tech: 'C++/WinAPI'},
