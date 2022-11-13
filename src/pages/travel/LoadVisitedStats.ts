@@ -1,5 +1,5 @@
 function LoadVisitedStats() {
-    return fetch('stats.json', {
+    return fetch('travel_stats.json', {
               headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
