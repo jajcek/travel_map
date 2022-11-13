@@ -1,9 +1,9 @@
-import React, {Suspense, lazy, useState} from 'react';
-import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
-import styled, {keyframes} from 'styled-components'
+import React from 'react';
+import {BrowserRouter} from "react-router-dom";
+import styled from 'styled-components'
 
 import {COLORS} from './CommonStyles';
-import RoutedApp from './ux/RoutedApp';
+import AnimatedRoutedApp from './ux/AnimatedRoutedApp';
 
 const AppContainer = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
@@ -17,7 +17,7 @@ const App = () => {
     return (
         <AppContainer>
             <BrowserRouter>
-                <RoutedApp />
+                <AnimatedRoutedApp />
             </BrowserRouter>
         </AppContainer>
     );
