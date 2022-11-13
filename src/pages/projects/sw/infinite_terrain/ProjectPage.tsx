@@ -21,7 +21,7 @@ const ProjectPage = (props: Props) => {
                 The engine renders infinite terrain (when moving around it generates necessary terrain parts) and exposes very easy api to create many
                 biomes on the terrain. The biomes may change according to latitude value or may be spread
                 randomly ignoring the latitude. Each of them has its own function to generate shape of the landscape.
-                Also other parts of the system are highly parametrizable - all parameters have been described in
+                Also other parts of the system are highly customisable - all parameters have been described in
                 the thesis (like cell size, longitude change speed, dissolving factor, layers number, blur, quad size etc.).
                 The water is not finished yet (it's generated only as a simple plane in one place).
             </p>

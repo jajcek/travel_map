@@ -64,7 +64,12 @@ const ProjectPage = (props: Props) => {
                 Type ppm file name into first (on the top left) edit field and click load image. Now you are able to use filters on it.
             </p>
             <p>
-                The "Combine" button has 4 additional edit fields above it. To the first edit field (on the top) you write ppm file name which is used as a mask to combine it with the original file. The three field below are used to specify which color has to be the transparent one. The picutre1.ppm is a "normal" picture file and the picture2.ppm is a alpha texture. If you want to test this option then load the picture1.ppm, type picture2.ppm above the Combine, and set the the other fields to 0 and the click Combine. Yes, I have screw up that.
+                The "Combine" button has 4 additional edit fields above it. To the first edit field (on the top) you write ppm file
+                 name which is used as a mask to combine it with the original file. The three field below are used to
+                 specify which color has to be the transparent one. The picture1.ppm is a "normal" picture file and
+                 the picture2.ppm is a alpha texture. If you want to test this option then load the picture1.ppm,
+                 type picture2.ppm above the Combine, and set the the other fields to 0 and the click Combine.
+                 Yes, I have screw that up.
             </p>
             <p>
                 The halftone approximation and floyd-steinberg algorithms takes as an input value from 0 to 255.
