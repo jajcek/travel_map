@@ -1,8 +1,7 @@
 import React, {Suspense, lazy, useState} from "react";
-import {Routes, Route, useNavigate, useLocation} from "react-router-dom";
+import {Routes, Route, useNavigate} from "react-router-dom";
 import styled, {keyframes} from 'styled-components';
 
-import {COLORS} from '../CommonStyles';
 import Header from '../Header';
 import Footer from '../Footer';
 import LoadingPage from './LoadingPage';

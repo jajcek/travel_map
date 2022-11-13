@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Image, Link} from '../../../../CommonStyles';
+import {Image, Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic1 from './assets/1.png';
