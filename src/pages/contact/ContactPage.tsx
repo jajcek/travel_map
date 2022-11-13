@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useLocation} from "react-router-dom";
 import styled from 'styled-components'
 import ContactForm from './ContactForm';
 
@@ -45,40 +46,46 @@ const CenterDiv = styled.div`
     }
 `;
 
-class AboutPage extends React.Component<{}, {}> {
-    render() {
-        return (
-            <Container>
-                <h2>Contact</h2>
+type Props = {
+    onLoad: () => void
+};
 
-                <CenterDiv>
-                    <div>
-                        <Text size="14">
-                            If you'd like to get in touch let me know through one of the following channels.
-                            I will happily hear about your offers, also in foreign countries or full remote work.
-                        </Text>
-                        <Icons>
-                            <IconItem>
-                                <Link href="mailto:jajcek.30@gmail.com"><img alt="Mail: jajcek.30@gmail.com" width={IMAGE_SIZE} height={IMAGE_SIZE} src={MailIcon}/></Link>
-                                <span>JAJCEK.30@GMAIL.COM</span>
-                            </IconItem>
-                            <IconItem>
-                                <Link href="https://www.facebook.com/jacek.tt"><img alt="Facebook" width={IMAGE_SIZE} height={IMAGE_SIZE} src={FbIcon}/></Link>
-                                <span>FACEBOOK.COM/JACEK.TT</span>
-                            </IconItem>
-                            <IconItem>
-                                <Link href="https://www.linkedin.com/in/jtopolski90"><img alt="LinkedIn" width={IMAGE_SIZE} height={IMAGE_SIZE} src={LinkedInIcon}/></Link>
-                                <span>LINKEDIN.COM/IN/JTOPOLSKI90</span>
-                            </IconItem>
-                        </Icons>
-                    </div>
-                    <div>
-                        <ContactForm />
-                    </div>
-                </CenterDiv>
-            </Container>
-        );
-    }
-}
+const AboutPage = (props: Props) => {
+    useEffect(() => {
+        props.onLoad();
+    }, [useLocation()]);
+
+    return (
+        <Container>
+            <h2>Contact</h2>
+
+            <CenterDiv>
+                <div>
+                    <Text size="14">
+                        If you'd like to get in touch let me know through one of the following channels.
+                        I will happily hear about your offers, also in foreign countries or full remote work.
+                    </Text>
+                    <Icons>
+                        <IconItem>
+                            <Link href="mailto:jajcek.30@gmail.com"><img alt="Mail: jajcek.30@gmail.com" width={IMAGE_SIZE} height={IMAGE_SIZE} src={MailIcon}/></Link>
+                            <span>JAJCEK.30@GMAIL.COM</span>
+                        </IconItem>
+                        <IconItem>
+                            <Link href="https://www.facebook.com/jacek.tt"><img alt="Facebook" width={IMAGE_SIZE} height={IMAGE_SIZE} src={FbIcon}/></Link>
+                            <span>FACEBOOK.COM/JACEK.TT</span>
+                        </IconItem>
+                        <IconItem>
+                            <Link href="https://www.linkedin.com/in/jtopolski90"><img alt="LinkedIn" width={IMAGE_SIZE} height={IMAGE_SIZE} src={LinkedInIcon}/></Link>
+                            <span>LINKEDIN.COM/IN/JTOPOLSKI90</span>
+                        </IconItem>
+                    </Icons>
+                </div>
+                <div>
+                    <ContactForm />
+                </div>
+            </CenterDiv>
+        </Container>
+    );
+};
 
 export default AboutPage;

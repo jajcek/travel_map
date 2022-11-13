@@ -20,7 +20,7 @@ const Container = styled.div<{image: string | undefined}>`
     }
 `;
 
-const ViewDetails = styled(Link)`
+const ViewDetails = styled.div`
     flex: 1;
     display: flex;
     cursor: pointer;
@@ -42,7 +42,7 @@ const ViewDetails = styled(Link)`
     }
 `;
 
-const ViewDetailsLoading = styled(Link)`
+const ViewDetailsLoading = styled.div`
     flex: 1;
     display: flex;
     cursor: pointer;
@@ -62,6 +62,7 @@ const Description = styled.div`
 `;
 
 type Props = {
+    onClick: (href: string) => void,
     projectRef: string,
     image: string,
     name: string,
@@ -82,9 +83,9 @@ const ProjectItem = (props: Props) => {
 
     function showDetails() {
         if (image) {
-            return <ViewDetails to={props.projectRef}><div>View details</div></ViewDetails>;
+            return <ViewDetails onClick={() => props.onClick('projects/' + props.projectRef)}><div>View details</div></ViewDetails>;
         } else {
-            return <ViewDetailsLoading to={props.projectRef}><Loader color={COLORS.PROJECT_ITEM_BACKGROUND}/></ViewDetailsLoading>;
+            return <ViewDetailsLoading onClick={() => props.onClick('projects/' + props.projectRef)}><Loader color={COLORS.PROJECT_ITEM_BACKGROUND}/></ViewDetailsLoading>;
         }
     }
 

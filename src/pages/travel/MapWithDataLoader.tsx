@@ -1,30 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import LoadVisitedStats from './LoadVisitedStats';
 
 import type {VisitedCountryInfo} from '../../map/types';
 import Map from '../../map/Map';
 
-type State = {
-  visitedCountriesData: Array<VisitedCountryInfo>
-}
+type Props = {
+    onLoad: () => void
+};
 
-class MapWithDataLoader extends React.Component<{}, State> {
-  constructor(props: {}) {
-    super(props);
+const MapWithDataLoader = (props: Props) => {
+    const [visitedCountriesData, setVisitedCountriesData] = useState<Array<VisitedCountryInfo>>([]);
 
-    this.state = {visitedCountriesData: []};
-  }
+    useEffect(() => {
+        LoadVisitedStats()
+          .then((data) => {
+            setVisitedCountriesData(data);
+          });
+        props.onLoad();
+    }, [useLocation()]);
 
-  componentDidMount() {
-    LoadVisitedStats()
-      .then((data) => {
-        this.setState({'visitedCountriesData': data});
-      });
-  }
-
-    render() {
-       return <Map visitedCountriesData={this.state.visitedCountriesData} />;
-    }
-}
+    return (
+        <Map visitedCountriesData={visitedCountriesData} />
+    );
+};
 
 export default MapWithDataLoader;

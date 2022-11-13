@@ -4,14 +4,19 @@ import styled from 'styled-components';
 
 import LoadingPage from '../../ux/LoadingPage';
 
-const ProjectPageLoader = () => {
+type Props = {
+    onLoading: () => void
+    onLoad: () => void
+};
+
+const ProjectPageLoader = (props: Props) => {
     const {type, id} = useParams();
     const Project = lazy(() => import(`./${type}/${id}/ProjectPage`));
 
     return (
-        <Suspense fallback={<LoadingPage onLoad={() => {}} />}>
+         <Suspense fallback={<LoadingPage onLoad={props.onLoading} />}>
             <Project />
-        </Suspense>
+         </Suspense>
     );
 };
 

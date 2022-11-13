@@ -65,8 +65,7 @@ const RoutedApp = () => {
     const [transition, setTransition] = useState<string>();
     const navigate = useNavigate();
 
-    function handleNavClick(href: string) {
-        console.log('hide');
+    function showHiding(href: string) {
         setTransition('hide');
         setTimeout(() => {
             navigate(href);
@@ -83,17 +82,17 @@ const RoutedApp = () => {
 
     return (
         <React.Fragment>
-            <Header clickHandler={handleNavClick} />
+            <Header clickHandler={showHiding} />
             <ScrolledContainer className={transition}>
                 <ErrorBoundary>
                     <Suspense fallback={<LoadingPage onLoad={showLoading} />}>
                         <Routes>
-                            <Route path="/" element={<IntroPage onLoad={showSmoothly}/>} />
-                            <Route path="/about" element={<AboutPage onLoad={showSmoothly}/>} />
-                            <Route path="/projects" element={<ProjectsPage />} />
-                            <Route path="/projects/:type/:id" element={<ProjectPageLoader />} />
-                            <Route path="/travel" element={<MapWithDataLoader />} />
-                            <Route path="/contact" element={<ContactPage />} />
+                            <Route path="/" element={<IntroPage onLoad={showSmoothly} />} />
+                            <Route path="/about" element={<AboutPage onLoad={showSmoothly} />} />
+                            <Route path="/projects" element={<ProjectsPage onItemClick={showHiding} onLoad={showSmoothly} />} />
+                            <Route path="/projects/:type/:id" element={<ProjectPageLoader onLoading={showLoading} onLoad={showSmoothly} />} />
+                            <Route path="/travel" element={<MapWithDataLoader onLoad={showSmoothly} />} />
+                            <Route path="/contact" element={<ContactPage onLoad={showSmoothly} />} />
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>
                     </Suspense>
