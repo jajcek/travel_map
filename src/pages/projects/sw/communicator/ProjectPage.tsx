@@ -1,12 +1,17 @@
 import React from 'react';
 import {Container, Image, Link} from '../../../../CommonStyles';
 
+import CommonProjectPage from '../../CommonProjectPage';
 import Pic from './assets/1.png';
 import WorkArchive from './assets/src.rar';
 
-class ProjectPage extends React.Component<{}, {}> {
-    render() {
-        return (
+type Props = {
+    onLoad: () => void
+};
+
+const ProjectPage = (props: Props) => {
+    return (
+        <CommonProjectPage onLoad={props.onLoad}>
             <Container>
                 <h2>Internet communicator</h2>
                 <p>
@@ -39,8 +44,8 @@ class ProjectPage extends React.Component<{}, {}> {
                     Download link: <Link href={WorkArchive}>src.rar</Link>.
                 </p>
             </Container>
-        );
-    }
-}
+        </CommonProjectPage>
+    );
+};
 
 export default ProjectPage;

@@ -1,13 +1,18 @@
 import React from 'react';
 import {Container, Image, Link} from '../../../../CommonStyles';
 
+import CommonProjectPage from '../../CommonProjectPage';
 import Pic1 from './assets/1.jpg';
 import Pic2 from './assets/2.png';
 import Pic3 from './assets/3.png';
 
-class ProjectPage extends React.Component<{}, {}> {
-    render() {
-        return (
+type Props = {
+    onLoad: () => void
+};
+
+const ProjectPage = (props: Props) => {
+    return (
+        <CommonProjectPage onLoad={props.onLoad}>
             <Container>
                 <h2>Virtual school</h2>
                 <p>
@@ -33,8 +38,8 @@ class ProjectPage extends React.Component<{}, {}> {
                 </p>
                 <Link href={Pic3}><Image src={Pic3}/></Link>
             </Container>
-        );
-    }
-}
+        </CommonProjectPage>
+    );
+};
 
 export default ProjectPage;

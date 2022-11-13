@@ -28,6 +28,13 @@ class NavigationFactory {
     static get3DProjects(): Array<ProjectMenuItemType> {
         return ProjectNavigationFactory.get3DProjects();
     }
+
+    static getAllProjects(): Array<ProjectMenuItemType> {
+        return [
+            ...ProjectNavigationFactory.getSoftwareProjects(),
+            ...ProjectNavigationFactory.get3DProjects()
+        ]
+    }
 }
 
 export default NavigationFactory;

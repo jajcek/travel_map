@@ -58,7 +58,7 @@ const ContactPage = lazy(() => import('../pages/contact/ContactPage'));
 const Projects = loadProjectsComponents();
 
 function loadProjectsComponents() {
-    return NavigationFactory.getSoftwareProjects().map((projectData) => {
+    return NavigationFactory.getAllProjects().map((projectData) => {
         return {
             component: lazy(() => import(`../pages/projects/${projectData.href}/ProjectPage`)),
             path: `/projects/${projectData.href}`

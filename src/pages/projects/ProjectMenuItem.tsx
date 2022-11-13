@@ -69,7 +69,7 @@ type Props = {
     tech: string
 }
 
-const ProjectItem = (props: Props) => {
+const ProjectMenuItem = (props: Props) => {
     const [image, setImage] = useState<string>();
 
     useEffect(() => {
@@ -100,4 +100,4 @@ const ProjectItem = (props: Props) => {
     );
 };
 
-export default ProjectItem;
+export default ProjectMenuItem;

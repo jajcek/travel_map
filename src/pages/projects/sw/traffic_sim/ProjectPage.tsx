@@ -1,13 +1,18 @@
 import React from 'react';
 import {Container, Image, Link} from '../../../../CommonStyles';
 
+import CommonProjectPage from '../../CommonProjectPage';
 import Pic1 from './assets/1.png';
 import Pic2 from './assets/2.png';
 import WorkArchive from './assets/ts_editor.rar';
 
-class ProjectPage extends React.Component<{}, {}> {
-    render() {
-        return (
+type Props = {
+    onLoad: () => void
+};
+
+const ProjectPage = (props: Props) => {
+    return (
+        <CommonProjectPage onLoad={props.onLoad}>
             <Container>
                 <h2>Traffic simulator</h2>
                 <p>
@@ -49,8 +54,8 @@ class ProjectPage extends React.Component<{}, {}> {
                 <h4>Simulator</h4>
                 <Link href={Pic2}><Image src={Pic2}/></Link>
             </Container>
-        );
-    }
-}
+        </CommonProjectPage>
+    );
+};
 
 export default ProjectPage;

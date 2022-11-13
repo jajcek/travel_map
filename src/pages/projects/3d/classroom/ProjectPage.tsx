@@ -1,12 +1,17 @@
 import React from 'react';
 import {Container, Image, Link} from '../../../../CommonStyles';
 
+import CommonProjectPage from '../../CommonProjectPage';
 import Pic1 from './assets/1.jpg';
 import Pic2 from './assets/2.jpg';
 
-class ProjectPage extends React.Component<{}, {}> {
-    render() {
-        return (
+type Props = {
+    onLoad: () => void
+};
+
+const ProjectPage = (props: Props) => {
+    return (
+        <CommonProjectPage onLoad={props.onLoad}>
             <Container>
                 <h2>Classroom</h2>
                 <p>
@@ -17,8 +22,8 @@ class ProjectPage extends React.Component<{}, {}> {
                 <Link href={Pic1}><Image src={Pic1}/></Link>
                 <Link href={Pic2}><Image src={Pic2}/></Link>
             </Container>
-        );
-    }
-}
+        </CommonProjectPage>
+    );
+};
 
 export default ProjectPage;
