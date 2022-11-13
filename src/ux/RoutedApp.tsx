@@ -8,6 +8,7 @@ import Footer from '../Footer';
 import LoadingPage from './LoadingPage';
 import ErrorBoundary from './ErrorBoundary';
 import NotFoundPage from './NotFoundPage';
+import NavigationFactory from './NavigationFactory';
 
 const ANIMATION_DURATION_MS = 300;
 
@@ -49,17 +50,21 @@ const ScrolledContainer = styled.div`
     }
 `;
 
-export const lazyMinLoadTime = <T extends React.ComponentType<any>>(factory: () => Promise<{ default: T }>, minLoadTimeMs = 2000) =>
-  lazy(() =>
-    Promise.all([factory(), new Promise((resolve) => setTimeout(resolve, minLoadTimeMs))]).then(([moduleExports]) => moduleExports)
-  );
-
 const IntroPage = lazy(() => import('../pages/intro/IntroPage'));
 const AboutPage = lazy(() => import('../pages/about/AboutPage'));
 const ProjectsPage = lazy(() => import('../pages/projects/ProjectsPage'));
-const ProjectPageLoader = lazy(() => import('../pages/projects/ProjectPageLoader'));
 const MapWithDataLoader = lazy(() => import('../pages/travel/MapWithDataLoader'));
 const ContactPage = lazy(() => import('../pages/contact/ContactPage'));
+const Projects = loadProjectsComponents();
+
+function loadProjectsComponents() {
+    return NavigationFactory.getSoftwareProjects().map((projectData) => {
+        return {
+            component: lazy(() => import(`../pages/projects/${projectData.href}/ProjectPage`)),
+            path: `/projects/${projectData.href}`
+        };
+    });
+}
 
 const RoutedApp = () => {
     const [transition, setTransition] = useState<string>();
@@ -90,7 +95,11 @@ const RoutedApp = () => {
                             <Route path="/" element={<IntroPage onLoad={showSmoothly} />} />
                             <Route path="/about" element={<AboutPage onLoad={showSmoothly} />} />
                             <Route path="/projects" element={<ProjectsPage onItemClick={showHiding} onLoad={showSmoothly} />} />
-                            <Route path="/projects/:type/:id" element={<ProjectPageLoader onLoading={showLoading} onLoad={showSmoothly} />} />
+                            {
+                                Projects.map((p) => {
+                                    return <Route key={p.path} path={p.path} element={<p.component onLoad={showSmoothly} />} />;
+                                })
+                            }
                             <Route path="/travel" element={<MapWithDataLoader onLoad={showSmoothly} />} />
                             <Route path="/contact" element={<ContactPage onLoad={showSmoothly} />} />
                             <Route path="*" element={<NotFoundPage />} />
