@@ -16,8 +16,8 @@ const MapWithDataLoader = (props: Props) => {
         LoadVisitedStats()
           .then((data) => {
             setVisitedCountriesData(data);
+            props.onLoad();
           });
-        props.onLoad();
     }, [useLocation()]);
 
     return (
