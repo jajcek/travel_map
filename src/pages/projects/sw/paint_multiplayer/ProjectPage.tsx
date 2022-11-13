@@ -14,43 +14,41 @@ type Props = {
 const ProjectPage = (props: Props) => {
     return (
         <CommonProjectPage onLoad={props.onLoad}>
-            <Container>
-                <h2>Paint multiplayer</h2>
-                <p>
-                    Simple paint with multiplayer mode written in Java using threads.
-                </p>
+            <h2>Paint multiplayer</h2>
+            <p>
+                Simple paint with multiplayer mode written in Java using threads.
+            </p>
 
-                <Link href={Pic}><Image src={Pic}/></Link>
+            <Link href={Pic}><Image src={Pic}/></Link>
 
-                <p>
-                    Implemented things:
+            <p>
+                Implemented things:
+                <ul>
+                    <li>simple shapes:</li>
                     <ul>
-                        <li>simple shapes:</li>
-                        <ul>
-                            <li>point,</li>
-                            <li>line,</li>
-                            <li>rectangle,</li>
-                            <li>circle</li>
-                        </ul>
-                        <li>changing colour</li>
+                        <li>point,</li>
+                        <li>line,</li>
+                        <li>rectangle,</li>
+                        <li>circle</li>
                     </ul>
-                </p>
-                <p>
-                    Source code: <Link href={WorkArchiveThreads}>multipaint_th.rar</Link>
+                    <li>changing colour</li>
+                </ul>
+            </p>
+            <p>
+                Source code: <Link href={WorkArchiveThreads}>multipaint_th.rar</Link>
 
-                    <hr/>
+                <hr/>
 
-                    The application has been also implemented by using reactor pattern instead of threads.
-                    <br/>
-                    Source code: <Link href={WorkArchiveReactor}>multipaint_r.rar</Link>
+                The application has been also implemented by using reactor pattern instead of threads.
+                <br/>
+                Source code: <Link href={WorkArchiveReactor}>multipaint_r.rar</Link>
 
-                    <hr/>
+                <hr/>
 
-                    There is also available version implemented in GWT.
-                    <br/>
-                    Source code: <Link href={WorkArchiveGwt}>multipaint_gwt.rar</Link>
-                </p>
-            </Container>
+                There is also available version implemented in GWT.
+                <br/>
+                Source code: <Link href={WorkArchiveGwt}>multipaint_gwt.rar</Link>
+            </p>
         </CommonProjectPage>
     );
 };

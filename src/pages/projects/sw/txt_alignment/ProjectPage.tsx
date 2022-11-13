@@ -12,33 +12,31 @@ type Props = {
 const ProjectPage = (props: Props) => {
     return (
         <CommonProjectPage onLoad={props.onLoad}>
-            <Container>
-                <h2>Text alignment</h2>
-                <p>
-                    Program for aligning text in a "newspaper" form:
-                </p>
+            <h2>Text alignment</h2>
+            <p>
+                Program for aligning text in a "newspaper" form:
+            </p>
 
-                <Link href={Pic}><Image src={Pic}/></Link>
+            <Link href={Pic}><Image src={Pic}/></Link>
 
-                <p>
-                    It doesn't handle polish symbols. Column has to be wider than the longest word in the input text.
-                </p>
-                <p>
-                    Usage:
-                    <pre>alignment.exe a b c d &lt; e</pre>
-                    <b>a</b> - width of the left margin<br/>
-                    <b>b</b> - width of the first column<br/>
-                    <b>c</b> - distance between columns<br/>
-                    <b>d</b> - width of the second column<br/>
-                    <b>e</b> - file to read
-                </p>
-                <p>
-                    You can also write it to another "<b>f</b>" file: <b>alignment.exe a b c d &lt; e &gt; f</b>
-                </p>
-                <p>
-                    Download link: <Link href={WorkArchive}>alignment.rar</Link>.
-                </p>
-            </Container>
+            <p>
+                It doesn't handle polish symbols. Column has to be wider than the longest word in the input text.
+            </p>
+            <p>
+                Usage:
+                <pre>alignment.exe a b c d &lt; e</pre>
+                <b>a</b> - width of the left margin<br/>
+                <b>b</b> - width of the first column<br/>
+                <b>c</b> - distance between columns<br/>
+                <b>d</b> - width of the second column<br/>
+                <b>e</b> - file to read
+            </p>
+            <p>
+                You can also write it to another "<b>f</b>" file: <b>alignment.exe a b c d &lt; e &gt; f</b>
+            </p>
+            <p>
+                Download link: <Link href={WorkArchive}>alignment.rar</Link>.
+            </p>
         </CommonProjectPage>
     );
 };

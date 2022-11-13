@@ -12,16 +12,14 @@ type Props = {
 const ProjectPage = (props: Props) => {
     return (
         <CommonProjectPage onLoad={props.onLoad}>
-            <Container>
-                <h2>Classroom</h2>
-                <p>
-                    Schoolroom where I was learning english language with my english teacher.
-                    Renders are done in 3Ds Max 2009 using VRay render engine.
-                </p>
+            <h2>Classroom</h2>
+            <p>
+                Schoolroom where I was learning english language with my english teacher.
+                Renders are done in 3Ds Max 2009 using VRay render engine.
+            </p>
 
-                <Link href={Pic1}><Image src={Pic1}/></Link>
-                <Link href={Pic2}><Image src={Pic2}/></Link>
-            </Container>
+            <Link href={Pic1}><Image src={Pic1}/></Link>
+            <Link href={Pic2}><Image src={Pic2}/></Link>
         </CommonProjectPage>
     );
 };

@@ -1,9 +1,11 @@
 import {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
+import {Container} from '../../CommonStyles';
+
 type Props = {
     onLoad: () => void,
-    children: JSX.Element
+    children: Array<JSX.Element> | JSX.Element
 };
 
 const CommonProjectPage = (props: Props) => {
@@ -11,7 +13,7 @@ const CommonProjectPage = (props: Props) => {
         props.onLoad();
     }, [useLocation()]);
 
-    return props.children;
+    return <Container>{props.children}</Container>;
 };
 
 export default CommonProjectPage;
