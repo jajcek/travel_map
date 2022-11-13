@@ -1,7 +1,8 @@
 import React, {Suspense, useState} from "react";
 import {useNavigate, useLocation} from "react-router-dom";
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 
+import {fadeOutAnimation, fadeInAnimation} from '../CommonStyles';
 import Header from '../Header';
 import Footer from '../Footer';
 import PageRoutes from './PageRoutes';
@@ -10,31 +11,12 @@ import ErrorBoundary from './ErrorBoundary';
 
 const ANIMATION_DURATION_MS = 300;
 
-const hideAnimation = keyframes`
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-`;
-
-const showAnimation = keyframes`
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-`;
-
-
 const ScrolledContainer = styled.div`
     overflow-y: auto;
     height: 100%;
 
     &.hide {
-        animation: ${hideAnimation} ${ANIMATION_DURATION_MS/1000}s;
+        animation: ${fadeOutAnimation} ${ANIMATION_DURATION_MS/1000}s;
         opacity: 0;
     }
 
@@ -43,7 +25,7 @@ const ScrolledContainer = styled.div`
     }
 
     &.show {
-        animation: ${showAnimation} ${ANIMATION_DURATION_MS/1000}s;
+        animation: ${fadeInAnimation} ${ANIMATION_DURATION_MS/1000}s;
         opacity: 1;
     }
 `;

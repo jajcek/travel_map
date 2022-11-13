@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components'
 
-import {COLORS} from '../../CommonStyles';
+import {COLORS, fadeOutAnimation, fadeInAnimation} from '../../CommonStyles';
 import OcadoExperienceDescription from './exp_pages/OcadoExperienceDescription';
 import NokiaExperienceDescription from './exp_pages/NokiaExperienceDescription';
 import PgsExperienceDescription from './exp_pages/PgsExperienceDescription';
@@ -54,12 +54,24 @@ const EmptyHeader = styled.div`
     flex: 1;
 `;
 
+const ANIMATION_DURATION_MS = 150;
+
 const Body = styled.div`
     border: none;
     background: linear-gradient(180deg, ${COLORS.EXP_BACKGROUND_COLOR1} 0%, ${COLORS.EXP_BACKGROUND_COLOR2} 100%);
     padding: 20px;
     margin-bottom: 50px;
     color: ${COLORS.BASE_TEXT};
+
+    &.hide {
+        animation: ${fadeOutAnimation} ${ANIMATION_DURATION_MS/1000}s;
+        opacity: 0;
+    }
+
+    &.show {
+        animation: ${fadeInAnimation} ${ANIMATION_DURATION_MS/1000}s;
+        opacity: 1;
+    }
 `;
 
 const OCADO = "ocado";
@@ -67,25 +79,24 @@ const NOKIA = "nokia";
 const PGS = "pgs";
 const SYGNITY = "sygnity";
 
-type State = {
-    companyId: string
-}
+const ExperienceTable = () => {
+    const [displayedCompanyId, setDisplayedCompanyId] = useState(OCADO);
+    const [descriptionAnimationState, setDescriptionAnimationState] = useState('show');
 
-class ExperienceTable extends React.Component<{}, State> {
-    constructor(props: {}) {
-        super(props);
-        this.state = {companyId: OCADO};
+    function selectCompany(e: React.SyntheticEvent, companyId: string) {
+        if (displayedCompanyId === companyId) {
+            return;
+        }
 
-        this.selectCompany = this.selectCompany.bind(this);
-        this.isSelected = this.isSelected.bind(this);
-    }
-
-    selectCompany(e: React.SyntheticEvent, companyId: string) {
-        this.setState({companyId});
+        setDescriptionAnimationState('hide');
+        setTimeout(() => {
+            setDisplayedCompanyId(companyId);
+            setDescriptionAnimationState('show');
+        }, ANIMATION_DURATION_MS);
     };
 
-    getExpDesc() {
-        switch (this.state.companyId) {
+    function getExpDesc() {
+        switch (displayedCompanyId) {
             case "ocado":
                 return <OcadoExperienceDescription />;
             case "nokia":
@@ -99,27 +110,25 @@ class ExperienceTable extends React.Component<{}, State> {
         }
     }
 
-    isSelected(companyId: string) {
-        return this.state.companyId === companyId ? 'focused' : '';
+    function isSelected(companyId: string) {
+        return displayedCompanyId === companyId ? 'focused' : '';
     }
 
-    render() {
-        return (
-            <Container>
-                <Headers>
-                    <EmptyHeader />
-                    <Header img={OcadoLogo} className={this.isSelected(OCADO)} onClick={(e) => this.selectCompany(e, OCADO)} />
-                    <Header img={NokiaLogo} className={this.isSelected(NOKIA)} onClick={(e) => this.selectCompany(e, NOKIA)} />
-                    <Header img={PgsLogo} className={this.isSelected(PGS)} onClick={(e) => this.selectCompany(e, PGS)} />
-                    <Header img={SygnityLogo} className={this.isSelected(SYGNITY)} onClick={(e) => this.selectCompany(e, SYGNITY)} />
-                    <EmptyHeader />
-                </Headers>
-                <Body>
-                    {this.getExpDesc()}
-                </Body>
-            </Container>
-        );
-    }
-}
+    return (
+        <Container>
+            <Headers>
+                <EmptyHeader />
+                <Header img={OcadoLogo} className={isSelected(OCADO)} onClick={(e) => selectCompany(e, OCADO)} />
+                <Header img={NokiaLogo} className={isSelected(NOKIA)} onClick={(e) => selectCompany(e, NOKIA)} />
+                <Header img={PgsLogo} className={isSelected(PGS)} onClick={(e) => selectCompany(e, PGS)} />
+                <Header img={SygnityLogo} className={isSelected(SYGNITY)} onClick={(e) => selectCompany(e, SYGNITY)} />
+                <EmptyHeader />
+            </Headers>
+            <Body className={descriptionAnimationState}>
+                {getExpDesc()}
+            </Body>
+        </Container>
+    );
+};
 
 export default ExperienceTable;

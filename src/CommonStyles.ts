@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 
 export const COLORS = {
     BASE_TEXT: "#383838",
@@ -45,4 +45,22 @@ export const Image = styled.img<{src: string}>`
 
 export const Text = styled.div<{size: string}>`
     font-size: ${props => props.size}px;
+`;
+
+export const fadeOutAnimation = keyframes`
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+`;
+
+export const fadeInAnimation = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 `;
