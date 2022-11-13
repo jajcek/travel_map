@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import {useLocation} from "react-router-dom";
 
 import {COLORS} from './CommonStyles';
 import NavigationFactory from './ux/NavigationFactory';
@@ -67,6 +68,13 @@ const AnimatedLink = styled.div`
         z-index: -1;
         transition: height .4s
     }
+
+    &.selected {
+        color: ${COLORS.HEADER_HOVERED_TEXT};
+        &::before {
+            height: 100%;
+        }
+    }
 `;
 
 type Props = {
@@ -74,6 +82,8 @@ type Props = {
 };
 
 const Header = (props: Props) => {
+    const location = useLocation();
+
     function showHomeLink() {
         const homeLink = NavigationFactory.getHomeLink();
         return <AuthorLink onClick={() => props.clickHandler(homeLink.href)}>{homeLink.text}</AuthorLink>;
@@ -82,8 +92,17 @@ const Header = (props: Props) => {
     function showLinks() {
         const links = NavigationFactory.getSectionLinks();
         return links.map((link: LinkType) => {
-            return <AnimatedLink key={link.href} onClick={() => props.clickHandler(link.href)}>{link.text}</AnimatedLink>;
+            return <AnimatedLink className={isSelected(link) ? 'selected' : ''} key={link.href} onClick={() => props.clickHandler(link.href)}>
+                {link.text}
+            </AnimatedLink>;
         });
+    }
+
+    function isSelected(link: LinkType) {
+        if (link.href === '/projects' && location.pathname.includes('projects')) {
+            return true;
+        }
+        return location.pathname === link.href;
     }
 
     return (
