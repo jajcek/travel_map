@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import styled from 'styled-components'
-import {Link} from "react-router-dom";
 
 import {COLORS} from '../../CommonStyles';
 import NavigationFactory from '../../ux/NavigationFactory';
@@ -31,7 +31,7 @@ const Nav = styled.nav`
     gap: 10px;
 `;
 
-const ButtonLink = styled(Link)`
+const ButtonLink = styled.div`
     background-color: ${COLORS.HEADER_BACKGROUND};
     border: 4px solid ${COLORS.HEADER_BORDER};
     transition: background-color .5s ease-in-out;
@@ -39,6 +39,7 @@ const ButtonLink = styled(Link)`
     text-align: center;
     padding: 5px;
     font-size: 14px;
+    cursor: pointer;
 
     &, &:visited {
         color: ${COLORS.HEADER_TEXT};
@@ -52,6 +53,7 @@ const ButtonLink = styled(Link)`
 `;
 
 type Props = {
+    menuClick: (href: string) => void,
     onLoad: () => void
 };
 
@@ -63,7 +65,7 @@ const IntroPage = (props: Props) => {
     function showLinks() {
         const links = NavigationFactory.getSectionLinks();
         return links.map((link: LinkType) => {
-            return <ButtonLink key={link.href} to={link.href}>{link.text}</ButtonLink>;
+            return <ButtonLink key={link.href} onClick={() => props.menuClick(link.href)}>{link.text}</ButtonLink>;
         });
     }
 

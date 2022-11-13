@@ -26,3 +26,7 @@ Licenses
   - Free - https://www.iconpacks.net/terms/
 - linkedin icon in contact page (https://www.iconpacks.net/free-icon/linkedin-2166.html)
   - Free - https://www.iconpacks.net/terms/
+- favicon:
+  - Font Author: Copyright 2019 The Bebas Neue Project Authors (https://github.com/dharmatype/Bebas-Neue)
+  - Font Source: http://fonts.gstatic.com/s/bebasneue/v9/JTUSjIg69CK48gW7PXooxW5rygbi49c.ttf
+  - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

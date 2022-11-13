@@ -28,7 +28,7 @@ type Props = {
 const PageRoutes = (props: Props) => {
     return (
         <Routes>
-            <Route path="/" element={<IntroPage onLoad={props.showFn} />} />
+            <Route path="/" element={<IntroPage menuClick={props.navigateFn} onLoad={props.showFn} />} />
             <Route path="/about" element={<AboutPage onLoad={props.showFn} />} />
             <Route path="/projects" element={<ProjectsPage onItemClick={props.navigateFn} onLoad={props.showFn} />} />
             {
