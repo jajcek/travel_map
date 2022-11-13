@@ -21,7 +21,7 @@ function loadProjectsComponents() {
 }
 
 type Props = {
-    hideFn: (href: string) => void,
+    navigateFn: (href: string) => void,
     showFn: () => void
 }
 
@@ -30,7 +30,7 @@ const PageRoutes = (props: Props) => {
         <Routes>
             <Route path="/" element={<IntroPage onLoad={props.showFn} />} />
             <Route path="/about" element={<AboutPage onLoad={props.showFn} />} />
-            <Route path="/projects" element={<ProjectsPage onItemClick={props.hideFn} onLoad={props.showFn} />} />
+            <Route path="/projects" element={<ProjectsPage onItemClick={props.navigateFn} onLoad={props.showFn} />} />
             {
                 Projects.map((p) => {
                     return <Route key={p.path} path={p.path} element={<p.component onLoad={props.showFn} />} />;

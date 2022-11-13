@@ -1,5 +1,5 @@
 import React, {Suspense, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import styled, {keyframes} from 'styled-components';
 
 import Header from '../Header';
@@ -51,8 +51,13 @@ const ScrolledContainer = styled.div`
 const RoutedApp = () => {
     const [transition, setTransition] = useState<string>();
     const navigate = useNavigate();
+    const location = useLocation();
 
-    function showHiding(href: string) {
+    function navigateWithHiding(href: string) {
+        if (href === location.pathname) {
+            return;
+        }
+
         setTransition('hide');
         setTimeout(() => {
             navigate(href);
@@ -69,11 +74,11 @@ const RoutedApp = () => {
 
     return (
         <React.Fragment>
-            <Header clickHandler={showHiding} />
+            <Header clickHandler={navigateWithHiding} />
             <ScrolledContainer className={transition}>
                 <ErrorBoundary>
                     <Suspense fallback={<LoadingPage onLoad={showLoading} />}>
-                        <PageRoutes hideFn={showHiding} showFn={showSmoothly} />
+                        <PageRoutes navigateFn={navigateWithHiding} showFn={showSmoothly} />
                     </Suspense>
                 </ErrorBoundary>
             </ScrolledContainer>

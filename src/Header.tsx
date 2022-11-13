@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import {Link, useNavigate} from "react-router-dom";
 
 import {COLORS} from './CommonStyles';
 import NavigationFactory from './ux/NavigationFactory';
@@ -75,21 +74,15 @@ type Props = {
 };
 
 const Header = (props: Props) => {
-    const navigate = useNavigate();
-
-    function navigateSmoothly(linkHref: string) {
-        props.clickHandler(linkHref);
-    }
-
     function showHomeLink() {
         const homeLink = NavigationFactory.getHomeLink();
-        return <AuthorLink onClick={() => navigateSmoothly(homeLink.href)}>{homeLink.text}</AuthorLink>;
+        return <AuthorLink onClick={() => props.clickHandler(homeLink.href)}>{homeLink.text}</AuthorLink>;
     }
 
     function showLinks() {
         const links = NavigationFactory.getSectionLinks();
         return links.map((link: LinkType) => {
-            return <AnimatedLink key={link.href} onClick={() => navigateSmoothly(link.href)}>{link.text}</AnimatedLink>;
+            return <AnimatedLink key={link.href} onClick={() => props.clickHandler(link.href)}>{link.text}</AnimatedLink>;
         });
     }
 
