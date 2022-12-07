@@ -3,13 +3,16 @@ import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import styled from 'styled-components'
 
-import {COLORS} from '../../CommonStyles';
+import {COLORS, MOBILE_WIDTH} from '../../CommonStyles';
 import NavigationFactory from '../../ux/NavigationFactory';
 import type {LinkType} from '../../ux/NavigationFactory';
 import CenteredContainer from '../../ux/CenteredContainer';
 
 const Name = styled.div`
     letter-spacing: 20px;
+    @media (max-width: ${MOBILE_WIDTH}) {
+        letter-spacing: 5px;
+    }
     font-size: 45px;
     font-weight: 700;
     font-family: Arial;
@@ -18,6 +21,9 @@ const Name = styled.div`
 
 const Profession = styled.div`
     letter-spacing: 8px;
+    @media (max-width: ${MOBILE_WIDTH}) {
+        letter-spacing: 2px;
+    }
     font-size: 13px;
     font-weight: bold;
     margin-top: 15px;
@@ -27,7 +33,9 @@ const Profession = styled.div`
 
 const Nav = styled.nav`
     display: flex;
-    margin-top: 2%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
     gap: 10px;
 `;
 
@@ -38,6 +46,7 @@ const ButtonLink = styled.div`
     width: 100px;
     text-align: center;
     padding: 5px;
+    font-family: Arial;
     font-size: 14px;
     cursor: pointer;
 

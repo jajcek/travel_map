@@ -9,7 +9,7 @@ export type LinkType = {
 
 class NavigationFactory {
     static getHomeLink(): LinkType {
-        return {href: '/', text: 'Jacek Topolski'};
+        return {href: '/', text: ''};
     }
 
     static getSectionLinks(): Array<LinkType> {

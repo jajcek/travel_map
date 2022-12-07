@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import {useLocation} from "react-router-dom";
 
-import {COLORS} from './CommonStyles';
+import {COLORS, MOBILE_WIDTH} from './CommonStyles';
 import NavigationFactory from './ux/NavigationFactory';
 import type {LinkType} from './ux/NavigationFactory';
 
@@ -19,7 +19,17 @@ const HomeNav = styled.nav`
 `;
 
 const AuthorLink = styled.div`
-    padding: 17px;
+    padding: 20px;
+    &:before {
+        content: 'Jacek Topolski'
+    }
+    @media (max-width: ${MOBILE_WIDTH}) {
+        padding: 20px 5px;
+        &:before {
+            content: 'JT'
+        }
+    }
+    white-space: nowrap;
     cursor: pointer;
 
     &, &:visited {
@@ -34,7 +44,10 @@ const SectionNav = styled.nav`
 `;
 
 const AnimatedLink = styled.div`
-    padding: 17px;
+    padding: 20px;
+    @media (max-width: ${MOBILE_WIDTH}) {
+        padding: 20px 5px;
+    }
     z-index: 0;
     position: relative;
     cursor: pointer;

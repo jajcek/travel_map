@@ -16,6 +16,8 @@ export const COLORS = {
     PROJECT_ITEM_BACKGROUND: "#ccc",
 };
 
+export const MOBILE_WIDTH = '500px';
+
 export const Container = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
     line-height: 30px;
