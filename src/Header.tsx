@@ -8,15 +8,14 @@ import type {LinkType} from './ux/NavigationFactory';
 
 const Container = styled.header`
     display: flex;
+    justify-content: space-around;
+    background-color: ${COLORS.HEADER_BACKGROUND};
     border-bottom: 4px solid ${COLORS.HEADER_BORDER};
 `;
 
 const HomeNav = styled.nav`
     display: flex;
-    flex: 1 0 auto;
-    background-color: ${COLORS.HEADER_BACKGROUND};
     color: ${COLORS.HEADER_TEXT};
-    padding-left: 20%;
 `;
 
 const AuthorLink = styled.div`
@@ -31,9 +30,7 @@ const AuthorLink = styled.div`
 
 const SectionNav = styled.nav`
     display: flex;
-    background-color: ${COLORS.HEADER_BACKGROUND};
     color: ${COLORS.HEADER_TEXT};
-    padding-right: 20%;
 `;
 
 const AnimatedLink = styled.div`
