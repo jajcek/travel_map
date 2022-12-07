@@ -21,8 +21,9 @@ export const MOBILE_WIDTH = '500px';
 export const Container = styled.div`
     background-color: ${COLORS.MAIN_BACKGROUND};
     line-height: 30px;
-    margin: 50px auto;
-    width: 800px;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 10px;
     align-items: center;
     text-align: justify;
     color: ${COLORS.BASE_TEXT};

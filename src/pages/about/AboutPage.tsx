@@ -64,7 +64,7 @@ const AboutPage = (props: Props) => {
                 </Country>
                 <Country>
                     <img alt="English" src={EnglishLanguage} />
-                    <LanguageLevel>Professional proficiency</LanguageLevel>
+                    <LanguageLevel>Proficient</LanguageLevel>
                 </Country>
             </Countries>
             <SectionTitle>Hobbies</SectionTitle>
