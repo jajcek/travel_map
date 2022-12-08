@@ -4,7 +4,7 @@ import {useLocation} from "react-router-dom";
 import styled from 'styled-components'
 import ContactForm from './ContactForm';
 
-import {Container, Link, Text} from '../../CommonStyles';
+import {Container, Link, Text, MOBILE_WIDTH} from '../../CommonStyles';
 
 import MailIcon from './assets/mail.png';
 import FbIcon from './assets/fb.png';
@@ -39,8 +39,10 @@ const IconItem = styled.div`
 
 const CenterDiv = styled.div`
     display: flex;
-    gap: 70px;
-    margin-top: 50px;
+    column-gap: 70px;
+    @media (max-width: ${MOBILE_WIDTH}) {
+        flex-direction: column;
+    }
 
     div {
         flex: 1;
