@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import ReactTooltip from "react-tooltip";
 import countriesIso from './countries_iso.json';
 
-import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
+import { MapContainer, LayersControl } from 'react-leaflet'
+import { MOBILE_WIDTH } from '../CommonStyles';
 
 import VisitedMap from './VisitedMap';
 
@@ -34,34 +35,40 @@ const MapDiv = styled.div`
 const statsBackgroundColor = '#444';
 
 const Stats = styled.div`
-  position: absolute;
-  transform: translate(-50%, 0);
-  left: 50%;
-  top: 20px;
-  padding: 0 10px;
-  text-align: center;
-  z-index: 9999;
-  text-rendering: optimizeLegibility;
-  font-weight: bold;
+    position: absolute;
+    transform: translate(-50%, 0);
+    left: 50%;
+    top: 20px;
+    padding: 0 10px;
+    text-align: center;
+    z-index: 9999;
+    text-rendering: optimizeLegibility;
+    font-weight: bold;
 
-  color: orange;
+    span.percent {
+        font-size: 20px;
+    }
 
-  background: ${statsBackgroundColor};
-  box-shadow:
-    0px 0px 6px ${statsBackgroundColor},
-    0px 0px 7px ${statsBackgroundColor},
-    0px 0px 8px ${statsBackgroundColor},
-    0px 0px 9px ${statsBackgroundColor},
-    0px 0px 10px ${statsBackgroundColor},
-    0px 0px 11px ${statsBackgroundColor},
-    0px 0px 12px ${statsBackgroundColor},
-    0px 0px 13px ${statsBackgroundColor},
-    0px 0px 14px ${statsBackgroundColor},
-    0px 0px 15px ${statsBackgroundColor};
-`;
+  @media (max-width: ${MOBILE_WIDTH}) {
+      span:not(.percent) {
+          display: none;
+      }
+  }
 
-const Percent = styled.span`
-  font-size: 20px;
+    color: orange;
+
+    background: ${statsBackgroundColor};
+    box-shadow:
+        0px 0px 6px ${statsBackgroundColor},
+        0px 0px 7px ${statsBackgroundColor},
+        0px 0px 8px ${statsBackgroundColor},
+        0px 0px 9px ${statsBackgroundColor},
+        0px 0px 10px ${statsBackgroundColor},
+        0px 0px 11px ${statsBackgroundColor},
+        0px 0px 12px ${statsBackgroundColor},
+        0px 0px 13px ${statsBackgroundColor},
+        0px 0px 14px ${statsBackgroundColor},
+        0px 0px 15px ${statsBackgroundColor};
 `;
 
 class Map extends React.Component<Props, State> {
@@ -153,7 +160,7 @@ class Map extends React.Component<Props, State> {
               this.state.layer === 'Visited' &&
                 <React.Fragment>
                   <Stats data-tip data-for="statsTooltip" onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
-                    DISCOVERED <Percent>{this.percentOfVisitedCountries()}%</Percent> OF THE WORLD
+                    <span> DISCOVERED </span><span className={"percent"}>{this.percentOfVisitedCountries()}%</span><span> OF THE WORLD</span>
                   </Stats>
                   <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? '' : null}>
                     {
@@ -167,12 +174,6 @@ class Map extends React.Component<Props, State> {
               visitedCountriesData={this.props.visitedCountriesData}
               onCountryClick={this.onCountryClick}
               onCountryHover={this.onCountryHover} />
-          </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="Gallery (not implemented yet)">
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
           </LayersControl.BaseLayer>
         </LayersControl>
       </MapContainer>

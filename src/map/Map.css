@@ -1,9 +1,16 @@
 #statsTooltip {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+}
+
+@media (max-width: 500px) {
+    #statsTooltip {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 30px;
+    }
 }
 
 #statsTooltip > div {
-  text-align: center;
+    text-align: center;
 }
