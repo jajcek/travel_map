@@ -3,6 +3,8 @@ import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import styled from 'styled-components'
 import ReactTooltip from "react-tooltip";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import countriesIso from './countries_iso.json';
 
 import { MapContainer, LayersControl } from 'react-leaflet'
@@ -13,23 +15,23 @@ import VisitedMap from './VisitedMap';
 import type {CountryClickHandler, CountryInfo, VisitedCountryInfo, Layer} from './types';
 
 type Props = {
-  onCountryClick?: CountryClickHandler,
-  onCountryHover?: CountryClickHandler,
-  onStatsHover?: (show: Boolean) => void,
-  visitedCountriesData: Array<VisitedCountryInfo>
+    onCountryClick?: CountryClickHandler,
+    onCountryHover?: CountryClickHandler,
+    onStatsHover?: (show: Boolean) => void,
+    visitedCountriesData: Array<VisitedCountryInfo>
 }
 
 type State = {
-  selectedCountry: CountryInfo,
-  layer: Layer,
-  hoveredCountry: CountryInfo,
-  showStatsTooltip: Boolean,
-  zoom: number
+    selectedCountry: CountryInfo,
+    layer: Layer,
+    hoveredCountry: CountryInfo,
+    showStatsTooltip: Boolean,
+    zoom: number
 }
 
 const MapDiv = styled.div`
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 `;
 
 const statsBackgroundColor = '#444';
@@ -45,16 +47,6 @@ const Stats = styled.div`
     text-rendering: optimizeLegibility;
     font-weight: bold;
 
-    span.percent {
-        font-size: 20px;
-    }
-
-  @media (max-width: ${MOBILE_WIDTH}) {
-      span:not(.percent) {
-          display: none;
-      }
-  }
-
     color: orange;
 
     background: ${statsBackgroundColor};
@@ -69,6 +61,21 @@ const Stats = styled.div`
         0px 0px 13px ${statsBackgroundColor},
         0px 0px 14px ${statsBackgroundColor},
         0px 0px 15px ${statsBackgroundColor};
+
+    span.percent {
+        font-size: 20px;
+    }
+
+    @media (max-width: ${MOBILE_WIDTH}) {
+        span:not(.percent) {
+            display: none;
+        }
+    }
+
+    > div {
+        display: inline-block;
+        font-size: 20px;
+    }
 `;
 
 class Map extends React.Component<Props, State> {
@@ -159,8 +166,13 @@ class Map extends React.Component<Props, State> {
             {
               this.state.layer === 'Visited' &&
                 <React.Fragment>
-                  <Stats data-tip data-for="statsTooltip" onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
-                    <span> DISCOVERED </span><span className={"percent"}>{this.percentOfVisitedCountries()}%</span><span> OF THE WORLD</span>
+                  <Stats data-tip data-for="statsTooltip">
+                    <span> DISCOVERED </span>
+                    <span className={"percent"}>{this.percentOfVisitedCountries()}% </span>
+                    <span>OF THE WORLD </span>
+                    <div onMouseOver={this.onStatsOver} onMouseOut={this.onStatsOut}>
+                        <FontAwesomeIcon icon={solid('circle-question')} />
+                    </div>
                   </Stats>
                   <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => this.state.showStatsTooltip ? '' : null}>
                     {

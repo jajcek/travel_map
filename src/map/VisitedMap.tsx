@@ -66,6 +66,7 @@ class VisitedMap extends React.Component<Props, any> {
 
   render() {
     return <SVGOverlay
+        className="worldMap"
         ref={this.svgRef}
         eventHandlers={{click: this.countryClickHandler}}
         attributes={{ 'style': `stroke-width: ${this.getStrokeWidth()}`, viewBox: '-30 10 1038 644' }}
