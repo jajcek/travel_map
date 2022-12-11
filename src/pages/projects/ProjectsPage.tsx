@@ -11,6 +11,7 @@ const ItemsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 50px;
+    justify-content: center;
 
     > div {
         margin: 5px;
