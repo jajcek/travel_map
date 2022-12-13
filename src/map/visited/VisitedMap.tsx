@@ -1,9 +1,9 @@
 import React from 'react';
-import { SVGOverlay } from 'react-leaflet';
+import {SVGOverlay} from 'react-leaflet';
 import './VisitedMap.css';
-import countriesIso from './countries_iso.json';
+import countriesIso from '../countries_iso.json';
 
-import type {CountryClickHandler, VisitedCountryInfo} from './types';
+import type {CountryClickHandler, VisitedCountryInfo} from '../types';
 
 type Props = {
   zoom: number,
