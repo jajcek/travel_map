@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic1 from './assets/1.jpg';
@@ -22,12 +22,12 @@ const ProjectPage = (props: Props) => {
                 Renders are done in 3Ds Max 2009 using VRay render engine.
             </p>
 
-            <Link href={Pic1}><Image src={Pic1}/></Link>
-            <Link href={Pic2}><Image src={Pic2}/></Link>
-            <Link href={Pic3}><Image src={Pic3}/></Link>
-            <Link href={Pic4}><Image src={Pic4}/></Link>
-            <Link href={Pic5}><Image src={Pic5}/></Link>
-            <Link href={Pic6}><Image src={Pic6}/></Link>
+            <ModalImage small={Pic1} large={Pic1} />
+            <ModalImage small={Pic2} large={Pic2} />
+            <ModalImage small={Pic3} large={Pic3} />
+            <ModalImage small={Pic4} large={Pic4} />
+            <ModalImage small={Pic5} large={Pic5} />
+            <ModalImage small={Pic6} large={Pic6} />
         </CommonProjectPage>
     );
 };
