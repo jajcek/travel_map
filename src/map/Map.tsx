@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import styled from 'styled-components'
 
-import {MapContainer, LayersControl} from 'react-leaflet'
+import {MapContainer, LayersControl, TileLayer} from 'react-leaflet'
 
 import VisitedMapLayer from './visited/VisitedMapLayer';
 
@@ -16,42 +16,29 @@ type Props = {
     visitedCountriesData: Array<VisitedCountryInfo>
 }
 
-type State = {
-    layer: Layer,
-    zoom: number
-}
-
 const MapDiv = styled.div`
     width: 100%;
     height: 100%;
 `;
 
-class Map extends React.Component<Props, State> {
+const Map = (props: Props) => {
+    const [layer, setLayer] = useState<Layer>('Visited');
+    const [zoom, setZoom] = useState(2.4);
 
-  constructor(props: Props) {
-    super(props);
+    function changeLayer(layer: L.LayersControlEvent) {
+        setLayer(layer.name as Layer);
+    }
 
-    this.state = {layer: 'Visited', zoom: 2.4};
+    function changeZoom(event: L.LayersControlEvent) {
+        setZoom(event.target.getZoom());
+    }
 
-    this.changeLayer = this.changeLayer.bind(this);
-    this.changeZoom = this.changeZoom.bind(this);
-  }
-
-  changeLayer(layer: L.LayersControlEvent) {
-    this.setState({'layer': layer.name as Layer});
-  }
-
-  changeZoom(event: L.LayersControlEvent) {
-    this.setState({'zoom': event.target.getZoom()});
-  }
-
-  render() {
     return (
         <MapDiv data-tip data-for="countryTooltip">
             <MapContainer style={{height: '100%', backgroundColor: 'gray'}}
             center={[30, 0]}
-            zoom={this.state.zoom}
-            minZoom={this.state.zoom}
+            zoom={zoom}
+            minZoom={zoom}
             scrollWheelZoom={true}
             maxBounds={[[-60, -180], [84, 190]]}
             maxBoundsViscosity={1}
@@ -60,19 +47,18 @@ class Map extends React.Component<Props, State> {
             wheelPxPerZoomLevel={100}
             // @ts-ignore: invalid type in react-leaflet library
             whenReady={(e: any) => {
-                e.target.on('baselayerchange', this.changeLayer);
-                e.target.on('zoom', this.changeZoom);
+                e.target.on('baselayerchange', changeLayer);
+                e.target.on('zoom', changeZoom);
             }}
             >
                 <LayersControl position="topright" collapsed={false}>
                     <LayersControl.BaseLayer checked name="Visited">
-                        <VisitedMapLayer zoom={this.state.zoom} visitedCountriesData={this.props.visitedCountriesData} />
+                        <VisitedMapLayer visible={layer === 'Visited'} zoom={zoom} visitedCountriesData={props.visitedCountriesData} />
                     </LayersControl.BaseLayer>
                 </LayersControl>
             </MapContainer>
         </MapDiv>
     );
-  }
-}
+};
 
 export default Map;

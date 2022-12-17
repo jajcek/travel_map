@@ -54,19 +54,13 @@ const Stats = styled.div`
 `;
 
 type Props = {
+    visible: boolean,
     zoom: number,
     onCountryClick?: CountryClickHandler,
     onCountryHover?: CountryClickHandler,
     onStatsHover?: (show: Boolean) => void,
     visitedCountriesData: Array<VisitedCountryInfo>
 }
-
-// type State = {
-//     selectedCountry: CountryInfo,
-//     layer: Layer,
-//     hoveredCountry: CountryInfo,
-//     showStatsTooltip: Boolean
-// }
 
 const VisitedMapLayer = (props: Props) => {
     const [hoveredCountry, setHoveredCountry] = useState<CountryInfo>();
@@ -117,12 +111,12 @@ const VisitedMapLayer = (props: Props) => {
     return (
         <React.Fragment>
             {
-                //this.state.layer === 'Visited' &&
+                props.visible &&
                 <React.Fragment>
                     <Stats data-tip data-for="statsTooltip" onMouseOver={onStatsOver} onMouseOut={onStatsOut}>
                         <span> DISCOVERED </span>
                         <span className={"percent"}>{percentOfVisitedCountries()}% </span>
-                        <span>OF THE WORLD </span>
+                        <span>OF THE WORLD&nbsp;&nbsp;&nbsp;</span>
                         <div>
                             <FontAwesomeIcon icon={solid('circle-question')} />
                         </div>
