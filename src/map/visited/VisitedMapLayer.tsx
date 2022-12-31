@@ -75,12 +75,10 @@ const VisitedMapLayer = (props: Props) => {
     }
 
     function onStatsOver() {
-    console.log("tooltip true");
         setShowStatsTooltip(true);
     }
 
     function onStatsOut() {
-    console.log("toolltip false");
         setShowStatsTooltip(false);
     }
 
