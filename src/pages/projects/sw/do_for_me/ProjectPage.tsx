@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
+import {Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic from './assets/1.png';
@@ -25,7 +26,7 @@ const ProjectPage = (props: Props) => {
                 <Link href="http://www.mjtnet.com/automation-software.htm">Macro Scheduler</Link>.
             </p>
 
-            <Link href={Pic}><Image src={Pic}/></Link>
+            <ModalImage small={Pic} large={Pic} />
 
             <p>
                 When using the program a very important thing is when you have set the tasks on the calendar

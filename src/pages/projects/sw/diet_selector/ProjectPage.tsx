@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
+import {Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic from './assets/1.png';
@@ -22,7 +23,7 @@ const ProjectPage = (props: Props) => {
                 Whole project is available on <Link href="https://github.com/jajcek/diet_selector">github.com</Link>.
             </p>
 
-            <Link href={Pic}><Image src={Pic}/></Link>
+            <ModalImage small={Pic} large={Pic} />
         </CommonProjectPage>
     );
 };

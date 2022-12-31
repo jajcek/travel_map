@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
+import {Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic from './assets/1.jpg';
@@ -19,7 +20,7 @@ const ProjectPage = (props: Props) => {
                 It was written in C++ using DirectX 11 and HLSL shaders. GUI has been created with MFC.
             </p>
 
-            <Link href={Pic}><Image src={Pic}/></Link>
+            <ModalImage small={Pic} large={Pic} />
 
             <p>
                 Functionality that the program offers:

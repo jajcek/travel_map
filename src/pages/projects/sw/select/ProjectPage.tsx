@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
+import {Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic from './assets/1.png';
@@ -17,7 +18,7 @@ const ProjectPage = (props: Props) => {
                 Presentation of select algorithm written in Java.
             </p>
 
-            <Link href={Pic}><Image src={Pic}/></Link>
+            <ModalImage small={Pic} large={Pic} />
 
             <p>
                 Text field on the left takes statistic to find and the one on the right generates the number of values

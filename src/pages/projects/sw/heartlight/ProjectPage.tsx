@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
+import {Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic from './assets/1.png';
@@ -17,7 +18,7 @@ const ProjectPage = (props: Props) => {
                 Heartlight game written in JME.
             </p>
 
-            <Link href={Pic}><Image src={Pic}/></Link>
+            <ModalImage small={Pic} large={Pic} />
 
             <p>
                 Implemented things:

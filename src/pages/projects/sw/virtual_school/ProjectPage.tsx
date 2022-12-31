@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic1 from './assets/1.jpg';
@@ -25,17 +25,17 @@ const ProjectPage = (props: Props) => {
                 The size in MB of the project is quite big (300MB) because of the videos of the transitions.
             </p>
 
-            <Link href={Pic1}><Image src={Pic1}/></Link>
+            <ModalImage small={Pic1} large={Pic1} />
 
             <p>
                 Entry menu of the application
             </p>
-            <Link href={Pic2}><Image src={Pic2}/></Link>
+            <ModalImage small={Pic2} large={Pic2} />
 
             <p>
                 When moving around the hall
             </p>
-            <Link href={Pic3}><Image src={Pic3}/></Link>
+            <ModalImage small={Pic3} large={Pic3} />
         </CommonProjectPage>
     );
 };

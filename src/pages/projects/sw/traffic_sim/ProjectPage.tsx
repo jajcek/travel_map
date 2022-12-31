@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
+import {Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic1 from './assets/1.png';
@@ -46,10 +47,10 @@ const ProjectPage = (props: Props) => {
             <h3>Screenshots:</h3>
 
             <h4>Editor</h4>
-            <Link href={Pic1}><Image src={Pic1}/></Link>
+            <ModalImage small={Pic1} large={Pic1} />
 
             <h4>Simulator</h4>
-            <Link href={Pic2}><Image src={Pic2}/></Link>
+            <ModalImage small={Pic2} large={Pic2} />
         </CommonProjectPage>
     );
 };

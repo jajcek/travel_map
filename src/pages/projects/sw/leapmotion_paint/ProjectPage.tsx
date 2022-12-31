@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Link} from '../../../../CommonStyles';
+import ModalImage from "react-modal-image";
+import {Link} from '../../../../CommonStyles';
 
 import CommonProjectPage from '../../CommonProjectPage';
 import Pic from './assets/1.png';
@@ -26,7 +27,7 @@ const ProjectPage = (props: Props) => {
                 and multifinger drawing.
             </p>
 
-            <Link href={Pic}><Image src={Pic}/></Link>
+            <ModalImage small={Pic} large={Pic} />
 
             <p>
                 Download link: <Link href={WorkArchive}>paint-leapmotion.7z</Link>.

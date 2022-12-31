@@ -30,3 +30,5 @@ Licenses
   - Font Author: Copyright 2019 The Bebas Neue Project Authors (https://github.com/dharmatype/Bebas-Neue)
   - Font Source: http://fonts.gstatic.com/s/bebasneue/v9/JTUSjIg69CK48gW7PXooxW5rygbi49c.ttf
   - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
+- react-modal-image:
+  - MIT - https://www.npmjs.com/package/react-modal-image?activeTab=readme
