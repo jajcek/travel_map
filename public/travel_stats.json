@@ -1,78 +1,78 @@
 [
   {
     "name": "PL",
-    "desc": ""
-  },
-  {
-    "name": "GB",
-    "desc": ""
-  },
-  {
-    "name": "DE",
-    "desc": ""
-  },
-  {
-    "name": "ES",
-    "desc": ""
-  },
-  {
-    "name": "PT",
-    "desc": ""
-  },
-  {
-    "name": "IT",
-    "desc": ""
-  },
-  {
-    "name": "HR",
-    "desc": ""
-  },
-  {
-    "name": "ME",
-    "desc": ""
-  },
-  {
-    "name": "GR",
-    "desc": ""
-  },
-  {
-    "name": "SE",
-    "desc": ""
-  },
-  {
-    "name": "MA",
-    "desc": ""
-  },
-  {
-    "name": "EG",
-    "desc": ""
-  },
-  {
-    "name": "TH",
-    "desc": ""
-  },
-  {
-    "name": "SG",
-    "desc": ""
-  },
-  {
-    "name": "GI",
-    "desc": ""
-  },
-  {
-    "name": "CY",
-    "desc": ""
-  },
-  {
-    "name": "TR",
-    "desc": ""
+    "desc": "'90"
   },
   {
     "name": "HU",
-    "desc": ""
+    "desc": "'97"
+  },
+  {
+    "name": "TR",
+    "desc": "'99"
+  },
+  {
+    "name": "GR",
+    "desc": "'01 & '18"
+  },
+  {
+    "name": "HR",
+    "desc": "'15"
+  },
+  {
+    "name": "ME",
+    "desc": "'16"
+  },
+  {
+    "name": "ES",
+    "desc": "'17"
+  },
+  {
+    "name": "MA",
+    "desc": "'17"
+  },
+  {
+    "name": "GI",
+    "desc": "'17"
+  },
+  {
+    "name": "EG",
+    "desc": "'18"
+  },
+  {
+    "name": "CY",
+    "desc": "'19"
+  },
+  {
+    "name": "IT",
+    "desc": "'19"
+  },
+  {
+    "name": "DE",
+    "desc": "'21"
+  },
+  {
+    "name": "PT",
+    "desc": "'21"
+  },
+  {
+    "name": "TH",
+    "desc": "'22"
+  },
+  {
+    "name": "SG",
+    "desc": "'22"
+  },
+  {
+    "name": "SE",
+    "desc": "'22"
+  },
+  {
+    "name": "GB",
+    "desc": "'22"
   },
   {
     "name": "CZ",
-    "desc": ""
+    "desc": "'22"
   }
 ]

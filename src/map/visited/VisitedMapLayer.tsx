@@ -86,10 +86,11 @@ const VisitedMapLayer = (props: Props) => {
 
     function showStatsContent() {
         const countries = countriesIso as { [key: string]: string };
-        const fullNamesOfCountries = props.visitedCountriesData.map((c: VisitedCountryInfo) => countries[c.name]);
-        return fullNamesOfCountries.map((c: string) => {
-            return <div key={c}>{c}</div>
-        })
+        return props.visitedCountriesData.map((countryInfo: VisitedCountryInfo) => {
+            const countryName = countries[countryInfo.name];
+            const countryDate = ''; // countryInfo.desc ? ` (${countryInfo.desc})` : '';
+            return <div key={countryName}>{countryName}{countryDate}</div>;
+        });
     }
 
     function percentOfVisitedCountries() {
