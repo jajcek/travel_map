@@ -49,7 +49,7 @@ class VisitedMap extends React.Component<Props, any> {
     });
 
     Array.from(this.svgRef.current!.getElement()!.children).forEach((child: any) => {
-        child.style.filter = `drop-shadow(0px ${this.getShadowSize(2)}px ${this.getShadowSize(3)}px rgb(0 0 0 / 0.4))`
+        child.style.filter = `drop-shadow(0px ${this.getShadowSize(2)}px ${this.getShadowSize(4)}px rgb(0 0 0 / 0.4))`
     });
     this.svgRef.current!.getElement()!.style.strokeWidth = this.getStrokeWidth().toString();
   }
