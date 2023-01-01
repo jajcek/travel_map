@@ -3,9 +3,10 @@ import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import styled from 'styled-components'
 
-import {MapContainer, LayersControl, TileLayer} from 'react-leaflet'
+import {MapContainer, LayersControl} from 'react-leaflet'
 
 import VisitedMapLayer from './visited/VisitedMapLayer';
+import GalleryMapLayer from './gallery/GalleryMapLayer';
 
 import type {CountryClickHandler, VisitedCountryInfo, Layer} from './types';
 
@@ -23,7 +24,7 @@ const MapDiv = styled.div`
 
 const Map = (props: Props) => {
     const [layer, setLayer] = useState<Layer>('Visited');
-    const [zoom, setZoom] = useState(2.4);
+    const [zoom, setZoom] = useState(2.5);
 
     function changeLayer(layer: L.LayersControlEvent) {
         setLayer(layer.name as Layer);
@@ -43,7 +44,7 @@ const Map = (props: Props) => {
             maxBounds={[[-60, -180], [84, 190]]}
             maxBoundsViscosity={1}
             zoomDelta={0.1}
-            zoomSnap={0}
+            zoomSnap={1}
             wheelPxPerZoomLevel={100}
             // @ts-ignore: invalid type in react-leaflet library
             whenReady={(e: any) => {
@@ -52,8 +53,11 @@ const Map = (props: Props) => {
             }}
             >
                 <LayersControl position="topright" collapsed={false}>
-                    <LayersControl.BaseLayer checked name="Visited">
-                        <VisitedMapLayer visible={layer === 'Visited'} zoom={zoom} visitedCountriesData={props.visitedCountriesData} />
+                    <LayersControl.BaseLayer name="Visited">
+
+                    </LayersControl.BaseLayer>
+                    <LayersControl.BaseLayer checked name="Gallery">
+                        <GalleryMapLayer />
                     </LayersControl.BaseLayer>
                 </LayersControl>
             </MapContainer>
