@@ -24,7 +24,7 @@ const MapDiv = styled.div`
 
 const Map = (props: Props) => {
     const [layer, setLayer] = useState<Layer>('Visited');
-    const [zoom, setZoom] = useState(2.5);
+    const [zoom, setZoom] = useState(3);
 
     function changeLayer(layer: L.LayersControlEvent) {
         setLayer(layer.name as Layer);
@@ -53,10 +53,10 @@ const Map = (props: Props) => {
             }}
             >
                 <LayersControl position="topright" collapsed={false}>
-                    <LayersControl.BaseLayer name="Visited">
-
+                    <LayersControl.BaseLayer checked name="Visited">
+                        <VisitedMapLayer visible={layer === 'Visited'} zoom={zoom} visitedCountriesData={props.visitedCountriesData} />
                     </LayersControl.BaseLayer>
-                    <LayersControl.BaseLayer checked name="Gallery">
+                    <LayersControl.BaseLayer name="Gallery">
                         <GalleryMapLayer />
                     </LayersControl.BaseLayer>
                 </LayersControl>
