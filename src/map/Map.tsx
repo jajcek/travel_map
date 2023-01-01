@@ -53,10 +53,7 @@ const Map = (props: Props) => {
             }}
             >
                 <LayersControl position="topright" collapsed={false}>
-                    <LayersControl.BaseLayer checked name="Visited">
-                        <VisitedMapLayer visible={layer === 'Visited'} zoom={zoom} visitedCountriesData={props.visitedCountriesData} />
-                    </LayersControl.BaseLayer>
-                    <LayersControl.BaseLayer name="Gallery">
+                    <LayersControl.BaseLayer checked name="Gallery">
                         <GalleryMapLayer />
                     </LayersControl.BaseLayer>
                 </LayersControl>
