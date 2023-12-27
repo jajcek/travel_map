@@ -22,11 +22,6 @@ const GalleryMapLayer = () => {
   const context = useLeafletContext()
 
   useEffect(() => {
-//   32.7589620225344, -16.943030300286182
-    var corner1 = L.latLng(40.712, -74.227);
-    var corner2 = L.latLng(40.774, -74.125);
-    var bounds = L.latLngBounds(corner1, corner2);
-
     var icon = L.divIcon({
             className: 'custom-class-name',
             html: renderToStaticMarkup(<Div>5</Div>),
@@ -36,7 +31,7 @@ const GalleryMapLayer = () => {
 
     const container = context.map
 
-    var marker = L.marker([40.712, -74.227], { icon: icon });
+    var marker = L.marker([32.7589, -16.9430], { icon: icon });
 
     marker.addTo(container);
 
