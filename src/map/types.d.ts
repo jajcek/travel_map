@@ -7,4 +7,7 @@ export type VisitedCountryInfo = {
     desc: string
 };
 
-export type Layer = "Visited" | "Gallery";
+export enum Layer {
+    VISITED,
+    GALLERY
+}

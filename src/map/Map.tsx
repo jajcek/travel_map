@@ -3,12 +3,13 @@ import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import styled from 'styled-components'
 
-import {MapContainer, LayersControl} from 'react-leaflet'
+import {MapContainer} from 'react-leaflet'
 
 import VisitedMapLayer from './visited/VisitedMapLayer';
 import GalleryMapLayer from './gallery/GalleryMapLayer';
 
-import type {CountryClickHandler, VisitedCountryInfo, Layer} from './types';
+import type {CountryClickHandler, VisitedCountryInfo} from './types';
+import {Layer} from './types.d';
 
 type Props = {
     onCountryClick?: CountryClickHandler,
@@ -23,21 +24,22 @@ const MapDiv = styled.div`
 `;
 
 const Map = (props: Props) => {
-    const [layer, setLayer] = useState<Layer>('Visited');
-    const [zoom, setZoom] = useState(3);
-
-    function changeLayer(layer: L.LayersControlEvent) {
-        setLayer(layer.name as Layer);
-    }
+    const [layer, setLayer] = useState<Layer>(Layer.VISITED);
+    const [zoom, setZoom] = useState(2.2);
 
     function changeZoom(event: L.LayersControlEvent) {
         setZoom(event.target.getZoom());
+        if (event.target.getZoom() >= 4) {
+            setLayer(Layer.GALLERY);
+        } else {
+            setLayer(Layer.VISITED);
+        }
     }
 
     return (
         <MapDiv data-tip data-for="countryTooltip">
             <MapContainer style={{height: '100%', backgroundColor: 'gray'}}
-            center={[30, 0]}
+            center={[0, 0]}
             zoom={zoom}
             minZoom={zoom}
             scrollWheelZoom={true}
@@ -48,15 +50,13 @@ const Map = (props: Props) => {
             wheelPxPerZoomLevel={100}
             // @ts-ignore: invalid type in react-leaflet library
             whenReady={(e: any) => {
-                e.target.on('baselayerchange', changeLayer);
                 e.target.on('zoom', changeZoom);
             }}
             >
-                <LayersControl position="topright" collapsed={false}>
-                    <LayersControl.BaseLayer checked name="Gallery">
-                        <GalleryMapLayer />
-                    </LayersControl.BaseLayer>
-                </LayersControl>
+
+                { layer === Layer.VISITED && <VisitedMapLayer zoom={zoom} visitedCountriesData={props.visitedCountriesData} /> }
+                { layer === Layer.GALLERY && <GalleryMapLayer /> }
+
             </MapContainer>
         </MapDiv>
     );

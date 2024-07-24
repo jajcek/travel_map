@@ -54,7 +54,6 @@ const Stats = styled.div`
 `;
 
 type Props = {
-    visible: boolean,
     zoom: number,
     onCountryClick?: CountryClickHandler,
     onCountryHover?: CountryClickHandler,
@@ -109,20 +108,17 @@ const VisitedMapLayer = (props: Props) => {
 
     return (
         <React.Fragment>
-            {
-                props.visible &&
-                <React.Fragment>
-                    <Stats data-tip data-for="statsTooltip" onMouseOver={onStatsOver} onMouseOut={onStatsOut}>
-                        <span> DISCOVERED </span>
-                        <span className={"percent"}>{percentOfVisitedCountries()}% </span>
-                        <span>OF THE WORLD&nbsp;&nbsp;&nbsp;</span>
-                        <div>
-                            <FontAwesomeIcon icon={solid('circle-question')} />
-                        </div>
-                    </Stats>
-                    <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => showStatsTooltip ? showStatsContent() : ''} />
-                </React.Fragment>
-            }
+            <React.Fragment>
+                <Stats data-tip data-for="statsTooltip" onMouseOver={onStatsOver} onMouseOut={onStatsOut}>
+                    <span> DISCOVERED </span>
+                    <span className={"percent"}>{percentOfVisitedCountries()}% </span>
+                    <span>OF THE WORLD&nbsp;&nbsp;&nbsp;</span>
+                    <div>
+                        <FontAwesomeIcon icon={solid('circle-question')} />
+                    </div>
+                </Stats>
+                <ReactTooltip id="statsTooltip" place={'bottom'} effect='solid' getContent={() => showStatsTooltip ? showStatsContent() : ''} />
+            </React.Fragment>
             <ReactTooltip id="countryTooltip" getContent={() => hoveredCountry ? hoveredCountry : ''} />
             <VisitedMap zoom={props.zoom}
                 visitedCountriesData={props.visitedCountriesData}
