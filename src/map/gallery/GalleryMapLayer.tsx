@@ -9,6 +9,7 @@ import {TileLayer} from 'react-leaflet'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 import merge from './GalleryMerger'
+import GalleryLoader from './GalleryLoader'
 
 import type {GalleryInfo} from '../types';
 
@@ -44,11 +45,21 @@ const GalleryMapLayer = (props: Props) => {
 
     const container = context.map
     var markers = new L.LayerGroup().addTo(container);
+    const el = document.createElement('div');
+    el.innerHTML = 'asdsa';
 
     mergedGallery.forEach((gallery) => {
         var marker = L.marker([gallery.coordinates[0], gallery.coordinates[1]], { icon: icon })
                 .on('click', () => console.log('dupa')).on('mouseover', () => console.log('kiupa'))
-                .bindPopup('A pretty CSS popup.<br> Easily <span class="test">customizable</span>.');
+                .bindPopup(() => {
+                        const el = document.createElement('img');
+                        const getData = async () => {
+                            var img = await GalleryLoader('gallery/madeira/pico_ruivo/1.png');
+                            el.setAttribute('src', img as string);
+                        }
+                        getData();
+                        return el;
+                    });
             marker.addTo(markers);
         });
 
