@@ -6,10 +6,8 @@ import {renderToStaticMarkup} from "react-dom/server"
 import {useLeafletContext} from '@react-leaflet/core'
 import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
-import merge from './GalleryMerger'
-import GalleryLoader from './GalleryLoader'
+import mergeGalleries from './GalleryMerger'
+import loadThumbnail from './ThumbnailsLoader'
 
 import type {GalleryInfo} from '../types';
 
@@ -33,7 +31,7 @@ const GalleryMapLayer = (props: Props) => {
   const context = useLeafletContext()
 
   useEffect(() => {
-    const mergedGallery = merge(props.galleryData, props.zoom);
+    const mergedGallery = mergeGalleries(props.galleryData, props.zoom);
     console.log('mergedGallery', mergedGallery);
     var icon = L.divIcon({
             className: 'pin-marker-class',
@@ -54,7 +52,7 @@ const GalleryMapLayer = (props: Props) => {
                 .bindPopup(() => {
                         const el = document.createElement('img');
                         const getData = async () => {
-                            var img = await GalleryLoader('gallery/madeira/pico_ruivo/1.png');
+                            var img = await loadThumbnail('gallery/madeira/pico_ruivo/1.png');
                             el.setAttribute('src', img as string);
                         }
                         getData();

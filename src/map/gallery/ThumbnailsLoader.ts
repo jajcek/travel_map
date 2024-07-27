@@ -1,4 +1,4 @@
-function GalleryLoader(url: string) {
+function loadThumbnail(url: string) {
     return fetch(url, {
               headers : {
                 'Content-Type': 'image/png',
@@ -14,4 +14,4 @@ function GalleryLoader(url: string) {
             .catch((error) => console.error(error));
 }
 
-export default GalleryLoader;
+export default loadThumbnail;
