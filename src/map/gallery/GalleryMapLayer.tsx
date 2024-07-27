@@ -8,6 +8,9 @@ import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
 import mergeGalleries from './GalleryMerger'
 import loadThumbnail from './ThumbnailsLoader'
+import CompTest from './CompTest'
+import { createRoot } from "react-dom/client";
+import { flushSync } from "react-dom";
 
 import type {GalleryInfo} from '../types';
 
@@ -43,20 +46,26 @@ const GalleryMapLayer = (props: Props) => {
 
     const container = context.map
     var markers = new L.LayerGroup().addTo(container);
-    const el = document.createElement('div');
-    el.innerHTML = 'asdsa';
 
     mergedGallery.forEach((gallery) => {
         var marker = L.marker([gallery.coordinates[0], gallery.coordinates[1]], { icon: icon })
                 .on('click', () => console.log('dupa')).on('mouseover', () => console.log('kiupa'))
                 .bindPopup(() => {
-                        const el = document.createElement('img');
-                        const getData = async () => {
-                            var img = await loadThumbnail('gallery/madeira/pico_ruivo/1.png');
-                            el.setAttribute('src', img as string);
-                        }
-                        getData();
-                        return el;
+                    const div = document.createElement("div");
+                    const root = createRoot(div);
+                    flushSync(() => {
+                       root.render(<CompTest/>);
+                    });
+                    return div;
+
+//                         const el = document.createElement('img');
+//                         const getData = async () => {
+//                             var img = await loadThumbnail('gallery/madeira/pico_ruivo/1.png');
+//                             console.log('loaded img', img);
+//                             el.setAttribute('src', img as string);
+//                         }
+//                         getData();
+//                         return el;
                     });
             marker.addTo(markers);
         });
