@@ -8,7 +8,7 @@ import {MapContainer} from 'react-leaflet'
 import VisitedMapLayer from './visited/VisitedMapLayer';
 import GalleryMapLayer from './gallery/GalleryMapLayer';
 
-import type {CountryClickHandler, VisitedCountryInfo} from './types';
+import type {CountryClickHandler, VisitedCountryInfo, GalleryInfo} from './types';
 import {Layer} from './types.d';
 
 type Props = {
@@ -16,6 +16,7 @@ type Props = {
     onCountryHover?: CountryClickHandler,
     onStatsHover?: (show: Boolean) => void,
     visitedCountriesData: Array<VisitedCountryInfo>
+    galleryData: Array<GalleryInfo>
 }
 
 const MapDiv = styled.div`
@@ -24,16 +25,16 @@ const MapDiv = styled.div`
 `;
 
 const Map = (props: Props) => {
-    const [layer, setLayer] = useState<Layer>(Layer.VISITED);
+    const [layer, setLayer] = useState<Layer>(Layer.GALLERY);
     const [zoom, setZoom] = useState(2.2);
 
     function changeZoom(event: L.LayersControlEvent) {
         setZoom(event.target.getZoom());
-        if (event.target.getZoom() >= 4) {
-            setLayer(Layer.GALLERY);
-        } else {
-            setLayer(Layer.VISITED);
-        }
+//         if (event.target.getZoom() >= 4) {
+//             setLayer(Layer.GALLERY);
+//         } else {
+//             setLayer(Layer.VISITED);
+//         }
     }
 
     return (
@@ -51,11 +52,17 @@ const Map = (props: Props) => {
             // @ts-ignore: invalid type in react-leaflet library
             whenReady={(e: any) => {
                 e.target.on('zoom', changeZoom);
+                e.target.on('click', (e: L.LeafletMouseEvent) => {
+                    var coord = e.latlng;
+                      var lat = coord.lat;
+                      var lng = coord.lng;
+                    console.log('asdasd', lat, lng);
+                    });
             }}
             >
 
-                { layer === Layer.VISITED && <VisitedMapLayer zoom={zoom} visitedCountriesData={props.visitedCountriesData} /> }
-                { layer === Layer.GALLERY && <GalleryMapLayer /> }
+                {/* layer === Layer.VISITED && <VisitedMapLayer zoom={zoom} visitedCountriesData={props.visitedCountriesData} /> */}
+                { layer === Layer.GALLERY && <GalleryMapLayer zoom={zoom} galleryData={props.galleryData} /> }
 
             </MapContainer>
         </MapDiv>

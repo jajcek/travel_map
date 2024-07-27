@@ -4,5 +4,23 @@
     "coordinates": [32.7589, -16.9430],
     "storageUrl": "www.gdrive.com/image1",
     "previewImagesUrls": []
+  },
+  {
+    "name": "name2",
+    "coordinates": [32.7589, -17.1430],
+    "storageUrl": "www.gdrive.com/image1",
+    "previewImagesUrls": []
+  },
+  {
+    "name": "name3",
+    "coordinates": [32.9589, -16.9430],
+    "storageUrl": "www.gdrive.com/image1",
+    "previewImagesUrls": []
+  },
+  {
+    "name": "name4",
+    "coordinates": [32.9589, -17.9430],
+    "storageUrl": "www.gdrive.com/image1",
+    "previewImagesUrls": []
   }
 ]

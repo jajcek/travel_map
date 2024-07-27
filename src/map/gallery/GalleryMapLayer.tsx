@@ -6,8 +6,16 @@ import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
+import merge from './GalleryMerger'
+
+import type {GalleryInfo} from '../types';
 
 import PinImage from './pin.png';
+
+type Props = {
+    zoom: number,
+    galleryData: Array<GalleryInfo>
+}
 
 const Div = styled.div`
     width: 32px;
@@ -18,25 +26,31 @@ const Div = styled.div`
     background-image: url(${PinImage});
 `;
 
-const GalleryMapLayer = () => {
+const GalleryMapLayer = (props: Props) => {
   const context = useLeafletContext()
 
   useEffect(() => {
+    const mergedGallery = merge(props.galleryData, props.zoom);
+    console.log('mergedGallery', mergedGallery);
     var icon = L.divIcon({
-            className: 'custom-class-name',
-            html: renderToStaticMarkup(<Div>5</Div>),
+            className: 'pin-marker-class',
+            html: renderToStaticMarkup(<Div>50</Div>),
             iconSize: [32, 32],
             iconAnchor: [16, 32]
         });
 
     const container = context.map
+    var markers = new L.LayerGroup().addTo(container);
 
-    var marker = L.marker([32.7589, -16.9430], { icon: icon });
+    mergedGallery.forEach((gallery) => {
+        var marker = L.marker([gallery.coordinates[0], gallery.coordinates[1]], { icon: icon })
+                .on('click', () => console.log('dupa')).on('mouseover', () => console.log('kiupa'));
+            marker.addTo(markers);
+        });
 
-    marker.addTo(container);
 
     return () => {
-      marker.remove();
+        markers.remove();
     }
   })
 
