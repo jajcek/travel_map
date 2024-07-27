@@ -1,5 +1,7 @@
 import React, {useEffect} from "react";
 import styled from 'styled-components';
+import ReactTooltip from "react-tooltip";
+import './GalleryMapLayer.css';
 import {renderToStaticMarkup} from "react-dom/server"
 import {useLeafletContext} from '@react-leaflet/core'
 import L from 'leaflet'
@@ -36,7 +38,8 @@ const GalleryMapLayer = (props: Props) => {
             className: 'pin-marker-class',
             html: renderToStaticMarkup(<Div>50</Div>),
             iconSize: [32, 32],
-            iconAnchor: [16, 32]
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -30]
         });
 
     const container = context.map
@@ -44,7 +47,8 @@ const GalleryMapLayer = (props: Props) => {
 
     mergedGallery.forEach((gallery) => {
         var marker = L.marker([gallery.coordinates[0], gallery.coordinates[1]], { icon: icon })
-                .on('click', () => console.log('dupa')).on('mouseover', () => console.log('kiupa'));
+                .on('click', () => console.log('dupa')).on('mouseover', () => console.log('kiupa'))
+                .bindPopup('A pretty CSS popup.<br> Easily <span class="test">customizable</span>.');
             marker.addTo(markers);
         });
 
@@ -55,9 +59,12 @@ const GalleryMapLayer = (props: Props) => {
   })
 
     return (
-        <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <React.Fragment>
+            <ReactTooltip id="galleryTooltip" place={'top'} effect='solid'  getContent={() => 'sdfdsfs'} />
+            <TileLayer data-tip data-for="countryTooltip"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        </React.Fragment>
     );
 };
 

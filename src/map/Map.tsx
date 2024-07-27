@@ -25,16 +25,16 @@ const MapDiv = styled.div`
 `;
 
 const Map = (props: Props) => {
-    const [layer, setLayer] = useState<Layer>(Layer.GALLERY);
+    const [layer, setLayer] = useState<Layer>(Layer.VISITED);
     const [zoom, setZoom] = useState(2.2);
 
     function changeZoom(event: L.LayersControlEvent) {
         setZoom(event.target.getZoom());
-//         if (event.target.getZoom() >= 4) {
-//             setLayer(Layer.GALLERY);
-//         } else {
-//             setLayer(Layer.VISITED);
-//         }
+        if (event.target.getZoom() >= 3) {
+            setLayer(Layer.GALLERY);
+        } else {
+            setLayer(Layer.VISITED);
+        }
     }
 
     return (
@@ -61,7 +61,7 @@ const Map = (props: Props) => {
             }}
             >
 
-                {/* layer === Layer.VISITED && <VisitedMapLayer zoom={zoom} visitedCountriesData={props.visitedCountriesData} /> */}
+                { layer === Layer.VISITED && <VisitedMapLayer zoom={zoom} visitedCountriesData={props.visitedCountriesData} /> }
                 { layer === Layer.GALLERY && <GalleryMapLayer zoom={zoom} galleryData={props.galleryData} /> }
 
             </MapContainer>
