@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from "react";
-
+import React from "react";
 import Gallery from './Gallery'
-import loadThumbnail from './ThumbnailsLoader'
 
 import type {GalleryBucketInfo, GalleryInfo} from '../types';
 

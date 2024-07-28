@@ -2,9 +2,6 @@ import React, {useEffect, useState} from "react";
 
 import loadThumbnail from './ThumbnailsLoader'
 
-import type {GalleryInfo} from '../types';
-
-
 type Props = {
     name: string,
     storageUrl: string,
@@ -24,7 +21,7 @@ const Gallery = (props: Props) => {
             setThumbnails(loadedImages as Array<string>);
         }
         getData();
-    }, []);
+    }, [props.thumbnailUrls]);
 
     function renderThumbnails() {
         if (thumbnails.length === 0) {
@@ -35,7 +32,7 @@ const Gallery = (props: Props) => {
             }
         } else {
             return thumbnails.map((thumbnail) => {
-                return <img key={thumbnail} src={thumbnail}/>
+                return <img key={thumbnail} src={thumbnail} alt=''/>
             })
         }
     }

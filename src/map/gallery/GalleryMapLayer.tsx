@@ -2,14 +2,12 @@ import React, {useEffect} from "react";
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
 import styled from 'styled-components';
-import ReactTooltip from "react-tooltip";
 import './GalleryMapLayer.css';
 import {renderToStaticMarkup} from "react-dom/server"
 import {useLeafletContext} from '@react-leaflet/core'
 import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
 import mergeGalleries from './GalleryMerger'
-import loadThumbnail from './ThumbnailsLoader'
 import GalleryPopup from './GalleryPopup'
 
 import type {GalleryInfo} from '../types';
@@ -67,12 +65,9 @@ const GalleryMapLayer = (props: Props) => {
   })
 
     return (
-        <React.Fragment>
-            <ReactTooltip id="galleryTooltip" place={'top'} effect='solid'  getContent={() => 'sdfdsfs'} />
-            <TileLayer data-tip data-for="countryTooltip"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        </React.Fragment>
+        <TileLayer data-tip data-for="countryTooltip"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
     );
 };
 
