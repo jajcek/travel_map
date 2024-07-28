@@ -1,4 +1,6 @@
 import React, {useEffect} from "react";
+import { createRoot } from "react-dom/client";
+import { flushSync } from "react-dom";
 import styled from 'styled-components';
 import ReactTooltip from "react-tooltip";
 import './GalleryMapLayer.css';
@@ -8,9 +10,7 @@ import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
 import mergeGalleries from './GalleryMerger'
 import loadThumbnail from './ThumbnailsLoader'
-import CompTest from './CompTest'
-import { createRoot } from "react-dom/client";
-import { flushSync } from "react-dom";
+import GalleryPopup from './GalleryPopup'
 
 import type {GalleryInfo} from '../types';
 
@@ -34,8 +34,7 @@ const GalleryMapLayer = (props: Props) => {
   const context = useLeafletContext()
 
   useEffect(() => {
-    const mergedGallery = mergeGalleries(props.galleryData, props.zoom);
-    console.log('mergedGallery', mergedGallery);
+    const mergedGalleryBucket = mergeGalleries(props.galleryData, props.zoom);
     var icon = L.divIcon({
             className: 'pin-marker-class',
             html: renderToStaticMarkup(<Div>50</Div>),
@@ -47,26 +46,17 @@ const GalleryMapLayer = (props: Props) => {
     const container = context.map
     var markers = new L.LayerGroup().addTo(container);
 
-    mergedGallery.forEach((gallery) => {
-        var marker = L.marker([gallery.coordinates[0], gallery.coordinates[1]], { icon: icon })
-                .on('click', () => console.log('dupa')).on('mouseover', () => console.log('kiupa'))
+    mergedGalleryBucket.forEach((galleryBucket) => {
+        var marker = L.marker([galleryBucket.coordinates[0], galleryBucket.coordinates[1]], { icon: icon })
+                .on('click', () => console.log('click')).on('mouseover', () => console.log('mouseOver'))
                 .bindPopup(() => {
                     const div = document.createElement("div");
                     const root = createRoot(div);
                     flushSync(() => {
-                       root.render(<CompTest/>);
+                       root.render(<GalleryPopup galleryBucket={galleryBucket}/>);
                     });
                     return div;
-
-//                         const el = document.createElement('img');
-//                         const getData = async () => {
-//                             var img = await loadThumbnail('gallery/madeira/pico_ruivo/1.png');
-//                             console.log('loaded img', img);
-//                             el.setAttribute('src', img as string);
-//                         }
-//                         getData();
-//                         return el;
-                    });
+                });
             marker.addTo(markers);
         });
 

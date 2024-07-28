@@ -11,7 +11,7 @@ export type GalleryInfo = {
     name: string,
     coordinates: Array<number>,
     storageUrl: string,
-    previewImagesUrls: Array<string>
+    thumbnailUrls: Array<string>
 };
 
 export type GalleryBucketInfo = {
