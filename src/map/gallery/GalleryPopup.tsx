@@ -24,7 +24,7 @@ const GalleryPopup = (props: Props) => {
 
     return (
         <React.Fragment>
-            { props.galleryBucket.galleries.length > 1 && <Hint>Zoom in to see more accuate pins</Hint> }
+            { props.galleryBucket.galleries.length > 1 && <Hint>Zoom in to see more accurate pins</Hint> }
             {
                 props.galleryBucket.galleries.map((gallery) => {
                     return <Gallery key={createKey(gallery)} name={gallery.name} storageUrl={gallery.storageUrl} thumbnailUrls={gallery.thumbnailUrls}/> // TODO add key prop with unique id
