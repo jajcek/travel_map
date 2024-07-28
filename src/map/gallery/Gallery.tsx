@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
+import styled from 'styled-components'
 
+import {COLORS} from '../../CommonStyles';
 import loadThumbnail from './ThumbnailsLoader'
 
 type Props = {
@@ -7,6 +9,39 @@ type Props = {
     storageUrl: string,
     thumbnailUrls: Array<string>
 }
+
+const GalleryContainer = styled.div`
+    &:not(:last-of-type) {
+        border-bottom: 3px solid ${COLORS.HEADER_BORDER};
+        border-bottom-color: linear-gradient(0.25turn, white, black 30% 70%, white);
+        padding: 10px;
+    }
+    &:last-of-type {
+        padding: 10px;
+    }
+`;
+
+const Name = styled.div`
+    font-weight: bold;
+    font-size: 20px;
+    color: ${COLORS.HEADER_TEXT};
+`;
+
+// a.storageLink class below is added to win specificity with leaflet-container class
+const StorageLink = styled.div`
+    margin-bottom: 5px;
+    > a.storageLink {
+        & {
+            color: ${COLORS.HEADER_TEXT};
+            text-decoration: none;
+            font-style: italic;
+        }
+}
+`;
+
+const ProgressInfo = styled.div`
+    color: ${COLORS.HEADER_TEXT};
+`;
 
 const Gallery = (props: Props) => {
     const [thumbnails, setThumbnails] = useState<Array<string>>([]);
@@ -26,9 +61,9 @@ const Gallery = (props: Props) => {
     function renderThumbnails() {
         if (thumbnails.length === 0) {
             if (props.thumbnailUrls.length !== 0) {
-                return <div>loading</div>;
+                return <ProgressInfo>loading</ProgressInfo>;
             } else if (props.thumbnailUrls.length === 0) {
-                return <div>no images</div>;
+                return <ProgressInfo>There are no images included.</ProgressInfo>;
             }
         } else {
             return thumbnails.map((thumbnail) => {
@@ -38,13 +73,13 @@ const Gallery = (props: Props) => {
     }
 
     return (
-        <div>
-            <div>{props.name}</div>
-            <div>{props.storageUrl}</div>
+        <GalleryContainer>
+            <Name>{props.name}</Name>
+            { props.thumbnailUrls.length !== 0 && <StorageLink><a className="storageLink" href={props.storageUrl}>View more</a></StorageLink> }
             {
                 renderThumbnails()
             }
-        </div>
+        </GalleryContainer>
     );
 }
 

@@ -49,7 +49,7 @@ const GalleryMapLayer = (props: Props) => {
                        root.render(<GalleryPopup galleryBucket={galleryBucket}/>);
                     });
                     return div;
-                });
+                }, {closeButton: false});
             marker.addTo(markers);
         });
 
