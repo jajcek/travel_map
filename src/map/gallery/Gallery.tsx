@@ -35,7 +35,7 @@ const Gallery = (props: Props) => {
             }
         } else {
             return thumbnails.map((thumbnail) => {
-                return <img src={thumbnail}/>
+                return <img key={thumbnail} src={thumbnail}/>
             })
         }
     }
