@@ -10,7 +10,7 @@ import {TileLayer} from 'react-leaflet'
 import mergeGalleries from './GalleryMerger'
 import GalleryPopup from './GalleryPopup'
 
-import type {GalleryInfo} from '../types';
+import type {GalleryInfo, GalleryBucketInfo} from '../types';
 
 import PinImage from './pin.png';
 
@@ -19,7 +19,7 @@ type Props = {
     galleryData: Array<GalleryInfo>
 }
 
-const Div = styled.div`
+const PinIcon = styled.div`
     width: 32px;
     height: 29px;
     text-align: center;
@@ -33,18 +33,13 @@ const GalleryMapLayer = (props: Props) => {
 
   useEffect(() => {
     const mergedGalleryBucket = mergeGalleries(props.galleryData, props.zoom);
-    var icon = L.divIcon({
-            className: 'pin-marker-class',
-            html: renderToStaticMarkup(<Div>50</Div>),
-            iconSize: [32, 32],
-            iconAnchor: [16, 32],
-            popupAnchor: [0, -30]
-        });
+
 
     const container = context.map
     var markers = new L.LayerGroup().addTo(container);
 
     mergedGalleryBucket.forEach((galleryBucket) => {
+        var icon = createPinIcon(galleryBucket);
         var marker = L.marker([galleryBucket.coordinates[0], galleryBucket.coordinates[1]], { icon: icon })
                 .on('click', () => console.log('click')).on('mouseover', () => console.log('mouseOver'))
                 .bindPopup(() => {
@@ -61,6 +56,16 @@ const GalleryMapLayer = (props: Props) => {
 
     return () => {
         markers.remove();
+    }
+
+    function createPinIcon(galleryBucket: GalleryBucketInfo) {
+        return L.divIcon({
+           className: 'pin-marker-class',
+           html: renderToStaticMarkup(<PinIcon>{galleryBucket.galleries.length}</PinIcon>),
+           iconSize: [32, 32],
+           iconAnchor: [16, 32],
+           popupAnchor: [0, -30]
+       });
     }
   })
 

@@ -7,5 +7,6 @@
 .leaflet-popup-content-wrapper .leaflet-popup-content {
 }
 
-.leaflet-popup-tip-container {
+.leaflet-popup-tip-container .leaflet-popup-tip {
+    background: #383838;
 }
