@@ -34,25 +34,28 @@ const GalleryMapLayer = (props: Props) => {
   useEffect(() => {
     const mergedGalleryBucket = mergeGalleries(props.galleryData, props.zoom);
 
-
     const container = context.map
     var markers = new L.LayerGroup().addTo(container);
 
     mergedGalleryBucket.forEach((galleryBucket) => {
         var icon = createPinIcon(galleryBucket);
-        var marker = L.marker([galleryBucket.coordinates[0], galleryBucket.coordinates[1]], { icon: icon })
-                .on('click', () => console.log('click')).on('mouseover', () => console.log('mouseOver'))
-                .bindPopup(() => {
-                    const div = document.createElement("div");
-                    const root = createRoot(div);
-                    flushSync(() => {
-                       root.render(<GalleryPopup galleryBucket={galleryBucket}/>);
-                    });
-                    return div;
-                }, {closeButton: false});
-            marker.addTo(markers);
-        });
+        var popupWidth = getPopupWidth(galleryBucket);
+        var popup = L.popup({closeButton: false, minWidth: popupWidth})
+            .setContent(() => {
+                const div = document.createElement("div");
+                const root = createRoot(div);
+                flushSync(() => {
+                   root.render(<GalleryPopup galleryBucket={galleryBucket} />);
+                });
+                return div;
+            });
 
+        var marker = L.marker([galleryBucket.coordinates[0], galleryBucket.coordinates[1]], { icon: icon })
+                .on('click', () => console.log('click'))
+                .on('mouseover', () => console.log('mouseOver'))
+                .bindPopup(popup);
+        marker.addTo(markers);
+    });
 
     return () => {
         markers.remove();
@@ -66,6 +69,16 @@ const GalleryMapLayer = (props: Props) => {
            iconAnchor: [16, 32],
            popupAnchor: [0, -30]
        });
+    }
+
+    function getPopupWidth(galleryBucket: GalleryBucketInfo) {
+        var lengths = galleryBucket.galleries.map((b) => b.thumbnailUrls.length);
+        const maxNumOfImg = Math.max(1, Math.max(...lengths));
+        if (maxNumOfImg === 1) {
+            return maxNumOfImg * 147;
+        } else {
+            return Math.min(maxNumOfImg * 140, 350);
+        }
     }
   })
 

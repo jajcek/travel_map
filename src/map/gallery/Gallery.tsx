@@ -43,6 +43,33 @@ const ProgressInfo = styled.div`
     color: ${COLORS.HEADER_TEXT};
 `;
 
+const ThumbnailImagesContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    overflow-x: scroll;
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: ${COLORS.HEADER_BORDER};
+      border: 0;
+      border-radius: 5px;
+    }
+`;
+
+const ThumbnailImage = styled.img`
+    width: 128px;
+    height: 128px;
+
+    &:not(:last-of-type) {
+        margin-right: 5px;
+    }
+`;
+
 const Gallery = (props: Props) => {
     const [thumbnails, setThumbnails] = useState<Array<string>>([]);
 
@@ -67,7 +94,7 @@ const Gallery = (props: Props) => {
             }
         } else {
             return thumbnails.map((thumbnail) => {
-                return <img key={thumbnail} src={thumbnail} alt=''/>
+                return <ThumbnailImage key={thumbnail} src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihaDti-zYN1yRwexEZM-XKtUAYjgx5JoPV51CXFcebENd08Fj6J9QFiwObZrJ9qKNxQldEwmCU_NHoC3ZeyxUC0ujQcTl61zI3I=w1920-h902-rw-v1" alt='' />
             })
         }
     }
@@ -76,9 +103,11 @@ const Gallery = (props: Props) => {
         <GalleryContainer>
             <Name>{props.name}</Name>
             { props.thumbnailUrls.length !== 0 && <StorageLink><a className="storageLink" href={props.storageUrl}>View more</a></StorageLink> }
-            {
-                renderThumbnails()
-            }
+            <ThumbnailImagesContainer>
+                {
+                    renderThumbnails()
+                }
+            </ThumbnailImagesContainer>
         </GalleryContainer>
     );
 }
