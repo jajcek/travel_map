@@ -76,11 +76,9 @@ const GalleryMapLayer = (props: Props) => {
     function getPopupWidth(galleryBucket: GalleryBucketInfo) {
         var lengths = galleryBucket.galleries.map((g) => g.thumbnailUrls.length);
         const maxNumOfImg = Math.max(1, Math.max(...lengths));
-        if (maxNumOfImg === 1) {
-            return maxNumOfImg * (THUMBNAIL_WIDTH + 19);
-        } else {
-            return Math.min(maxNumOfImg * THUMBNAIL_WIDTH, 250);
-        }
+        // 19 is the 2*10px padding on both sides, it's decreased by 1 to not display scrollbar
+        // 5 is the margin between images (-5 is for the last image, we don't need margin there)
+        return Math.min(maxNumOfImg * (THUMBNAIL_WIDTH+5)-5+19, 250);
     }
   })
 
