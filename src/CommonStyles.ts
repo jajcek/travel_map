@@ -14,6 +14,8 @@ export const COLORS = {
     EXP_BACKGROUND_COLOR2: "#f4f4f4",
     EXP_DETAIL_TEXT: "#686868",
     PROJECT_ITEM_BACKGROUND: "#ccc",
+    GALLERY_HINT_BACKGROUND: "#f4f4f4",
+    GALLERY_HINT_COLOR: "#383838",
 };
 
 export const MOBILE_WIDTH = '500px';

@@ -9,6 +9,7 @@ import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
 import mergeGalleries from './GalleryMerger'
 import GalleryPopup from './GalleryPopup'
+import {THUMBNAIL_WIDTH} from './GalleryConfig'
 
 import type {GalleryInfo, GalleryBucketInfo} from '../types';
 
@@ -73,12 +74,12 @@ const GalleryMapLayer = (props: Props) => {
     }
 
     function getPopupWidth(galleryBucket: GalleryBucketInfo) {
-        var lengths = galleryBucket.galleries.map((b) => b.thumbnailUrls.length);
+        var lengths = galleryBucket.galleries.map((g) => g.thumbnailUrls.length);
         const maxNumOfImg = Math.max(1, Math.max(...lengths));
         if (maxNumOfImg === 1) {
-            return maxNumOfImg * 83;
+            return maxNumOfImg * (THUMBNAIL_WIDTH + 19);
         } else {
-            return Math.min(maxNumOfImg * 70, 250);
+            return Math.min(maxNumOfImg * THUMBNAIL_WIDTH, 250);
         }
     }
   })

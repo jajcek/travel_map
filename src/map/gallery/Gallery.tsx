@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styled from 'styled-components'
+import {THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT} from './GalleryConfig'
 
 import {COLORS} from '../../CommonStyles';
 import loadThumbnail from './ThumbnailsLoader'
@@ -61,8 +62,8 @@ const ThumbnailImagesContainer = styled.div`
 `;
 
 const ThumbnailImage = styled.img`
-    width: 64px;
-    height: 64px;
+    width: ${THUMBNAIL_WIDTH}px;
+    height: ${THUMBNAIL_HEIGHT}px;
 
     &:not(:last-of-type) {
         margin-right: 5px;
