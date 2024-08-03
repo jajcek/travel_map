@@ -3,7 +3,7 @@
     "name": "Pico Ruivo",
     "coordinates": [32.7589, -16.9430],
     "storageUrl": "www.gdrive.com/image1",
-    "thumbnailUrls": ["gallery/madeira/pico_ruivo/1.png", "gallery/madeira/pico_ruivo/2.png", "gallery/madeira/pico_ruivo/2.png"]
+    "thumbnailUrls": ["gallery/madeira/pico_ruivo/1.png", "gallery/madeira/pico_ruivo/2.png", "gallery/madeira/pico_ruivo/2.png", "gallery/madeira/pico_ruivo/2.png"]
   },
   {
     "name": "name2",
@@ -15,7 +15,7 @@
     "name": "name3",
     "coordinates": [32.9589, -16.9430],
     "storageUrl": "www.gdrive.com/image1",
-    "thumbnailUrls": []
+    "thumbnailUrls": ["gallery/madeira/pico_ruivo/3.png"]
   },
   {
     "name": "name4",

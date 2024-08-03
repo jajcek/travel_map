@@ -45,7 +45,6 @@ const ProgressInfo = styled.div`
 
 const ThumbnailImagesContainer = styled.div`
     display: flex;
-    justify-content: space-between;
     padding-bottom: 2px;
     overflow-x: scroll;
 
@@ -62,8 +61,8 @@ const ThumbnailImagesContainer = styled.div`
 `;
 
 const ThumbnailImage = styled.img`
-    width: 128px;
-    height: 128px;
+    width: 64px;
+    height: 64px;
 
     &:not(:last-of-type) {
         margin-right: 5px;

@@ -15,6 +15,8 @@ const Hint = styled.div`
     color: #383838;
     background-color: #f4f4f4;
     padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 `;
 
 const GalleryPopup = (props: Props) => {
@@ -24,12 +26,12 @@ const GalleryPopup = (props: Props) => {
 
     return (
         <React.Fragment>
-            { props.galleryBucket.galleries.length > 1 && <Hint>Zoom in to see more accurate pins</Hint> }
             {
-                props.galleryBucket.galleries.map((gallery) => {
+                props.galleryBucket.galleries.slice(0, 3).map((gallery) => {
                     return <Gallery key={createKey(gallery)} name={gallery.name} storageUrl={gallery.storageUrl} thumbnailUrls={gallery.thumbnailUrls}/> // TODO add key prop with unique id
                 })
             }
+            { props.galleryBucket.galleries.length > 3 && <Hint>Zoom in to see rest of the places...</Hint> }
         </React.Fragment>
     );
 }

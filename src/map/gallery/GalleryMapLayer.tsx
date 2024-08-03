@@ -75,9 +75,9 @@ const GalleryMapLayer = (props: Props) => {
         var lengths = galleryBucket.galleries.map((b) => b.thumbnailUrls.length);
         const maxNumOfImg = Math.max(1, Math.max(...lengths));
         if (maxNumOfImg === 1) {
-            return maxNumOfImg * 147;
+            return maxNumOfImg * 83;
         } else {
-            return Math.min(maxNumOfImg * 140, 350);
+            return Math.min(maxNumOfImg * 70, 250);
         }
     }
   })
