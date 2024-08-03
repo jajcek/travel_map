@@ -26,6 +26,7 @@ const PinIcon = styled.div`
     padding-top: 3px;
     font-weight: bold;
     background-image: url(${PinImage});
+    filter: drop-shadow(1px 1px 1px gray);
 `;
 
 const GalleryMapLayer = (props: Props) => {
