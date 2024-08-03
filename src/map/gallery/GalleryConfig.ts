@@ -1,3 +1,5 @@
 export const THUMBNAIL_WIDTH = 64;
 export const THUMBNAIL_HEIGHT = 64;
 export const NO_OF_GALLERIES_IN_POPUP = 3;
+export const GAP_BETWEEN_THUMBNAILS = 5;
+export const PADDING_AROUND_THUMBNAILS = 10;

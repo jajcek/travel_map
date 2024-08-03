@@ -9,7 +9,7 @@ import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
 import mergeGalleries from './GalleryMerger'
 import GalleryPopup from './GalleryPopup'
-import {THUMBNAIL_WIDTH} from './GalleryConfig'
+import {THUMBNAIL_WIDTH, GAP_BETWEEN_THUMBNAILS, PADDING_AROUND_THUMBNAILS} from './GalleryConfig'
 
 import type {GalleryInfo, GalleryBucketInfo} from '../types';
 
@@ -76,9 +76,8 @@ const GalleryMapLayer = (props: Props) => {
     function getPopupWidth(galleryBucket: GalleryBucketInfo) {
         var lengths = galleryBucket.galleries.map((g) => g.thumbnailUrls.length);
         const maxNumOfImg = Math.max(1, Math.max(...lengths));
-        // 19 is the 2*10px padding on both sides, it's decreased by 1 to not display scrollbar
-        // 5 is the margin between images (-5 is for the last image, we don't need margin there)
-        return Math.min(maxNumOfImg * (THUMBNAIL_WIDTH+5)-5+19, 250);
+        const padding = 2 * PADDING_AROUND_THUMBNAILS - 1;
+        return Math.min(maxNumOfImg * (THUMBNAIL_WIDTH + GAP_BETWEEN_THUMBNAILS) - GAP_BETWEEN_THUMBNAILS + padding, 250);
     }
   })
 

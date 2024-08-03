@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styled from 'styled-components'
-import {THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT} from './GalleryConfig'
+import {THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT, PADDING_AROUND_THUMBNAILS} from './GalleryConfig'
 
 import {COLORS} from '../../CommonStyles';
 import loadThumbnail from './ThumbnailsLoader'
@@ -15,10 +15,10 @@ const GalleryContainer = styled.div`
     &:not(:last-of-type) {
         border-bottom: 3px solid ${COLORS.HEADER_BORDER};
         border-bottom-color: linear-gradient(0.25turn, white, black 30% 70%, white);
-        padding: 10px;
+        padding: ${PADDING_AROUND_THUMBNAILS}px;
     }
     &:last-of-type {
-        padding: 10px;
+        padding: ${PADDING_AROUND_THUMBNAILS}px;
     }
 `;
 
