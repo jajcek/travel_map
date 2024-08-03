@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styled from 'styled-components'
-import {THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT, PADDING_AROUND_THUMBNAILS} from './GalleryConfig'
+import {THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT, GAP_BETWEEN_THUMBNAILS, PADDING_AROUND_THUMBNAILS} from './GalleryConfig'
 
 import {COLORS} from '../../CommonStyles';
 import loadThumbnail from './ThumbnailsLoader'
@@ -66,7 +66,7 @@ const ThumbnailImage = styled.img`
     height: ${THUMBNAIL_HEIGHT}px;
 
     &:not(:last-of-type) {
-        margin-right: 5px;
+        margin-right: ${GAP_BETWEEN_THUMBNAILS}px;
     }
 `;
 
@@ -88,7 +88,7 @@ const Gallery = (props: Props) => {
     function renderThumbnails() {
         if (thumbnails.length === 0) {
             if (props.thumbnailUrls.length !== 0) {
-                return <ProgressInfo>loading</ProgressInfo>;
+                return <ProgressInfo>Loading...</ProgressInfo>;
             } else if (props.thumbnailUrls.length === 0) {
                 return <ProgressInfo>There are no images included.</ProgressInfo>;
             }
