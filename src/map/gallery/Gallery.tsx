@@ -1,9 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
-// import {THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT} from './GalleryConfig'
 
 import {COLORS} from '../../CommonStyles';
-// import loadThumbnail from './ThumbnailsLoader'
 
 type Props = {
     name: string,
@@ -40,28 +38,9 @@ const StorageLink = styled.div`
 }
 `;
 
-// const ThumbnailImage = styled.img`
-//     width: ${THUMBNAIL_WIDTH}px;
-//     height: ${THUMBNAIL_HEIGHT}px;
-//     margin-right: 5px;
-// `;
-
 const Gallery = (props: Props) => {
-//     const [thumbnail, setThumbnail] = useState<string | undefined>();
-//
-//     useEffect(() => {
-//         const getData = async () => {
-//             if (props.thumbnailUrl !== undefined) {
-//                 const img = await loadThumbnail(props.thumbnailUrl) as string;
-//                 setThumbnail(img);
-//             }
-//         }
-//         getData();
-//     }, [props.thumbnailUrl]);
-
     return (
         <GalleryContainer>
-            {/*}<ThumbnailImage key={thumbnail} src={thumbnail} alt='' />*/}
             <Name>{props.name}</Name>
             <StorageLink><a className="storageLink" href={props.storageUrl}>View more</a></StorageLink>
         </GalleryContainer>

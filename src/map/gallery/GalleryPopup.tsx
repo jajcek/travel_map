@@ -28,7 +28,7 @@ const GalleryPopup = (props: Props) => {
         <React.Fragment>
             {
                 props.galleryBucket.galleries.slice(0, NO_OF_GALLERIES_IN_POPUP).map((gallery) => {
-                    return <Gallery key={createKey(gallery)} name={gallery.name} storageUrl={gallery.storageUrl} thumbnailUrl={gallery.thumbnailUrl}/> // TODO add key prop with unique id
+                    return <Gallery key={createKey(gallery)} name={gallery.name} storageUrl={gallery.storageUrl} thumbnailUrl={gallery.thumbnailUrl}/>
                 })
             }
             { props.galleryBucket.galleries.length > NO_OF_GALLERIES_IN_POPUP && <Hint>Zoom in to see rest of the places...</Hint> }
