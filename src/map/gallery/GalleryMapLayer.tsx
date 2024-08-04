@@ -9,7 +9,6 @@ import L from 'leaflet'
 import {TileLayer} from 'react-leaflet'
 import mergeGalleries from './GalleryMerger'
 import GalleryPopup from './GalleryPopup'
-import {THUMBNAIL_WIDTH, GAP_BETWEEN_THUMBNAILS, PADDING_AROUND_THUMBNAILS} from './GalleryConfig'
 
 import type {GalleryInfo, GalleryBucketInfo} from '../types';
 
@@ -41,8 +40,7 @@ const GalleryMapLayer = (props: Props) => {
 
     mergedGalleryBucket.forEach((galleryBucket) => {
         var icon = createPinIcon(galleryBucket);
-        var popupWidth = getPopupWidth(galleryBucket);
-        var popup = L.popup({closeButton: false, minWidth: popupWidth})
+        var popup = L.popup({closeButton: false})
             .setContent(() => {
                 const div = document.createElement("div");
                 const root = createRoot(div);
@@ -71,13 +69,6 @@ const GalleryMapLayer = (props: Props) => {
            iconAnchor: [16, 32],
            popupAnchor: [0, -30]
        });
-    }
-
-    function getPopupWidth(galleryBucket: GalleryBucketInfo) {
-        var lengths = galleryBucket.galleries.map((g) => g.thumbnailUrls.length);
-        const maxNumOfImg = Math.max(1, Math.max(...lengths));
-        const padding = 2 * PADDING_AROUND_THUMBNAILS - 1;
-        return Math.min(maxNumOfImg * (THUMBNAIL_WIDTH + GAP_BETWEEN_THUMBNAILS) - GAP_BETWEEN_THUMBNAILS + padding, 250);
     }
   })
 
