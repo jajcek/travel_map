@@ -32,3 +32,5 @@ Licenses
   - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
 - react-modal-image:
   - MIT - https://www.npmjs.com/package/react-modal-image?activeTab=readme
+- react-image-gallery:
+  - MIT - https://github.com/xiaolin/react-image-gallery/blob/master/LICENSE
