@@ -11,17 +11,17 @@ type Props = {
     galleryBucket: GalleryBucketInfo
 }
 
-const images = [
-  {
-    original: "https://lh3.googleusercontent.com/d/1sQfJ8TE16T5ACSdntMIstRMt8gF04dzD",
-  },
-  {
-    original: "https://lh3.googleusercontent.com/d/13KRyWdIrCOihP37UE3R1zvrO-qHbRxs_",
-  },
-  {
-    original: "https://lh3.googleusercontent.com/d/1y3mFcNtURi1_Yo9Qs4DhZaJbQGg7lWV4",
-  },
-];
+// const images = [
+//   {
+//     original: "https://lh3.googleusercontent.com/d/1sQfJ8TE16T5ACSdntMIstRMt8gF04dzD",
+//   },
+//   {
+//     original: "https://lh3.googleusercontent.com/d/13KRyWdIrCOihP37UE3R1zvrO-qHbRxs_",
+//   },
+//   {
+//     original: "https://lh3.googleusercontent.com/d/1y3mFcNtURi1_Yo9Qs4DhZaJbQGg7lWV4",
+//   },
+// ];
 
 const GalleryContainer = styled.div`
     &:first-of-type div {
@@ -82,20 +82,35 @@ const CloseButton = styled.div`
 
 const GalleryPopup = (props: Props) => {
     const [shouldDisplayImages, setShouldDisplayImages] = useState<boolean>(false);
+    const [imageUrls, setImageUrls] = useState<any>([]);
 
     function createKey(gallery: GalleryInfo) {
         return gallery.name + gallery.coordinates[0] + gallery.coordinates[1];
     }
+
+    function showImages(images: Array<string>) {
+        const formattedImagesForLibrary = images.map((img) => {
+            return {original: img};
+        });
+        setImageUrls(formattedImagesForLibrary);
+        setShouldDisplayImages(true);
+    }
+
+    function hideImages() {
+        setShouldDisplayImages(false);
+    }
+
+
 
     const imagesWindow = () => {
         return (
             <Wrapper id="clickable-background" onClick={(event: SyntheticEvent) => {
                 const target = event.target as HTMLElement;
                 if (target.id === 'clickable-background')
-                    setShouldDisplayImages(false);
+                    hideImages();
                 }}>
-                <ImageGallery items={images} showThumbnails={false} showIndex={true}/>
-                <CloseButton onClick={() => setShouldDisplayImages(false)}>CLOSE</CloseButton>
+                <ImageGallery items={imageUrls} showThumbnails={false} showIndex={true}/>
+                <CloseButton onClick={() => hideImages()}>CLOSE</CloseButton>
             </Wrapper>);
     }
 
@@ -104,7 +119,7 @@ const GalleryPopup = (props: Props) => {
             {
                 props.galleryBucket.galleries.slice(0, NO_OF_GALLERIES_IN_POPUP).map((gallery) => {
                     return <GalleryContainer key={createKey(gallery)}>
-                               <Name onClick={() => setShouldDisplayImages(true)}>{gallery.name}</Name>
+                               <Name onClick={() => showImages(gallery.imageUrls)}>{gallery.name}</Name>
                            </GalleryContainer>
                 })
             }

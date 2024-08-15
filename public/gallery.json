@@ -2,25 +2,21 @@
   {
     "name": "Pico Ruivo",
     "coordinates": [32.7589, -16.9430],
-    "storageUrl": "www.gdrive.com/image1",
-    "thumbnailUrl": "gallery/madeira/pico_ruivo/1.png"
+    "imageUrls": ["https://lh3.googleusercontent.com/d/1sQfJ8TE16T5ACSdntMIstRMt8gF04dzD"]
   },
   {
     "name": "name2",
     "coordinates": [32.7589, -17.1430],
-    "storageUrl": "www.gdrive.com/image1",
-    "thumbnailUrl": "gallery/madeira/pico_ruivo/2.png"
+    "imageUrls": ["https://lh3.googleusercontent.com/d/1sQfJ8TE16T5ACSdntMIstRMt8gF04dzD"]
   }, 
   {
     "name": "name3",
     "coordinates": [32.9589, -16.9430],
-    "storageUrl": "www.gdrive.com/image1",
-    "thumbnailUrl": "gallery/madeira/pico_ruivo/3.png"
+    "imageUrls": ["https://lh3.googleusercontent.com/d/1sQfJ8TE16T5ACSdntMIstRMt8gF04dzD"]
   },
   {
     "name": "name4",
     "coordinates": [32.9589, -17.9430],
-    "storageUrl": "www.gdrive.com/image1",
-    "thumbnailUrl": null
+    "imageUrls": ["https://lh3.googleusercontent.com/d/1sQfJ8TE16T5ACSdntMIstRMt8gF04dzD"]
   }
 ]

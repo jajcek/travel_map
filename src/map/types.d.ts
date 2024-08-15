@@ -10,8 +10,7 @@ export type VisitedCountryInfo = {
 export type GalleryInfo = {
     name: string,
     coordinates: Array<number>,
-    storageUrl: string,
-    thumbnailUrl: string | undefined
+    imageUrls: Array<string>
 };
 
 export type GalleryBucketInfo = {
