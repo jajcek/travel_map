@@ -7,21 +7,11 @@ import ImageGallery from "react-image-gallery";
 
 import type {GalleryBucketInfo, GalleryInfo} from '../types';
 
+import ImageError from './image_error.png';
+
 type Props = {
     galleryBucket: GalleryBucketInfo
 }
-
-// const images = [
-//   {
-//     original: "https://lh3.googleusercontent.com/d/1sQfJ8TE16T5ACSdntMIstRMt8gF04dzD",
-//   },
-//   {
-//     original: "https://lh3.googleusercontent.com/d/13KRyWdIrCOihP37UE3R1zvrO-qHbRxs_",
-//   },
-//   {
-//     original: "https://lh3.googleusercontent.com/d/1y3mFcNtURi1_Yo9Qs4DhZaJbQGg7lWV4",
-//   },
-// ];
 
 const GalleryContainer = styled.div`
     &:first-of-type div {
@@ -109,7 +99,7 @@ const GalleryPopup = (props: Props) => {
                 if (target.id === 'clickable-background')
                     hideImages();
                 }}>
-                <ImageGallery items={imageUrls} showThumbnails={false} showIndex={true}/>
+                <ImageGallery items={imageUrls} showThumbnails={false} showIndex={true} lazyLoad={true} onErrorImageURL={ImageError}/>
                 <CloseButton onClick={() => hideImages()}>CLOSE</CloseButton>
             </Wrapper>);
     }
