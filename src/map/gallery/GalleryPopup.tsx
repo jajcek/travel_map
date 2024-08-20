@@ -80,7 +80,7 @@ const GalleryPopup = (props: Props) => {
 
     function showImages(images: Array<string>) {
         const formattedImagesForLibrary = images.map((img) => {
-            return {original: img};
+            return {original: "http://jacektopolski.pl/gallery/" + img};
         });
         setImageUrls(formattedImagesForLibrary);
         setShouldDisplayImages(true);

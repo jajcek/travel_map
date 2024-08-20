@@ -29,6 +29,7 @@ const Map = (props: Props) => {
     const [zoom, setZoom] = useState(2.2);
 
     function changeZoom(event: L.LayersControlEvent) {
+        console.log('zoom', event.target.getZoom());
         setZoom(event.target.getZoom());
         if (event.target.getZoom() >= 3) {
             setLayer(Layer.GALLERY);
@@ -53,10 +54,10 @@ const Map = (props: Props) => {
             whenReady={(e: any) => {
                 e.target.on('zoom', changeZoom);
                 e.target.on('click', (e: L.LeafletMouseEvent) => {
-                    var coord = e.latlng;
-                      var lat = coord.lat;
-                      var lng = coord.lng;
-                    console.log('asdasd', lat, lng);
+                        var coord = e.latlng;
+                        var lat = coord.lat;
+                        var lng = coord.lng;
+                        console.log('lat, lng', lat, lng);
                     });
             }}
             >
