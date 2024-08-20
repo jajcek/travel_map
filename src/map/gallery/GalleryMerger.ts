@@ -45,9 +45,11 @@ function getFactor(zoom: number): number {
         return 0.3
     } else if (zoom <= 10) {
         return 0.1
+    } else if (zoom <= 13) {
+        return 0.01
     }
 
-    return 0.01;
+    return 0.001;
 }
 
 function isCloseEnough(x: GalleryInfo, y: GalleryInfo, zoom: number) {
